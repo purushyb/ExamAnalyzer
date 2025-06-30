@@ -1,0 +1,73 @@
+{
+    "gseScore": 73,
+    "listening": 78,
+    "speaking": 66,
+    "reading": 76,
+    "writing": 72,
+    "subskills": [
+        {
+            "subskill": 1,
+            "skills": 12,
+            "name": "Open Response Speaking and Writing",
+            "description": "Giving your own spoken or written response",
+            "score": 50,
+            "content": "<! -- OR GSE-47-50 -->\t\n<p class=\"recommendation_item1\">Read simple academic texts. Try to:</p>\n<ul class=\"recommendation_point\">\n\t<li>understand the writer's purpose</li>\n\t<li>notice facts and opinions</li>\n\t<li>notice the structure of a paragraph (e.g. the topic sentence, body sentences, concluding or bridge sentence to the next paragraph)</li>\n\t<li>pay attention to different linking words used in the text</li>\n\t<li>notice examples and their relation to the idea they support</li>\n\t<li>summarise information from the text</li>\n</ul>\n<p class=\"recommendation_item1\">Listen to simple presentations or lectures.</p>\n<ul class=\"recommendation_point\">\n\t<li>Pay attention to the main ideas and supporting details.</li>\n\t<li>Taking notes while listening.</li>\n\t<li>Notice opinions.</li>\n\t<li>Summarise the information from the presentation or lecture.</li>\n</ul>\n<p class=\"recommendation_item\">Write simple structured essays.</p>\n<p class=\"recommendation_item1\">Listen to or watch a presentation or lecture. Try to:</p>\n<ul class=\"recommendation_point\">\n\t<li>find key details</li>\n\t<li>take notes while listening or watching</li>\n\t<li>guess the speakers' opinions</li>\n\t<li>describe the conclusions</li>\n\t<li>summarise it</li>\n</ul>\n<p class=\"recommendation_item1\">Practice talking about a graph, chart or process. Work on:</p> \n<ul class=\"recommendation_point\">\n\t<li>understanding numerical values in charts and graphs</li>\n\t<li>summarising the main message</li>\n</ul>"
+        },
+        {
+            "subskill": 2,
+            "skills": 12,
+            "name": "Reproducing Spoken and Written Language",
+            "description": "Repeating or copying spoken or written information",
+            "score": 77,
+            "content": "<! -- RS GSE 76-77 -->\n<p class=\"recommendation_item1\">Read linguistically complex academic texts. Try to:</p>\n<ul class=\"recommendation_point\">\n\t<li>infer the author's attitude</li>\n\t<li>follow the sequence of events or arguments</li>\n\t<li>identify key information and vocabulary</li>\n\t<li>identify different types of supporting details</li>\n\t<li>understand idioms and non-standard language</li>\n</ul>\n<p class=\"recommendation_item\">Listen to authentic materials on complex and unfamiliar topics and try to notice cohesive devices used by the speakers.</p>"
+        },
+        {
+            "subskill": 3,
+            "skills": 8,
+            "name": "Extended Writing",
+            "description": "Giving a long written response",
+            "score": 56,
+            "content": "<! -- EW GSE 55-58 -->\n<p class=\"recommendation_item1\">Improve your skills by reading academic texts on familiar topics. Practice noticing:</p>\n<ul class=\"recommendation_point\">\n<li>facts and opinions</li>\n<li>supporting details from the main points in the text</li>\n</ul>\n\n<p class=\"recommendation_item1\">Listen to presentations, lectures, or discussions in your field of specialisation. Focus on:</p>\n<ul class=\"recommendation_point\">\n<li>identifying the main reasons for and against an argument or idea in a discussion</li>\n<li>the structure of different types of presentations</li>\n<li>taking notes while listening</li>\n</ul>\n\n<p class=\"recommendation_item1\">Practice writing a text clearly signalling main points and supporting ideas. Work on:</p>\n<ul class=\"recommendation_point\">\n<li>writing suitable introductions to a simple academic essay</li> \n<li>presenting additional ideas using a range of linking words and phrases</li>\n<li>contrasting two ideas using appropriate linking words</li>\n</ul>"
+        },
+        {
+            "subskill": 4,
+            "skills": 8,
+            "name": "Short Writing",
+            "description": "Giving a short written response",
+            "score": 81,
+            "content": "<! -- GSE 80-82 -->\n<p class=\"recommendation_item\">Work on understanding the details of long complex texts in your field.</p> "
+        },
+        {
+            "subskill": 5,
+            "skills": 4,
+            "name": "Extended Speaking",
+            "description": "Giving a long spoken response",
+            "score": 46,
+            "content": "<! -- ES GSE 43-46 -->\n<p class=\"recommendation_item1\">Work with a friend. Practice talking about graphs, charts or a process.</p> \n<ul class=\"recommendation_point\">\n\t<li>Explain the key information.</li>\n\t<li>Describe a process.</li>\n</ul>\n\n<p class=\"recommendation_item1\">Listen to simple recorded presentations, podcasts, or watch videos and TV programmes. Try to:</p>\n<ul class=\"recommendation_point\">\n\t<li>find important details</li>\n\t<li>work out the speaker's opinions</li>\n\t<li>notice the speaker's feelings and attitude</li>\n</ul>"
+        },
+        {
+            "subskill": 6,
+            "skills": 4,
+            "name": "Short Speaking",
+            "description": "Giving a short spoken response",
+            "score": 75,
+            "content": "<! -- SS GSE 71-75 -->\n<p class=\"recommendation_item\">Listen to authentic materials on complex and unfamiliar topics. Try to notice cohesive devices used by the speakers.</p>\n\n<p class=\"recommendation_item1\">Read linguistically complex academic texts and try to:</p>\n<ul class=\"recommendation_point\">\n\t<li>infer the author's attitude</li>\n\t<li>understand idioms and non-standard language</li>\n</ul>"
+        },
+        {
+            "subskill": 7,
+            "skills": 3,
+            "name": "Multiple-skills Comprehension ",
+            "description": "Using more than one skill (eg listening to a clip and then giving a spoken response)",
+            "score": 73,
+            "content": "<! -- MS GSE 71-75 -->\n<p class=\"recommendation_item1\">Listen to linguistically complex presentations, lectures or discussions and work on:</p>\n<ul class=\"recommendation_point\">\n\t<li>identifying the speakers' point of view</li> \n\t<li>identifying the main points</li>\n\t<li>inferring opinions</li>\n\t<li>identifying details supporting a point of view</li> \n\t<li>summarising the information</li>\n</ul>\n\n<p class=\"recommendation_item1\">Read linguistically complex academic texts. Work on:</p>\n<ul class=\"recommendation_point\">\n\t<li>following the sequence of events or arguments</li>\n\t<li>writing a clear summary of the text</li>\n</ul>"
+        },
+        {
+            "subskill": 8,
+            "skills": 3,
+            "name": "Single-skill Comprehension",
+            "description": "Using only one skill (eg writing)",
+            "score": 87,
+            "content": "<! -- SC GSE 85-90 -->\n<p class=\"recommendation_item\">You have achieved a very high score.</p>\n<p class=\"recommendation_item1\">To maintain your level of proficiency, you could continue to:</p>\n<ul class=\"recommendation_point\">\n\t<li>read linguistically complex academic, factual and literally texts or listen to presentations, podcasts or lectures on abstract and complex topics outside your field of interest</li>\n</ul>\n<p class=\"recommendation_item1\">Work on:</p>\n<ul class=\"recommendation_point\">\n\t<li>understanding the texts and recognising subtle distinctions of style</li>\n\t<li>understanding highly colloquial language</li>\n\t<li>evaluate the text</li>\n</ul>"
+        }
+    ]
+}

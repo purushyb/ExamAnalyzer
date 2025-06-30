@@ -1,0 +1,102 @@
+Platfroms:
+    - mobile
+    - desktop
+
+Objective:
+    - To track results for each attempt
+        - Track skills profile
+        - Track individual section scores
+    - Compare the score and progress
+        - Find areas of improveement
+
+Flow:
+    - Exam results page
+        - Show data in tabular form
+        - Fab to uplaod results
+        - Graph plot
+            - Individual skill profile
+            - individual section score
+    - Attempt Data Entry Page
+        - Add data related to attempt
+        - Fields to upload
+            - score.pdf
+            - Results.json
+    - Data View page
+        - for showing Score data of PDF
+            - Skill profile
+            - Whole attemt result
+    - Attempts screen
+        - for showing all attempts remove, edit
+
+Data Layer:
+    - Repository
+        - ExamDataProviderRepository
+            - fetchAttempts()
+            - fetchNextExamDate()
+        - ExamDataModifierRepository
+            - removeAttempt(date)
+            - updateAttempt(attempt)
+    - services
+        - AttemptsService
+        - 
+    - Models
+        - ExamResult
+            - from skill profile json
+            - gseScore
+            - listening
+            - speaking
+            - Reading
+            - writing
+            - subskills <List>
+                - subskills
+                - skills
+                - name
+                - description
+                - score
+                - content
+
+UI Layer:
+    Screens:
+        - Exam results page
+        - Attempt Data Entry Page
+        - Data View page
+
+    Component Break down By screen:
+        - Exam results page
+            - Data Table component
+                - 3 fields
+                    - Attempt Date
+                    - section result in comma seperated values
+                    - Skill profile break down in comma seperated values
+                    - PDF click viwer
+                    - skill profile viewer
+                - Line Graph 1 
+                    - Red for speaking
+                    - Green for Writing
+                    - Blue for Reading
+                    - Yellow for Listening 
+                - Line Graph 2
+                    - Red   for Extended Speaking
+                    - Red 1 for Short Speaking
+                    - Green for Extended Writing
+                    - Green 1 for Short Writing 
+                    - Blue for Open Response speaking and writing
+                    - Blue 1 for Reproducing Spoken and Written Language
+                    - Yellow for Multiple-skills Comprehension
+                    - Yellow 1 for Single-skill Comprehension
+        - Attempt Data Entry Page
+            - Custom form field accepting data
+                - Calendar component
+                    - test date
+                - Upload custom component
+                    - Results.pdf upload
+                - Upload skillprofile.json
+                    - skillprofile.json upload
+        - Data View page
+            - PDF viewer
+                - To view Results.pdf
+            - Custom Skill profile viewer
+                - To view skill profile
+
+Things to continue planning
+- Data layer spec
