@@ -120,9 +120,14 @@ class _LineChart extends StatelessWidget {
 }
 
 class AnalyticsLineChart extends StatefulWidget {
-  const AnalyticsLineChart({super.key, required this.lineChartData});
+  const AnalyticsLineChart({
+    super.key,
+    required this.lineChartData,
+    this.child,
+  });
 
   final List<List<FlSpot>> lineChartData;
+  final Switch? child;
 
   @override
   State<StatefulWidget> createState() => AnalyticsLineChartState();
@@ -148,6 +153,7 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
+                Row(children: [widget.child ?? SizedBox()]),
                 const SizedBox(height: 37),
                 Text(
                   AppLocalization.of(context).scoreTrend,

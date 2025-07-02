@@ -31,12 +31,54 @@ class DashboardScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 16),
-                AnalyticsLineChart(lineChartData: viewmodel.lineChartData),
+                SkillProfileAnalyticsWidget(
+                  chart: AnalyticsLineChart(
+                    lineChartData: viewmodel.lineChartData,
+                  ),
+                  table: SkillProfileDataTableWidget(reports: viewmodel.report),
+                ),
                 SizedBox(height: 16),
-                SkillProfileDataTableWidget(reports: viewmodel.report),
               ],
             ),
           ),
+    );
+  }
+}
+
+class SkillProfileAnalyticsWidget extends StatefulWidget {
+  const SkillProfileAnalyticsWidget({
+    super.key,
+    required this.chart,
+    required this.table,
+  });
+
+  final AnalyticsLineChart chart;
+  final SkillProfileDataTableWidget table;
+
+  @override
+  State<SkillProfileAnalyticsWidget> createState() =>
+      _SkillProfileAnalyticsWidgetState();
+}
+
+class _SkillProfileAnalyticsWidgetState
+    extends State<SkillProfileAnalyticsWidget> {
+  bool isToggled = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Switch(
+          value: isToggled,
+          onChanged: (value) {
+            setState(() {
+              isToggled = !isToggled;
+            });
+          },
+        ),
+        isToggled ? widget.chart : widget.table,
+      ],
     );
   }
 }

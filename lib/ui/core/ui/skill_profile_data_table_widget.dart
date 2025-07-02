@@ -17,23 +17,23 @@ class SkillProfileDataTableWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal, // allow horizontal scroll
         child: DataTable(
           columns: const [
-            DataColumn(label: Text('Test #')),
-            DataColumn(label: Text('Listening')),
+            DataColumn(label: Text('Date')),
+            DataColumn(label: Text('GSE Score')),
             DataColumn(label: Text('Speaking')),
             DataColumn(label: Text('Reading')),
             DataColumn(label: Text('Writing')),
-            DataColumn(label: Text('GSE Score')),
+            DataColumn(label: Text('Listening')),
           ],
           rows: List<DataRow>.generate(reports.length, (index) {
             final report = reports[index];
             return DataRow(
               cells: [
                 DataCell(Text('Test ${index + 1}')),
-                DataCell(Text(report.listening.toString())),
+                DataCell(Text(report.gseScore.toString())),
                 DataCell(Text(report.speaking.toString())),
                 DataCell(Text(report.reading.toString())),
                 DataCell(Text(report.writing.toString())),
-                DataCell(Text(report.gseScore.toString())),
+                DataCell(Text(report.listening.toString())),
               ],
             );
           }),
