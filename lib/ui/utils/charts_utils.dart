@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:exam_analyzer/data/utils/array_utils.dart';
 import 'package:flutter/material.dart';
 

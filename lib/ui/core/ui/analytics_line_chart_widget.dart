@@ -74,11 +74,10 @@ class _LineChart extends StatelessWidget {
   }
 
   Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontWeight: FontWeight.bold, fontSize: 14);
     String text = value.toInt().toString();
     return SideTitleWidget(
       meta: meta,
-      child: Text(text, style: style, textAlign: TextAlign.center),
+      child: Text(text, textAlign: TextAlign.center),
     );
   }
 

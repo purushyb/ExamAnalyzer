@@ -16,6 +16,7 @@ _ScoreReport _$ScoreReportFromJson(Map<String, dynamic> json) => _ScoreReport(
       (json['subskills'] as List<dynamic>)
           .map((e) => Subskill.fromJson(e as Map<String, dynamic>))
           .toList(),
+  date: DateTime.parse(json['date'] as String),
 );
 
 Map<String, dynamic> _$ScoreReportToJson(_ScoreReport instance) =>
@@ -26,6 +27,7 @@ Map<String, dynamic> _$ScoreReportToJson(_ScoreReport instance) =>
       'reading': instance.reading,
       'writing': instance.writing,
       'subskills': instance.subskills,
+      'date': instance.date.toIso8601String(),
     };
 
 _Subskill _$SubskillFromJson(Map<String, dynamic> json) => _Subskill(

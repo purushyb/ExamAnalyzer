@@ -12,6 +12,7 @@ abstract class ScoreReport with _$ScoreReport {
     required int reading,
     required int writing,
     required List<Subskill> subskills,
+    required DateTime date,
   }) = _ScoreReport;
 
   factory ScoreReport.fromJson(Map<String, dynamic> json) =>

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_viewmodel.dart';
+import 'package:exam_analyzer/ui/attempts/widgets/attempts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -10,11 +12,20 @@ import 'routes.dart';
 
 List<RouteBase> _commonRoutes = [
   GoRoute(
-    path: Routes.home,
+    path: Routes.dashboard,
     builder: (context, state) {
       return ChangeNotifierProvider(
         create: (context) => DashboardViewModel(),
         child: DashboardScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: Routes.attempts,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create: (context) => AttemptsViewmodel(),
+        child: Attemptsscreen(),
       );
     },
   ),
@@ -33,7 +44,7 @@ List<RouteBase> _getRoutes() {
 }
 
 GoRouter router() => GoRouter(
-  initialLocation: Routes.home,
+  initialLocation: Routes.dashboard,
   debugLogDiagnostics: true,
   routes: [
     ShellRoute(

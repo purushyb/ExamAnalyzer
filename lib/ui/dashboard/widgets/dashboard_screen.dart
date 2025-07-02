@@ -1,7 +1,10 @@
+import 'package:exam_analyzer/routing/routes.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/analytics_line_chart_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/analytics_tile_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/skill_profile_data_table_widget.dart';
+import 'package:exam_analyzer/ui/dashboard/widgets/skill_profile_data_table_widget.dart';
+import 'package:exam_analyzer/ui/dashboard/widgets/sub_skill_table_widget.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 import '../viewmodels/dashboard_viewmodel.dart';
@@ -23,6 +26,9 @@ class DashboardScreen extends StatelessWidget {
                     AnalyticsTileWidget(
                       name: AppLocalization.of(context).attempts,
                       value: viewmodel.attemptsCount,
+                      onPressed: () {
+                        context.go(Routes.attempts);
+                      },
                     ),
                     AnalyticsTileWidget(
                       name: AppLocalization.of(context).examDate,
@@ -38,6 +44,7 @@ class DashboardScreen extends StatelessWidget {
                   table: SkillProfileDataTableWidget(reports: viewmodel.report),
                 ),
                 SizedBox(height: 16),
+                SubskillTableWidget(reports: viewmodel.report),
               ],
             ),
           ),

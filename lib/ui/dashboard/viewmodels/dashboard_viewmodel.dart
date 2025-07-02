@@ -68,6 +68,7 @@ class DashboardViewModel extends ChangeNotifier {
         speaking: 65 + (index % 7),
         reading: 72 + (index % 6),
         writing: 68 + (index % 8),
+        date: DateTime.now().subtract(Duration(days: index * 7)),
         subskills: List.generate(8, (i) {
           return Subskill(
             subskill: i + 1,

@@ -5,25 +5,30 @@ class AnalyticsTileWidget extends StatelessWidget {
     super.key,
     required this.name,
     required this.value,
+    this.onPressed,
   });
 
   final String name;
   final String value;
+  final GestureTapCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(16.0)),
-        border: Border.all(color: Theme.of(context).colorScheme.primary),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(name, style: Theme.of(context).textTheme.bodyMedium),
-          Text(value, style: Theme.of(context).textTheme.titleLarge),
-        ],
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+          border: Border.all(color: Theme.of(context).colorScheme.primary),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(name, style: Theme.of(context).textTheme.bodyMedium),
+            Text(value, style: Theme.of(context).textTheme.titleLarge),
+          ],
+        ),
       ),
     );
   }
