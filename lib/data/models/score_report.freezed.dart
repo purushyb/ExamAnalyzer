@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ScoreReport {
 
- int get gseScore; int get listening; int get speaking; int get reading; int get writing; List<Subskill> get subskills; DateTime get date;
+ int? get id; int get gseScore; int get listening; int get speaking; int get reading; int get writing; List<Subskill> get subskills; DateTime get date;
 /// Create a copy of ScoreReport
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -29,16 +29,16 @@ $ScoreReportCopyWith<ScoreReport> get copyWith => _$ScoreReportCopyWithImpl<Scor
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScoreReport&&(identical(other.gseScore, gseScore) || other.gseScore == gseScore)&&(identical(other.listening, listening) || other.listening == listening)&&(identical(other.speaking, speaking) || other.speaking == speaking)&&(identical(other.reading, reading) || other.reading == reading)&&(identical(other.writing, writing) || other.writing == writing)&&const DeepCollectionEquality().equals(other.subskills, subskills)&&(identical(other.date, date) || other.date == date));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ScoreReport&&(identical(other.id, id) || other.id == id)&&(identical(other.gseScore, gseScore) || other.gseScore == gseScore)&&(identical(other.listening, listening) || other.listening == listening)&&(identical(other.speaking, speaking) || other.speaking == speaking)&&(identical(other.reading, reading) || other.reading == reading)&&(identical(other.writing, writing) || other.writing == writing)&&const DeepCollectionEquality().equals(other.subskills, subskills)&&(identical(other.date, date) || other.date == date));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,gseScore,listening,speaking,reading,writing,const DeepCollectionEquality().hash(subskills),date);
+int get hashCode => Object.hash(runtimeType,id,gseScore,listening,speaking,reading,writing,const DeepCollectionEquality().hash(subskills),date);
 
 @override
 String toString() {
-  return 'ScoreReport(gseScore: $gseScore, listening: $listening, speaking: $speaking, reading: $reading, writing: $writing, subskills: $subskills, date: $date)';
+  return 'ScoreReport(id: $id, gseScore: $gseScore, listening: $listening, speaking: $speaking, reading: $reading, writing: $writing, subskills: $subskills, date: $date)';
 }
 
 
@@ -49,7 +49,7 @@ abstract mixin class $ScoreReportCopyWith<$Res>  {
   factory $ScoreReportCopyWith(ScoreReport value, $Res Function(ScoreReport) _then) = _$ScoreReportCopyWithImpl;
 @useResult
 $Res call({
- int gseScore, int listening, int speaking, int reading, int writing, List<Subskill> subskills, DateTime date
+ int? id, int gseScore, int listening, int speaking, int reading, int writing, List<Subskill> subskills, DateTime date
 });
 
 
@@ -66,9 +66,10 @@ class _$ScoreReportCopyWithImpl<$Res>
 
 /// Create a copy of ScoreReport
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? gseScore = null,Object? listening = null,Object? speaking = null,Object? reading = null,Object? writing = null,Object? subskills = null,Object? date = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? gseScore = null,Object? listening = null,Object? speaking = null,Object? reading = null,Object? writing = null,Object? subskills = null,Object? date = null,}) {
   return _then(_self.copyWith(
-gseScore: null == gseScore ? _self.gseScore : gseScore // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,gseScore: null == gseScore ? _self.gseScore : gseScore // ignore: cast_nullable_to_non_nullable
 as int,listening: null == listening ? _self.listening : listening // ignore: cast_nullable_to_non_nullable
 as int,speaking: null == speaking ? _self.speaking : speaking // ignore: cast_nullable_to_non_nullable
 as int,reading: null == reading ? _self.reading : reading // ignore: cast_nullable_to_non_nullable
@@ -86,9 +87,10 @@ as DateTime,
 @JsonSerializable()
 
 class _ScoreReport implements ScoreReport {
-  const _ScoreReport({required this.gseScore, required this.listening, required this.speaking, required this.reading, required this.writing, required final  List<Subskill> subskills, required this.date}): _subskills = subskills;
+  const _ScoreReport({this.id, required this.gseScore, required this.listening, required this.speaking, required this.reading, required this.writing, required final  List<Subskill> subskills, required this.date}): _subskills = subskills;
   factory _ScoreReport.fromJson(Map<String, dynamic> json) => _$ScoreReportFromJson(json);
 
+@override final  int? id;
 @override final  int gseScore;
 @override final  int listening;
 @override final  int speaking;
@@ -116,16 +118,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ScoreReport&&(identical(other.gseScore, gseScore) || other.gseScore == gseScore)&&(identical(other.listening, listening) || other.listening == listening)&&(identical(other.speaking, speaking) || other.speaking == speaking)&&(identical(other.reading, reading) || other.reading == reading)&&(identical(other.writing, writing) || other.writing == writing)&&const DeepCollectionEquality().equals(other._subskills, _subskills)&&(identical(other.date, date) || other.date == date));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ScoreReport&&(identical(other.id, id) || other.id == id)&&(identical(other.gseScore, gseScore) || other.gseScore == gseScore)&&(identical(other.listening, listening) || other.listening == listening)&&(identical(other.speaking, speaking) || other.speaking == speaking)&&(identical(other.reading, reading) || other.reading == reading)&&(identical(other.writing, writing) || other.writing == writing)&&const DeepCollectionEquality().equals(other._subskills, _subskills)&&(identical(other.date, date) || other.date == date));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,gseScore,listening,speaking,reading,writing,const DeepCollectionEquality().hash(_subskills),date);
+int get hashCode => Object.hash(runtimeType,id,gseScore,listening,speaking,reading,writing,const DeepCollectionEquality().hash(_subskills),date);
 
 @override
 String toString() {
-  return 'ScoreReport(gseScore: $gseScore, listening: $listening, speaking: $speaking, reading: $reading, writing: $writing, subskills: $subskills, date: $date)';
+  return 'ScoreReport(id: $id, gseScore: $gseScore, listening: $listening, speaking: $speaking, reading: $reading, writing: $writing, subskills: $subskills, date: $date)';
 }
 
 
@@ -136,7 +138,7 @@ abstract mixin class _$ScoreReportCopyWith<$Res> implements $ScoreReportCopyWith
   factory _$ScoreReportCopyWith(_ScoreReport value, $Res Function(_ScoreReport) _then) = __$ScoreReportCopyWithImpl;
 @override @useResult
 $Res call({
- int gseScore, int listening, int speaking, int reading, int writing, List<Subskill> subskills, DateTime date
+ int? id, int gseScore, int listening, int speaking, int reading, int writing, List<Subskill> subskills, DateTime date
 });
 
 
@@ -153,9 +155,10 @@ class __$ScoreReportCopyWithImpl<$Res>
 
 /// Create a copy of ScoreReport
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? gseScore = null,Object? listening = null,Object? speaking = null,Object? reading = null,Object? writing = null,Object? subskills = null,Object? date = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? gseScore = null,Object? listening = null,Object? speaking = null,Object? reading = null,Object? writing = null,Object? subskills = null,Object? date = null,}) {
   return _then(_ScoreReport(
-gseScore: null == gseScore ? _self.gseScore : gseScore // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int?,gseScore: null == gseScore ? _self.gseScore : gseScore // ignore: cast_nullable_to_non_nullable
 as int,listening: null == listening ? _self.listening : listening // ignore: cast_nullable_to_non_nullable
 as int,speaking: null == speaking ? _self.speaking : speaking // ignore: cast_nullable_to_non_nullable
 as int,reading: null == reading ? _self.reading : reading // ignore: cast_nullable_to_non_nullable

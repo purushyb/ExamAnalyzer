@@ -7,6 +7,7 @@ part of 'score_report.dart';
 // **************************************************************************
 
 _ScoreReport _$ScoreReportFromJson(Map<String, dynamic> json) => _ScoreReport(
+  id: (json['id'] as num?)?.toInt(),
   gseScore: (json['gseScore'] as num).toInt(),
   listening: (json['listening'] as num).toInt(),
   speaking: (json['speaking'] as num).toInt(),
@@ -21,6 +22,7 @@ _ScoreReport _$ScoreReportFromJson(Map<String, dynamic> json) => _ScoreReport(
 
 Map<String, dynamic> _$ScoreReportToJson(_ScoreReport instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'gseScore': instance.gseScore,
       'listening': instance.listening,
       'speaking': instance.speaking,

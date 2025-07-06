@@ -19,7 +19,7 @@ List<RouteBase> _commonRoutes = [
     path: Routes.dashboard,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => DashboardViewModel(),
+        create: (context) => DashboardViewModel(repository: context.read()),
         child: DashboardScreen(),
       );
     },

@@ -1,4 +1,5 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
+import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -19,16 +20,25 @@ class DashboardViewModel extends ChangeNotifier {
   bool _isLoading = true;
   bool get isLoading => _isLoading;
 
-  DashboardViewModel() {
+  final IScoreReportRepository _repository;
+
+  DashboardViewModel({required IScoreReportRepository repository})
+    : _repository = repository {
+    init();
+  }
+
+  Future init() async {
     showLoading();
-    _fetchAttempts(shouldNotify: false);
-    _fetchNextExamDate(shouldNotify: false);
-    _fetchSkillProfileData(shouldNotify: false);
+    await Future.wait([
+      _fetchAttempts(shouldNotify: false),
+      _fetchNextExamDate(shouldNotify: false),
+      _fetchSkillProfileData(shouldNotify: false),
+    ]);
     stopLoading();
   }
 
   Future _fetchAttempts({bool shouldNotify = true}) async {
-    final result = generateDummyScoreReports(12);
+    final result = await _repository.getAll();
     _reports = result;
     _attemtCount = _reports.length.toString();
     notifyChanges(shouldNotify: shouldNotify);
@@ -57,30 +67,6 @@ class DashboardViewModel extends ChangeNotifier {
 
   void notifyChanges({bool shouldNotify = true}) {
     if (shouldNotify) notifyListeners();
-  }
-
-  //Todo - this should be in local data provider
-  List<ScoreReport> generateDummyScoreReports(int count) {
-    return List.generate(count, (index) {
-      return ScoreReport(
-        gseScore: 70 + (index % 10),
-        listening: 75 + (index % 5),
-        speaking: 65 + (index % 7),
-        reading: 72 + (index % 6),
-        writing: 68 + (index % 8),
-        date: DateTime.now().subtract(Duration(days: index * 7)),
-        subskills: List.generate(8, (i) {
-          return Subskill(
-            subskill: i + 1,
-            skills: i < 4 ? 8 : 4,
-            name: 'Subskill ${i + 1}',
-            description: 'Description ${i + 1}',
-            score: 50 + ((index + i) % 50),
-            content: '', // empty content as per request
-          );
-        }),
-      );
-    });
   }
 
   List<List<FlSpot>> convertToFlSpotSeries(List<ScoreReport> reports) {
