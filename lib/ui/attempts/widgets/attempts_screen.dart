@@ -1,6 +1,8 @@
+import 'package:exam_analyzer/routing/routes.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_list_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class Attemptsscreen extends StatelessWidget {
@@ -8,18 +10,29 @@ class Attemptsscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AttemptsViewmodel>(
-      builder: (context, viewModel, child) {
-        return ListView.builder(
-          itemCount: viewModel.reports.length,
-          itemBuilder: (context, index) {
-            return AttemptListTile(
-              report: viewModel.reports[index],
-              attemptNumber: index + 1,
-            );
-          },
-        );
-      },
+    return Scaffold(
+      body: Consumer<AttemptsViewmodel>(
+        builder: (context, viewModel, child) {
+          return ListView.builder(
+            itemCount: viewModel.reports.length,
+            itemBuilder: (context, index) {
+              return AttemptListTile(
+                report: viewModel.reports[index],
+                attemptNumber: index + 1,
+                onPressed: () {
+                  context.push(Routes.attemptDetails);
+                },
+              );
+            },
+          );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.push(Routes.addAttempt);
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

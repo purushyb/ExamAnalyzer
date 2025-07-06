@@ -1,2 +1,4 @@
 // Created for providing dummy data
-class LocalDataService {}
+import 'package:exam_analyzer/data/services/storage/i_storage_service.dart';
+
+// class LocalDataService extends IStorageService {}

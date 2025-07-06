@@ -27,7 +27,7 @@ class DashboardScreen extends StatelessWidget {
                       name: AppLocalization.of(context).attempts,
                       value: viewmodel.attemptsCount,
                       onPressed: () {
-                        context.go(Routes.attempts);
+                        context.push(Routes.attempts);
                       },
                     ),
                     AnalyticsTileWidget(
@@ -69,7 +69,7 @@ class SkillProfileAnalyticsWidget extends StatefulWidget {
 
 class _SkillProfileAnalyticsWidgetState
     extends State<SkillProfileAnalyticsWidget> {
-  bool isToggled = false;
+  bool isToggled = true;
 
   @override
   Widget build(BuildContext context) {

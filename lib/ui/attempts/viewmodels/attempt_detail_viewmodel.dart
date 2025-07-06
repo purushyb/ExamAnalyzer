@@ -1,22 +1,33 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:flutter/material.dart';
 
-class AttemptsViewmodel extends ChangeNotifier {
-  List<ScoreReport> _reports = [];
-  List<ScoreReport> get reports => _reports;
+class AttemptDetailViewmodel extends ChangeNotifier {
+  ScoreReport _attempt = ScoreReport(
+    gseScore: 0,
+    listening: 0,
+    speaking: 0,
+    reading: 0,
+    writing: 0,
+    subskills: [],
+    date: DateTime.now(),
+  );
+  ScoreReport get attempt => _attempt;
 
   bool _isLoading = true;
   bool get isLoading => _isLoading;
 
-  AttemptsViewmodel() {
+  AttemptDetailViewmodel({required int attemptId}) {
     showLoading();
-    _fetchAttempts(shouldNotify: false);
+    _fetchAttempts(attemptId: attemptId, shouldNotify: false);
     stopLoading();
   }
 
-  Future _fetchAttempts({bool shouldNotify = true}) async {
-    var result = generateDummyScoreReports(10);
-    _reports.addAll(result);
+  Future _fetchAttempts({
+    required int attemptId,
+    bool shouldNotify = true,
+  }) async {
+    var result = generateDummyScoreReports(10)[attemptId];
+    _attempt = result;
     notifyChanges(shouldNotify: shouldNotify);
   }
 

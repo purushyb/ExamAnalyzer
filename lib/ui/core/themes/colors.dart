@@ -16,6 +16,11 @@ abstract final class AppColors {
   static const blackTransparent = Color(0x4D000000);
   static const red1 = Color(0xFFE74C3C);
 
+  static const speakingColor = Color(0xFFFF0000);
+  static const readingColor = Color(0xFF008000);
+  static const writingColor = Color(0xFF0000FF);
+  static const listeingColor = Color(0xFFFFFF00);
+
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
     primary: AppColors.black1,

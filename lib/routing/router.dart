@@ -1,6 +1,10 @@
 import 'dart:io';
 
+import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
+import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_viewmodel.dart';
+import 'package:exam_analyzer/ui/attempts/widgets/add_attempt_screen.dart';
+import 'package:exam_analyzer/ui/attempts/widgets/attempt_detail_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempts_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -26,6 +30,24 @@ List<RouteBase> _commonRoutes = [
       return ChangeNotifierProvider(
         create: (context) => AttemptsViewmodel(),
         child: Attemptsscreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: Routes.attemptDetails,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create: (context) => AttemptDetailViewmodel(attemptId: 0),
+        child: AttemptDetailScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: Routes.addAttempt,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create: (context) => AddAttemptViewmodel(),
+        child: AddAttemptScreen(),
       );
     },
   ),
