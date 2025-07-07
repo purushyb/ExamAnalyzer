@@ -39,7 +39,8 @@ List<SingleChildWidget> _commonViewmodels = [];
 
 /// Configure dependencies for remote data.
 /// This dependency list uses repositories that connect to a remote server.
-List<SingleChildWidget> get providersRemote {
+List<SingleChildWidget> providersRemote(SharedPreferences prefReference) {
+  _sharedPreferencesRef = prefReference;
   return [
     ..._commonServices,
     Provider(create: (context) => RemoteLoggingService() as ILoggingService),
@@ -57,8 +58,7 @@ List<SingleChildWidget> get providersRemote {
 
 /// Configure dependencies for local data.
 /// This dependency list uses repositories that provide local data.
-List<SingleChildWidget> providersLocal(SharedPreferences prefReference) {
-  _sharedPreferencesRef = prefReference;
+List<SingleChildWidget> get providersLocal {
   return [
     ..._commonServices,
     Provider(create: (context) => LocalLoggingService() as ILoggingService),

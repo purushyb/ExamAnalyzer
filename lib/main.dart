@@ -2,16 +2,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'main_development.dart' as development;
 
 import '/ui/core/themes/theme.dart';
 import '/ui/core/loacalization/app_localization.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  final prefsInstance = await SharedPreferences.getInstance();
-  development.develop_main(prefsInstance);
+  development.main();
 }
 
 class MainApp extends StatelessWidget {
