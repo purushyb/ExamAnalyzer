@@ -6,10 +6,6 @@ class LocalMemoryStorageService implements IStorageService {
   final List<ScoreReport> _reports = [];
   int _nextId = 1;
 
-  LocalMemoryStorageService() {
-    seedDummyData();
-  }
-
   @override
   Future<bool> addScoreReport(ScoreReport report) async {
     final newReport = report.copyWith(id: _nextId++);
@@ -19,11 +15,13 @@ class LocalMemoryStorageService implements IStorageService {
 
   @override
   Future<ScoreReport?> fetchScoreReport(int id) async {
+    await checkAndInsertDate();
     return _reports.firstWhere((r) => r.id == id);
   }
 
   @override
   Future<List<ScoreReport>> fetchAllScoreReports() async {
+    await checkAndInsertDate();
     return List.unmodifiable(_reports);
   }
 
@@ -39,6 +37,12 @@ class LocalMemoryStorageService implements IStorageService {
   Future<bool> deleteScoreReport(int id) async {
     _reports.removeWhere((r) => r.id == id);
     return true;
+  }
+
+  Future checkAndInsertDate() async {
+    if (_reports.isEmpty) {
+      await seedDummyData();
+    }
   }
 
   /// 🔧 Add some dummy data to start with

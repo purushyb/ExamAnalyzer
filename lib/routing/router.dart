@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
-import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_viewmodel.dart';
+import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/add_attempt_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_detail_screen.dart';
-import 'package:exam_analyzer/ui/attempts/widgets/attempts_screen.dart';
+import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +19,11 @@ List<RouteBase> _commonRoutes = [
     path: Routes.dashboard,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => DashboardViewModel(repository: context.read()),
+        create:
+            (context) => DashboardViewModel(
+              repository: context.read(),
+              navigationService: context.read(),
+            ),
         child: DashboardScreen(),
       );
     },
@@ -28,16 +32,25 @@ List<RouteBase> _commonRoutes = [
     path: Routes.attempts,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => AttemptsViewmodel(),
-        child: Attemptsscreen(),
+        create:
+            (context) => AttemptsListViewmodel(
+              repository: context.read(),
+              navigationService: context.read(),
+            ),
+        child: AttemptsListScreen(),
       );
     },
   ),
   GoRoute(
     path: Routes.attemptDetails,
     builder: (context, state) {
+      final id = state.extra as int;
       return ChangeNotifierProvider(
-        create: (context) => AttemptDetailViewmodel(attemptId: 0),
+        create:
+            (context) => AttemptDetailViewmodel(
+              repository: context.read(),
+              attemptId: id,
+            ),
         child: AttemptDetailScreen(),
       );
     },
@@ -46,7 +59,12 @@ List<RouteBase> _commonRoutes = [
     path: Routes.addAttempt,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => AddAttemptViewmodel(),
+        create:
+            (context) => AddAttemptViewmodel(
+              repository: context.read(),
+              localization: context.read(),
+              navigationService: context.read(),
+            ),
         child: AddAttemptScreen(),
       );
     },

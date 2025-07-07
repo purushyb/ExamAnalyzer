@@ -21,6 +21,7 @@ class AppLocalization {
     'noDateMsg': "No Date Selected",
     'uploadSkillProfile': "Upload Skill Profile JSON",
     'addAttempt': "Add Attempt",
+    'somethingWentWrong': "Something went wrong",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -41,6 +42,7 @@ class AppLocalization {
   String get noDateMsg => _get('noDateMsg');
   String get uploadSkillProfileMsg => _get('uploadSkillProfile');
   String get addAttempt => _get('addAttempt');
+  String get somethingWentWrong => _get('somethingWentWrong');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

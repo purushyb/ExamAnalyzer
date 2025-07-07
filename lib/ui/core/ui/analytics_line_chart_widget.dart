@@ -2,7 +2,6 @@ import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class _LineChart extends StatelessWidget {
   const _LineChart({required this.dataPoints});
@@ -10,8 +9,8 @@ class _LineChart extends StatelessWidget {
   final Color lineTouchColor = Colors.black;
   final Color xAxisBorderColor = Colors.black;
   final double startX = 0;
-  final double endX = 11;
-  final double startY = 65;
+  final double endX = 10;
+  final double startY = 60;
   final double endY = 90;
   final Color speakingSectionColor = Colors.red;
   final Color readingSectionColor = Colors.blue;
@@ -89,9 +88,7 @@ class _LineChart extends StatelessWidget {
   );
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    Widget text = Text(
-      DateFormat('MMM').format(DateTime(0, (value.toInt() + 1))),
-    );
+    Widget text = Text((value.toInt() + 1).toString());
 
     return SideTitleWidget(meta: meta, space: 10, child: text);
   }

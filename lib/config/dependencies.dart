@@ -1,9 +1,12 @@
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:exam_analyzer/data/repositories/score_report_repository.dart';
 import 'package:exam_analyzer/data/services/logging_service/remote_logging_service.dart';
-import 'package:exam_analyzer/data/services/storage/i_storage_service.dart' ;
+import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
+import 'package:exam_analyzer/data/services/storage/i_storage_service.dart';
 import 'package:exam_analyzer/data/services/storage/local_memory_service.dart';
 import 'package:exam_analyzer/data/services/storage/sql_lite_storage_Service.dart';
+import 'package:exam_analyzer/routing/navigationServiceImpl.dart';
+import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import '/routing/router.dart';
@@ -11,7 +14,13 @@ import '/data/services/logging_service/i_logging_service.dart';
 import '/data/services/logging_service/local_logging_service.dart';
 
 List<SingleChildWidget> _commonServices = [
+  Provider(create: (context) => AppLocalization()),
   Provider(create: (context) => router()),
+  Provider(
+    create:
+        (context) =>
+            Navigationserviceimpl(router: context.read()) as INavigationService,
+  ),
 ];
 List<SingleChildWidget> _commonRepositories = [
   Provider(
