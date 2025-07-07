@@ -31,6 +31,9 @@ class DashboardScreen extends StatelessWidget {
                     AnalyticsTileWidget(
                       name: AppLocalization.of(context).examDate,
                       value: viewmodel.nextExamDate,
+                      onPressed: () {
+                        viewmodel.goToNextExamDateSceen();
+                      },
                     ),
                   ],
                 ),

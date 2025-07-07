@@ -26,6 +26,12 @@ class Navigationserviceimpl extends INavigationService {
   }
 
   @override
+  bool goToNextExamDateScreen() {
+    _router.push(Routes.nextExamDate);
+    return true;
+  }
+
+  @override
   bool goBack() {
     _router.pop();
     return true;

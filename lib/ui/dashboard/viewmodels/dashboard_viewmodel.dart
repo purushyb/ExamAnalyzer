@@ -1,6 +1,7 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
+import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -13,8 +14,8 @@ class DashboardViewModel extends BaseViewModel {
   String _attemtCount = "";
   String get attemptsCount => _attemtCount;
 
-  String _nextExamDate = "";
-  String get nextExamDate => _nextExamDate;
+  String? _nextExamDate;
+  String? get nextExamDate => _nextExamDate;
 
   List<List<FlSpot>> _lineChartData = [];
   List<List<FlSpot>> get lineChartData => _lineChartData;
@@ -25,6 +26,7 @@ class DashboardViewModel extends BaseViewModel {
   DashboardViewModel({
     required IScoreReportRepository repository,
     required INavigationService navigationService,
+    required IUserDefaultsService userDefaultsService,
   }) : _repository = repository,
        _navigationService = navigationService {
     init();
@@ -49,9 +51,11 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   Future _fetchNextExamDate({bool shouldNotify = true}) async {
-    final result = DateTime.now();
-    _nextExamDate = DateFormat.yMMMEd().format(result);
-    notifyChanges(shouldNotify: shouldNotify);
+    final result = _repository.getNextExamDate();
+    if (result != null) {
+      _nextExamDate = DateFormat.yMMMEd().format(result);
+      notifyChanges(shouldNotify: shouldNotify);
+    }
   }
 
   Future _fetchSkillProfileData({bool shouldNotify = true}) async {
@@ -61,5 +65,9 @@ class DashboardViewModel extends BaseViewModel {
 
   void goToAttemptsListScreen() {
     _navigationService.goToAttemptsListScreen();
+  }
+
+  void goToNextExamDateSceen() {
+    _navigationService.goToNextExamDateScreen();
   }
 }

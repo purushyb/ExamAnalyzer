@@ -4,12 +4,12 @@ class AnalyticsTileWidget extends StatelessWidget {
   const AnalyticsTileWidget({
     super.key,
     required this.name,
-    required this.value,
+    this.value,
     this.onPressed,
   });
 
   final String name;
-  final String value;
+  final String? value;
   final GestureTapCallback? onPressed;
 
   @override
@@ -26,7 +26,9 @@ class AnalyticsTileWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(name, style: Theme.of(context).textTheme.bodyMedium),
-            Text(value, style: Theme.of(context).textTheme.titleLarge),
+            value != null
+                ? Text(value!, style: Theme.of(context).textTheme.titleLarge)
+                : Icon(Icons.edit),
           ],
         ),
       ),

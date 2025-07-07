@@ -3,16 +3,21 @@ import 'package:exam_analyzer/data/repositories/score_report_repository.dart';
 import 'package:exam_analyzer/data/services/logging_service/remote_logging_service.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_storage_service.dart';
+import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart';
+import 'package:exam_analyzer/data/services/storage/in_memory_user_Defaults_service.dart';
 import 'package:exam_analyzer/data/services/storage/local_memory_service.dart';
+import 'package:exam_analyzer/data/services/storage/local_user_default_service.dart';
 import 'package:exam_analyzer/data/services/storage/sql_lite_storage_Service.dart';
 import 'package:exam_analyzer/routing/navigationServiceImpl.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '/routing/router.dart';
 import '/data/services/logging_service/i_logging_service.dart';
 import '/data/services/logging_service/local_logging_service.dart';
 
+late SharedPreferences _sharedPreferencesRef;
 List<SingleChildWidget> _commonServices = [
   Provider(create: (context) => AppLocalization()),
   Provider(create: (context) => router()),
@@ -26,7 +31,8 @@ List<SingleChildWidget> _commonRepositories = [
   Provider(
     create:
         (context) =>
-            ScoreReportRepositoryImpl(context.read()) as IScoreReportRepository,
+            ScoreReportRepositoryImpl(context.read(), context.read())
+                as IScoreReportRepository,
   ),
 ];
 List<SingleChildWidget> _commonViewmodels = [];
@@ -38,6 +44,12 @@ List<SingleChildWidget> get providersRemote {
     ..._commonServices,
     Provider(create: (context) => RemoteLoggingService() as ILoggingService),
     Provider(create: (context) => SQLiteStorageService() as IStorageService),
+    Provider(
+      create:
+          (context) =>
+              LocalUserDefaultsService(_sharedPreferencesRef)
+                  as IUserDefaultsService,
+    ),
     ..._commonRepositories,
     ..._commonViewmodels,
   ];
@@ -45,12 +57,17 @@ List<SingleChildWidget> get providersRemote {
 
 /// Configure dependencies for local data.
 /// This dependency list uses repositories that provide local data.
-List<SingleChildWidget> get providersLocal {
+List<SingleChildWidget> providersLocal(SharedPreferences prefReference) {
+  _sharedPreferencesRef = prefReference;
   return [
     ..._commonServices,
     Provider(create: (context) => LocalLoggingService() as ILoggingService),
     Provider(
       create: (context) => LocalMemoryStorageService() as IStorageService,
+    ),
+    Provider(
+      create:
+          (context) => InMemoryUserDefaultsService() as IUserDefaultsService,
     ),
     ..._commonRepositories,
     ..._commonViewmodels,

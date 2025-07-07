@@ -16,7 +16,6 @@ class AddAttemptScreen extends StatefulWidget {
 }
 
 class _AddAttemptScreenState extends State<AddAttemptScreen> {
-  String? error;
 
   Future<void> pickJsonFile({required Function(String) onSuccess}) async {
     final result = await FilePicker.platform.pickFiles(
@@ -95,11 +94,11 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
                     ),
                   ),
 
-                if (error != null)
+                if (viewmodel.error != null)
                   Padding(
                     padding: const EdgeInsets.only(top: 16),
                     child: Text(
-                      error!,
+                      viewmodel.error!,
                       style: const TextStyle(color: Colors.red),
                     ),
                   ),

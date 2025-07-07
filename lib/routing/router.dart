@@ -6,6 +6,8 @@ import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dar
 import 'package:exam_analyzer/ui/attempts/widgets/add_attempt_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_detail_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
+import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
+import 'package:exam_analyzer/ui/nextexamdate/widgets/next_exam_date_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +25,7 @@ List<RouteBase> _commonRoutes = [
             (context) => DashboardViewModel(
               repository: context.read(),
               navigationService: context.read(),
+              userDefaultsService: context.read(),
             ),
         child: DashboardScreen(),
       );
@@ -66,6 +69,20 @@ List<RouteBase> _commonRoutes = [
               navigationService: context.read(),
             ),
         child: AddAttemptScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: Routes.nextExamDate,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create:
+            (context) => NextExamDateViewmodel(
+              repository: context.read(),
+              localization: context.read(),
+              navigationService: context.read(),
+            ),
+        child: NextExamDateScreen(),
       );
     },
   ),

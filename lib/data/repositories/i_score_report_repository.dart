@@ -6,4 +6,6 @@ abstract class IScoreReportRepository {
   Future<List<ScoreReport>> getAll();
   Future<bool> update(ScoreReport report);
   Future<bool> delete(int id);
+  Future<void> setNextExamDate(DateTime date);
+  DateTime? getNextExamDate();
 }
