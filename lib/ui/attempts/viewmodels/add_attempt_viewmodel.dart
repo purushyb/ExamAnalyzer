@@ -51,4 +51,9 @@ class AddAttemptViewmodel extends BaseViewModel {
       setError(_localization.somethingWentWrong);
     }
   }
+
+  @override
+  Future<void> init() async {
+    // Not needed
+  }
 }

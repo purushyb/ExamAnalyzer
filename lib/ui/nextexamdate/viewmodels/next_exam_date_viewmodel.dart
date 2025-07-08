@@ -11,6 +11,7 @@ class NextExamDateViewmodel extends BaseViewModel {
       _nextExamDate != null ? DateFormat.yMMMEd().format(_nextExamDate!) : "";
 
   final IScoreReportRepository _repository;
+  // ignore: unused_field
   final AppLocalization _localization;
   final INavigationService _navigationService;
 
@@ -23,6 +24,8 @@ class NextExamDateViewmodel extends BaseViewModel {
        _navigationService = navigationService {
     init();
   }
+
+  @override
   Future init() async {
     showLoading();
     await Future.wait([_fetchNextExamDate()]);

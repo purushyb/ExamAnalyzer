@@ -38,8 +38,9 @@ class ChartUtils {
     final List<FlSpot> writingPoints = [];
     final List<FlSpot> gsePoints = [];
 
+    final length = reports.length <= 10 ? reports.length : 10;
     // Currently has only capability to show 10 data points
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < length; i++) {
       final report = reports[i];
       listeningPoints.add(FlSpot(i.toDouble(), report.listening.toDouble()));
       speakingPoints.add(FlSpot(i.toDouble(), report.speaking.toDouble()));

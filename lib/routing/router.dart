@@ -8,7 +8,6 @@ import 'package:exam_analyzer/ui/attempts/widgets/attempt_detail_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
 import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:exam_analyzer/ui/nextexamdate/widgets/next_exam_date_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../ui/dashboard/viewmodels/dashboard_viewmodel.dart';

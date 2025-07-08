@@ -5,46 +5,34 @@ import 'package:exam_analyzer/ui/core/ui/skill_breakdown_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/sub_skill_break_down_widget.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class AttemptDetailScreen extends StatelessWidget {
   const AttemptDetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold(
+    return PaddedScaffold<AttemptDetailViewmodel>(
       title: AppLocalization.of(context).attemptDetailScreenTitle,
-      body: Consumer<AttemptDetailViewmodel>(
-        builder: (context, viewmodel, child) {
-          if (viewmodel.attempt != null) {
-            return ListView(
-              children: [
-                const SizedBox(height: 12),
-                SkillsBreakdownWidget(
-                  report: viewmodel.attempt!,
-                  maxScore: ChartUtils.maxScore,
-                ),
-                SizedBox(height: 16),
-                SubSkillBreakDownWidget(
-                  title: AppLocalization.of(context).subSkillBreakDown,
-                  subskills: viewmodel.attempt!.subskills,
-                ),
-              ],
-            );
-          } else {
-            if (viewmodel.isLoading) {
-              return Center(child: CircularProgressIndicator());
-            } else {
-              return Center(
-                child: Text(
-                  viewmodel.error ??
-                      AppLocalization.of(context).somethingWentWrong,
-                ),
-              );
-            }
-          }
-        },
-      ),
+      childBuilder: (viewModel) {
+        if (viewModel.attempt != null) {
+          return ListView(
+            children: [
+              const SizedBox(height: 12),
+              SkillsBreakdownWidget(
+                report: viewModel.attempt!,
+                maxScore: ChartUtils.maxScore,
+              ),
+              SizedBox(height: 16),
+              SubSkillBreakDownWidget(
+                title: AppLocalization.of(context).subSkillBreakDown,
+                subskills: viewModel.attempt!.subskills,
+              ),
+            ],
+          );
+        } else {
+          return SizedBox();
+        }
+      },
     );
   }
 }

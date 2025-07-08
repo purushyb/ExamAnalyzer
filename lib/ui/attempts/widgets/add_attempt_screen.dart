@@ -7,7 +7,6 @@ import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:provider/provider.dart';
 
 class AddAttemptScreen extends StatefulWidget {
   const AddAttemptScreen({super.key});
@@ -45,77 +44,75 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold(
+    return PaddedScaffold<AddAttemptViewmodel>(
       title: AppLocalization.of(context).addAttemptsScreenTitle,
-      body: Consumer<AddAttemptViewmodel>(
-        builder:
-            (context, viewmodel, child) => Column(
-              children: [
-                ContainerWithBorder(
-                  child: ListTile(
-                    title: Text(AppLocalization.of(context).attemptDate),
-                    subtitle: Text(
-                      viewmodel.date != null
-                          ? DateFormat.yMMMMd().format(viewmodel.date!)
-                          : AppLocalization.of(context).noDateMsg,
-                    ),
-                    trailing: const Icon(Icons.calendar_today),
-                    onTap: () {
-                      pickDate(
-                        selectedDate: viewmodel.date,
-                        onSuccess: (date) {
-                          viewmodel.selectDate(date);
-                        },
-                      );
-                    },
+      childBuilder:
+          (viewModel) => Column(
+            children: [
+              ContainerWithBorder(
+                child: ListTile(
+                  title: Text(AppLocalization.of(context).attemptDate),
+                  subtitle: Text(
+                    viewModel.date != null
+                        ? DateFormat.yMMMMd().format(viewModel.date!)
+                        : AppLocalization.of(context).noDateMsg,
+                  ),
+                  trailing: const Icon(Icons.calendar_today),
+                  onTap: () {
+                    pickDate(
+                      selectedDate: viewModel.date,
+                      onSuccess: (date) {
+                        viewModel.selectDate(date);
+                      },
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 16),
+              ContainerWithBorder(
+                child: ListTile(
+                  leading: const Icon(Icons.upload_file),
+                  title: Text(
+                    AppLocalization.of(context).uploadSkillProfileMsg,
+                  ),
+                  onTap: () {
+                    pickJsonFile(
+                      onSuccess: (path) {
+                        viewModel.parseReport(path);
+                      },
+                    );
+                  },
+                ),
+              ),
+              if (viewModel.report != null)
+                Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: SkillsBreakdownWidget(
+                    report: viewModel.report!,
+                    maxScore: ChartUtils.maxScore,
                   ),
                 ),
-                const SizedBox(height: 16),
-                ContainerWithBorder(
-                  child: ListTile(
-                    leading: const Icon(Icons.upload_file),
-                    title: Text(
-                      AppLocalization.of(context).uploadSkillProfileMsg,
-                    ),
-                    onTap: () {
-                      pickJsonFile(
-                        onSuccess: (path) {
-                          viewmodel.parseReport(path);
-                        },
-                      );
-                    },
-                  ),
-                ),
-                if (viewmodel.report != null)
-                  Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: SkillsBreakdownWidget(
-                      report: viewmodel.report!,
-                      maxScore: ChartUtils.maxScore,
-                    ),
-                  ),
 
-                if (viewmodel.error != null)
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text(
-                      viewmodel.error!,
-                      style: const TextStyle(color: Colors.red),
-                    ),
-                  ),
-                const Spacer(),
-                ContainerWithBorder(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      viewmodel.addAttempt();
-                    },
-                    child: Text(AppLocalization.of(context).addAttempt),
+              if (viewModel.error != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text(
+                    viewModel.error!,
+                    style: const TextStyle(color: Colors.red),
                   ),
                 ),
-              ],
-            ),
-      ),
+              const Spacer(),
+              ContainerWithBorder(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    viewModel.addAttempt();
+                  },
+                  child: Text(AppLocalization.of(context).addAttempt),
+                ),
+              ),
+            ],
+          ),
     );
   }
 }

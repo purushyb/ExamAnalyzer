@@ -10,26 +10,24 @@ class AttemptsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold(
+    return PaddedScaffold<AttemptsListViewmodel>(
       title: AppLocalization.of(context).attemptsListScreenTitle,
-      body: Consumer<AttemptsListViewmodel>(
-        builder: (context, viewModel, child) {
-          return ListView.builder(
-            itemCount: viewModel.reports.length,
-            itemBuilder: (context, index) {
-              return AttemptListTile(
-                report: viewModel.reports[index],
-                attemptNumber: index + 1,
-                onPressed: () {
-                  viewModel.goToAttemptDetailsScreen(
-                    attemptId: viewModel.reports[index].id,
-                  );
-                },
-              );
-            },
-          );
-        },
-      ),
+      childBuilder: (viewModel) {
+        return ListView.builder(
+          itemCount: viewModel.reports.length,
+          itemBuilder: (context, index) {
+            return AttemptListTile(
+              report: viewModel.reports[index],
+              attemptNumber: index + 1,
+              onPressed: () {
+                viewModel.goToAttemptDetailsScreen(
+                  attemptId: viewModel.reports[index].id,
+                );
+              },
+            );
+          },
+        );
+      },
       fab: FloatingActionButton(
         onPressed: () {
           context.read<AttemptsListViewmodel>().goToAddAttemptScreen();

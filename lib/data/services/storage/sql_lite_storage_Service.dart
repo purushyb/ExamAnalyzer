@@ -22,7 +22,7 @@ class SQLiteStorageService implements IStorageService {
       onCreate: (db, version) {
         return db.execute('''
           CREATE TABLE $_tableName (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 0,
             data TEXT NOT NULL
           )
         ''');
@@ -78,8 +78,11 @@ class SQLiteStorageService implements IStorageService {
   @override
   Future<bool> deleteScoreReport(int id) async {
     final db = await _database;
-    final result = await db.delete(_tableName, where: 'id = ?', whereArgs: [id]);
+    final result = await db.delete(
+      _tableName,
+      where: 'id = ?',
+      whereArgs: [id],
+    );
     return result > 0;
   }
 }
-

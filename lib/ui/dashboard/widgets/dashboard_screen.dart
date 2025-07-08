@@ -4,7 +4,6 @@ import 'package:exam_analyzer/ui/core/ui/analytics_tile_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/skill_profile_data_table_widget.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/sub_skill_table_widget.dart';
-import 'package:provider/provider.dart';
 
 import '../viewmodels/dashboard_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -14,47 +13,44 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold(
+    return PaddedScaffold<DashboardViewModel>(
       title: AppLocalization.of(context).dashboardScreenTitle,
-      body: Consumer<DashboardViewModel>(
-        builder:
-            (context, viewmodel, child) => SingleChildScrollView(
-              child: Column(
+      childBuilder: (viewModel) {
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      AnalyticsTileWidget(
-                        name: AppLocalization.of(context).attempts,
-                        value: viewmodel.attemptsCount,
-                        onPressed: () {
-                          viewmodel.goToAttemptsListScreen();
-                        },
-                      ),
-                      AnalyticsTileWidget(
-                        name: AppLocalization.of(context).examDate,
-                        value: viewmodel.nextExamDate,
-                        onPressed: () {
-                          viewmodel.goToNextExamDateSceen();
-                        },
-                      ),
-                    ],
+                  AnalyticsTileWidget(
+                    name: AppLocalization.of(context).attempts,
+                    value: viewModel.attemptsCount,
+                    onPressed: () {
+                      viewModel.goToAttemptsListScreen();
+                    },
                   ),
-                  SizedBox(height: 16),
-                  SkillProfileAnalyticsWidget(
-                    chart: AnalyticsLineChart(
-                      lineChartData: viewmodel.lineChartData,
-                    ),
-                    table: SkillProfileDataTableWidget(
-                      reports: viewmodel.report,
-                    ),
+                  AnalyticsTileWidget(
+                    name: AppLocalization.of(context).examDate,
+                    value: viewModel.nextExamDate,
+                    onPressed: () {
+                      viewModel.goToNextExamDateSceen();
+                    },
                   ),
-                  SizedBox(height: 16),
-                  SubskillTableWidget(reports: viewmodel.report),
                 ],
               ),
-            ),
-      ),
+              SizedBox(height: 16),
+              SkillProfileAnalyticsWidget(
+                chart: AnalyticsLineChart(
+                  lineChartData: viewModel.lineChartData,
+                ),
+                table: SkillProfileDataTableWidget(reports: viewModel.report),
+              ),
+              SizedBox(height: 16),
+              SubskillTableWidget(reports: viewModel.report),
+            ],
+          ),
+        );
+      },
     );
   }
 }

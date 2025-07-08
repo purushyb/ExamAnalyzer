@@ -16,15 +16,16 @@ class AttemptDetailViewmodel extends BaseViewModel {
     _currentReportId = attemptId;
     init();
   }
-
+  @override
   Future init() async {
     showLoading();
     if (_currentReportId != null) {
       await Future.wait([
         _fetchAttempts(attemptId: _currentReportId!, shouldNotify: false),
-      ]);
+      ]).then((value) {
+        stopLoading();
+      });
     }
-    stopLoading();
   }
 
   Future _fetchAttempts({

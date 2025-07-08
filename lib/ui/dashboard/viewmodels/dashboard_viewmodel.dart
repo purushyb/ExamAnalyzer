@@ -36,6 +36,7 @@ class DashboardViewModel extends BaseViewModel {
     init();
   }
 
+  @override
   Future init() async {
     showLoading();
     await Future.wait([_fetchAttempts(), _fetchNextExamDate()]);

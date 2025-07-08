@@ -30,4 +30,12 @@ abstract class BaseViewModel extends ChangeNotifier {
     _error = null;
     notifyChanges(shouldNotify: shouldNotify);
   }
+
+  /// Should be overridden by subclasses to handle reload logic
+  Future<void> init();
+
+  @mustCallSuper
+  void onRetry() {
+    init();
+  }
 }

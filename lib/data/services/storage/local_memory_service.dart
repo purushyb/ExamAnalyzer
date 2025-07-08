@@ -50,7 +50,7 @@ class LocalMemoryStorageService implements IStorageService {
     for (int i = 0; i < 10; i++) {
       await addScoreReport(
         ScoreReport(
-          id: null,
+          id: i,
           date: DateTime.now().subtract(Duration(days: 10 * i)),
           gseScore: 70 + i,
           listening: 65 + i,

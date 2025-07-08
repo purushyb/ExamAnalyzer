@@ -18,10 +18,10 @@ class AttemptsListViewmodel extends BaseViewModel {
     required INavigationService navigationService,
   }) : _repository = repository,
        _navigationService = navigationService {
-    _init();
+    init();
   }
-
-  Future _init() async {
+  @override
+  Future init() async {
     showLoading();
     await Future.wait([_fetchAttempts()]);
     stopLoading();
@@ -43,5 +43,11 @@ class AttemptsListViewmodel extends BaseViewModel {
 
   void goToAddAttemptScreen() {
     _navigationService.goToAddAttemptsScreen();
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    super.dispose();
   }
 }
