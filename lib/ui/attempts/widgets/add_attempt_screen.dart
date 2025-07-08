@@ -1,6 +1,7 @@
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
 import 'package:exam_analyzer/ui/core/ui/skill_breakdown_widget.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ class AddAttemptScreen extends StatefulWidget {
 }
 
 class _AddAttemptScreenState extends State<AddAttemptScreen> {
-
   Future<void> pickJsonFile({required Function(String) onSuccess}) async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -45,7 +45,8 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PaddedScaffold(
+      title: AppLocalization.of(context).addAttemptsScreenTitle,
       body: Consumer<AddAttemptViewmodel>(
         builder:
             (context, viewmodel, child) => Column(

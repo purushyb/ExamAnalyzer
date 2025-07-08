@@ -1,7 +1,6 @@
-import 'dart:math';
-
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
 import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +31,8 @@ class _NextExamDateScreenState extends State<NextExamDateScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PaddedScaffold(
+      title: AppLocalization.of(context).nextExamDateScreenTitle,
       body: Consumer<NextExamDateViewmodel>(
         builder:
             (context, viewmodel, child) => Column(

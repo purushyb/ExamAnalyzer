@@ -1,8 +1,8 @@
-import 'package:exam_analyzer/routing/routes.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_list_tile.dart';
+import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
+import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 class AttemptsListScreen extends StatelessWidget {
@@ -10,7 +10,8 @@ class AttemptsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PaddedScaffold(
+      title: AppLocalization.of(context).attemptsListScreenTitle,
       body: Consumer<AttemptsListViewmodel>(
         builder: (context, viewModel, child) {
           return ListView.builder(
@@ -29,7 +30,7 @@ class AttemptsListScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      fab: FloatingActionButton(
         onPressed: () {
           context.read<AttemptsListViewmodel>().goToAddAttemptScreen();
         },

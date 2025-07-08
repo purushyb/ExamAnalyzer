@@ -103,15 +103,5 @@ List<RouteBase> _getRoutes() {
 GoRouter router() => GoRouter(
   initialLocation: Routes.dashboard,
   debugLogDiagnostics: true,
-  routes: [
-    ShellRoute(
-      builder: (context, state, child) {
-        return Scaffold(
-          appBar: AppBar(title: Text("Analytics")),
-          body: Padding(padding: EdgeInsets.all(16), child: child),
-        );
-      },
-      routes: _getRoutes(),
-    ),
-  ],
+  routes: _getRoutes(),
 );

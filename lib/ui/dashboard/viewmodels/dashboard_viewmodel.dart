@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
@@ -8,7 +10,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 
 class DashboardViewModel extends BaseViewModel {
-  final List<ScoreReport> _reports = [];
+  List<ScoreReport> _reports = [];
   List<ScoreReport> get report => _reports;
 
   String _attemtCount = "";
@@ -22,6 +24,8 @@ class DashboardViewModel extends BaseViewModel {
 
   final IScoreReportRepository _repository;
   final INavigationService _navigationService;
+  late final StreamSubscription<List<ScoreReport>> _subscription;
+  late final StreamSubscription<DateTime?> _nextExamDatesubscription;
 
   DashboardViewModel({
     required IScoreReportRepository repository,
@@ -34,33 +38,30 @@ class DashboardViewModel extends BaseViewModel {
 
   Future init() async {
     showLoading();
-    await Future.wait([
-      _fetchAttempts(shouldNotify: false),
-      _fetchNextExamDate(shouldNotify: false),
-    ]);
-    // reports needs to fetched before this ops
-    await _fetchSkillProfileData(shouldNotify: false);
+    await Future.wait([_fetchAttempts(), _fetchNextExamDate()]);
     stopLoading();
   }
 
-  Future _fetchAttempts({bool shouldNotify = true}) async {
-    final result = await _repository.getAll();
-    _reports.addAll(result);
-    _attemtCount = _reports.length.toString();
-    notifyChanges(shouldNotify: shouldNotify);
+  Future _fetchAttempts() async {
+    _subscription = _repository.scoreReportsStream.listen((data) {
+      _reports = data;
+      _attemtCount = _reports.length.toString();
+      _fetchSkillProfileData();
+      notifyChanges();
+    });
   }
 
-  Future _fetchNextExamDate({bool shouldNotify = true}) async {
-    final result = _repository.getNextExamDate();
-    if (result != null) {
-      _nextExamDate = DateFormat.yMMMEd().format(result);
-      notifyChanges(shouldNotify: shouldNotify);
-    }
+  Future _fetchNextExamDate() async {
+    _nextExamDatesubscription = _repository.nextExamDateStream.listen((date) {
+      if (date != null) {
+        _nextExamDate = DateFormat.yMMMEd().format(date);
+        notifyChanges();
+      }
+    });
   }
 
-  Future _fetchSkillProfileData({bool shouldNotify = true}) async {
+  Future _fetchSkillProfileData() async {
     _lineChartData = ChartUtils.convertToFlSpotSeries(_reports);
-    notifyChanges(shouldNotify: shouldNotify);
   }
 
   void goToAttemptsListScreen() {
@@ -69,5 +70,12 @@ class DashboardViewModel extends BaseViewModel {
 
   void goToNextExamDateSceen() {
     _navigationService.goToNextExamDateScreen();
+  }
+
+  @override
+  void dispose() {
+    _subscription.cancel();
+    _nextExamDatesubscription.cancel();
+    super.dispose();
   }
 }

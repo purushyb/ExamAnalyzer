@@ -7,6 +7,11 @@ class AppLocalization {
   }
 
   static const _strings = <String, String>{
+    'dashboardScreenTitle': "Analytics",
+    'attemptsListScreenTitle': "Attempts",
+    'addAttemptsScreenTitle': "Add Attempt",
+    'attemptDetailScreenTitle': "Attempt Detail",
+    'nextExamDateScreenTitle': "Next Exam Date",
     'attempts': "Attempts",
     'examDate': "Exam Date",
     'scoreTrend': 'Score Trend',
@@ -29,7 +34,11 @@ class AppLocalization {
   // If string for "label" does not exist, will show "[LABEL]"
   static String _get(String label) =>
       _strings[label] ?? '[${label.toUpperCase()}]';
-
+  String get dashboardScreenTitle => _get('dashboardScreenTitle');
+  String get attemptsListScreenTitle => _get('attemptsListScreenTitle');
+  String get addAttemptsScreenTitle => _get('addAttemptsScreenTitle');
+  String get attemptDetailScreenTitle => _get('attemptDetailScreenTitle');
+  String get nextExamDateScreenTitle => _get('nextExamDateScreenTitle');
   String get attempts => _get('attempts');
   String get examDate => _get('examDate');
   String get scoreTrend => _get('scoreTrend');
