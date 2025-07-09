@@ -23,8 +23,7 @@ class AttemptsListViewmodel extends BaseViewModel {
   @override
   Future init() async {
     showLoading();
-    await Future.wait([_fetchAttempts()]);
-    stopLoading();
+    await Future.wait([_fetchAttempts()]).then((value) => stopLoading());
   }
 
   Future _fetchAttempts() async {
