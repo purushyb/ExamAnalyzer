@@ -6,7 +6,7 @@ part 'score_report.g.dart';
 @freezed
 abstract class ScoreReport with _$ScoreReport {
   const factory ScoreReport({
-    @Default(0) int id,
+    int? id,
     required int gseScore,
     required int listening,
     required int speaking,

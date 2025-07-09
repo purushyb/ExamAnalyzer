@@ -25,6 +25,7 @@ List<RouteBase> _commonRoutes = [
               repository: context.read(),
               navigationService: context.read(),
               userDefaultsService: context.read(),
+              logger: context.read(),
             ),
         child: DashboardScreen(),
       );

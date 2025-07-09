@@ -43,7 +43,8 @@ List<SingleChildWidget> providersRemote(SharedPreferences prefReference) {
   _sharedPreferencesRef = prefReference;
   return [
     ..._commonServices,
-    Provider(create: (context) => RemoteLoggingService() as ILoggingService),
+    // This should be reverted
+    Provider(create: (context) => LocalLoggingService() as ILoggingService),
     Provider(create: (context) => SQLiteStorageService() as IStorageService),
     Provider(
       create:

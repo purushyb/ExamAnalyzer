@@ -22,7 +22,7 @@ class SQLiteStorageService implements IStorageService {
       onCreate: (db, version) {
         return db.execute('''
           CREATE TABLE $_tableName (
-            id INTEGER PRIMARY KEY AUTOINCREMENT DEFAULT 0,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             data TEXT NOT NULL
           )
         ''');
@@ -34,9 +34,28 @@ class SQLiteStorageService implements IStorageService {
   @override
   Future<bool> addScoreReport(ScoreReport report) async {
     final db = await _database;
-    final jsonData = jsonEncode(report.toJson());
-    final result = await db.insert(_tableName, {'data': jsonData});
-    return result > 0;
+
+    // Remove id before insertion to allow auto-increment
+    final jsonData = report.toJson()..remove('id');
+    final jsonString = jsonEncode(jsonData);
+
+    // Insert and get the generated id
+    final generatedId = await db.insert(_tableName, {'data': jsonString});
+
+    if (generatedId <= 0) return false;
+
+    // Now update the row with correct id in JSON
+    final updatedReport = report.copyWith(id: generatedId);
+    final updatedJson = jsonEncode(updatedReport.toJson());
+
+    await db.update(
+      _tableName,
+      {'data': updatedJson},
+      where: 'id = ?',
+      whereArgs: [generatedId],
+    );
+
+    return true;
   }
 
   @override
