@@ -34,9 +34,11 @@ class NextExamDateViewmodel extends BaseViewModel {
 
   Future _fetchNextExamDate({bool shouldNotify = true}) async {
     final result = _repository.getNextExamDate();
-    if (result != null) {
-      _nextExamDate = result;
+    if (result.isSuccess) {
+      _nextExamDate = result.data;
       notifyChanges(shouldNotify: shouldNotify);
+    } else {
+      setError(result.error);
     }
   }
 

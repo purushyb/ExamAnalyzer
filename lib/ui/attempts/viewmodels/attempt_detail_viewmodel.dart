@@ -33,7 +33,11 @@ class AttemptDetailViewmodel extends BaseViewModel {
     bool shouldNotify = true,
   }) async {
     var result = await _repository.get(attemptId);
-    _attempt = result;
-    notifyChanges(shouldNotify: shouldNotify);
+    if (result.isSuccess) {
+      _attempt = result.data;
+      notifyChanges(shouldNotify: shouldNotify);
+    } else {
+      setError(result.error);
+    }
   }
 }

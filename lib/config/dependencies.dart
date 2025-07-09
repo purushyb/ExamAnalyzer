@@ -31,7 +31,12 @@ List<SingleChildWidget> _commonRepositories = [
   Provider(
     create:
         (context) =>
-            ScoreReportRepositoryImpl(context.read(), context.read())
+            ScoreReportRepositoryImpl(
+                  context.read(),
+                  context.read(),
+                  context.read(),
+                  context.read(),
+                )
                 as IScoreReportRepository,
   ),
 ];

@@ -29,6 +29,13 @@ class AppLocalization {
     'somethingWentWrong': "Something went wrong",
     'setDate': "Set Date",
     'nextExamDate': "Next Exam Date",
+    'reportsErrorMsg': "Failed to fetch reports",
+    'examDateErrorMsg': "Failed to fetch exam date",
+    'reportErrorMsg': "Failed to fetch report",
+    'deleteReportErrorMsg': "Failed to delete report",
+    'updateReportErrorMsg': "Failed to update report",
+    'addReportErrorMsg': "Failed to add report",
+    'addExamDateErrorMsg': "Failed to add exam date"
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -56,6 +63,13 @@ class AppLocalization {
   String get somethingWentWrong => _get('somethingWentWrong');
   String get setDate => _get('setDate');
   String get nextExamDate => _get('nextExamDate');
+  String get reportsErrorMsg => _get('reportsErrorMsg');
+  String get examDateErrorMsg => _get('examDateErrorMsg');
+  String get addExamDateErrorMsg => _get('addExamDateErrorMsg');
+  String get reportErrorMsg => _get("reportErrorMsg");
+  String get addReportErrorMsg => _get("addReportErrorMsg");
+  String get deleteReportErrorMsg => _get("deleteReportErrorMsg");
+  String get updateReportErrorMsg => _get("updateReportErrorMsg");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
