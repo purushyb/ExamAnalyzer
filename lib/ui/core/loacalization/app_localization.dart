@@ -35,7 +35,8 @@ class AppLocalization {
     'deleteReportErrorMsg': "Failed to delete report",
     'updateReportErrorMsg': "Failed to update report",
     'addReportErrorMsg': "Failed to add report",
-    'addExamDateErrorMsg': "Failed to add exam date"
+    'addExamDateErrorMsg': "Failed to add exam date",
+    'examDateTitle': "ExamDateTitle"
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -70,6 +71,7 @@ class AppLocalization {
   String get addReportErrorMsg => _get("addReportErrorMsg");
   String get deleteReportErrorMsg => _get("deleteReportErrorMsg");
   String get updateReportErrorMsg => _get("updateReportErrorMsg");
+  String get examDateTitle => _get("examDateTitle");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

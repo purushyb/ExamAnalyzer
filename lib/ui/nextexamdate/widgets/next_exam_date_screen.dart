@@ -31,7 +31,9 @@ class _NextExamDateScreenState extends State<NextExamDateScreen> {
   @override
   Widget build(BuildContext context) {
     return PaddedScaffold<NextExamDateViewmodel>(
-      title: AppLocalization.of(context).nextExamDateScreenTitle,
+      appBar: AppBar(
+        title: Text(AppLocalization.of(context).nextExamDateScreenTitle),
+      ),
       childBuilder:
           (viewModel) => Column(
             children: [

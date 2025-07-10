@@ -15,13 +15,11 @@ class NextExamDateViewmodel extends BaseViewModel {
   final AppLocalization _localization;
   final INavigationService _navigationService;
 
-  NextExamDateViewmodel({
-    required IScoreReportRepository repository,
-    required AppLocalization localization,
-    required INavigationService navigationService,
-  }) : _repository = repository,
-       _localization = localization,
-       _navigationService = navigationService {
+  NextExamDateViewmodel(
+    this._repository,
+    this._localization,
+    this._navigationService,
+  ) {
     init();
   }
 

@@ -20,13 +20,7 @@ List<RouteBase> _commonRoutes = [
     path: Routes.dashboard,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create:
-            (context) => DashboardViewModel(
-              repository: context.read(),
-              navigationService: context.read(),
-              userDefaultsService: context.read(),
-              logger: context.read(),
-            ),
+        create: (context) => DashboardViewModel(context.read(), context.read()),
         child: DashboardScreen(),
       );
     },
@@ -36,10 +30,7 @@ List<RouteBase> _commonRoutes = [
     builder: (context, state) {
       return ChangeNotifierProvider(
         create:
-            (context) => AttemptsListViewmodel(
-              repository: context.read(),
-              navigationService: context.read(),
-            ),
+            (context) => AttemptsListViewmodel(context.read(), context.read()),
         child: AttemptsListScreen(),
       );
     },
@@ -50,10 +41,8 @@ List<RouteBase> _commonRoutes = [
       final id = state.extra as int;
       return ChangeNotifierProvider(
         create:
-            (context) => AttemptDetailViewmodel(
-              repository: context.read(),
-              attemptId: id,
-            ),
+            (context) =>
+                AttemptDetailViewmodel(id, context.read(), context.read()),
         child: AttemptDetailScreen(),
       );
     },
@@ -64,9 +53,9 @@ List<RouteBase> _commonRoutes = [
       return ChangeNotifierProvider(
         create:
             (context) => AddAttemptViewmodel(
-              repository: context.read(),
-              localization: context.read(),
-              navigationService: context.read(),
+              context.read(),
+              context.read(),
+              context.read(),
             ),
         child: AddAttemptScreen(),
       );
@@ -78,9 +67,9 @@ List<RouteBase> _commonRoutes = [
       return ChangeNotifierProvider(
         create:
             (context) => NextExamDateViewmodel(
-              repository: context.read(),
-              localization: context.read(),
-              navigationService: context.read(),
+              context.read(),
+              context.read(),
+              context.read(),
             ),
         child: NextExamDateScreen(),
       );

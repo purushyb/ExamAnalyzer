@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AnalyticsTileWidget extends StatelessWidget {
-  const AnalyticsTileWidget({
+class DataTileWidget extends StatelessWidget {
+  const DataTileWidget({
     super.key,
     required this.name,
     this.value,

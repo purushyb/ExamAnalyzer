@@ -2,8 +2,7 @@ import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart'
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
 import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
-import 'package:exam_analyzer/ui/core/ui/skill_breakdown_widget.dart';
-import 'package:exam_analyzer/ui/utils/charts_utils.dart';
+import 'package:exam_analyzer/ui/core/ui/sub_skill_break_down_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
@@ -45,7 +44,9 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
   @override
   Widget build(BuildContext context) {
     return PaddedScaffold<AddAttemptViewmodel>(
-      title: AppLocalization.of(context).addAttemptsScreenTitle,
+      appBar: AppBar(
+        title: Text(AppLocalization.of(context).addAttemptsScreenTitle),
+      ),
       childBuilder:
           (viewModel) => Column(
             children: [
@@ -84,14 +85,16 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
                   },
                 ),
               ),
-              if (viewModel.report != null)
-                Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: SkillsBreakdownWidget(
-                    report: viewModel.report!,
-                    maxScore: ChartUtils.maxScore,
-                  ),
-                ),
+
+              viewModel.mainSkills.isNotEmpty
+                  ? Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: SubSkillBreakDownWidget(
+                      title: AppLocalization.of(context).subSkillBreakDown,
+                      subskills: viewModel.mainSkills,
+                    ),
+                  )
+                  : SizedBox(),
 
               if (viewModel.error != null)
                 Padding(

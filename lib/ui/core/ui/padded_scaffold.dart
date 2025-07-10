@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class PaddedScaffold<T extends BaseViewModel> extends StatelessWidget {
-  final String title;
+  final AppBar appBar;
   final Widget Function(T viewModel) childBuilder;
   final EdgeInsetsGeometry padding;
   final Widget? fab;
 
   const PaddedScaffold({
     super.key,
-    required this.title,
+    required this.appBar,
     required this.childBuilder,
     this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
     this.fab,
@@ -38,7 +38,7 @@ class PaddedScaffold<T extends BaseViewModel> extends StatelessWidget {
         return Stack(
           children: [
             Scaffold(
-              appBar: AppBar(title: Text(title)),
+              appBar: appBar,
               body: Padding(
                 padding: padding,
                 child: childBuilder(viewModel), // 👈 inject viewModel to child

@@ -11,7 +11,9 @@ class AttemptsListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaddedScaffold<AttemptsListViewmodel>(
-      title: AppLocalization.of(context).attemptsListScreenTitle,
+      appBar: AppBar(
+        title: Text(AppLocalization.of(context).attemptsListScreenTitle),
+      ),
       childBuilder: (viewModel) {
         return ListView.builder(
           itemCount: viewModel.reports.length,

@@ -14,11 +14,7 @@ class AttemptsListViewmodel extends BaseViewModel {
   final INavigationService _navigationService;
   late final StreamSubscription<Result<List<ScoreReport>>> _subscription;
 
-  AttemptsListViewmodel({
-    required IScoreReportRepository repository,
-    required INavigationService navigationService,
-  }) : _repository = repository,
-       _navigationService = navigationService {
+  AttemptsListViewmodel(this._repository, this._navigationService) {
     init();
   }
   @override

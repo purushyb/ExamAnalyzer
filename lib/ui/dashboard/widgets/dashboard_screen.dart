@@ -1,6 +1,6 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/analytics_line_chart_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/analytics_tile_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/data_tile_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/skill_profile_data_table_widget.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/sub_skill_table_widget.dart';
@@ -14,7 +14,9 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PaddedScaffold<DashboardViewModel>(
-      title: AppLocalization.of(context).dashboardScreenTitle,
+      appBar: AppBar(
+        title: Text(AppLocalization.of(context).dashboardScreenTitle),
+      ),
       childBuilder: (viewModel) {
         return SingleChildScrollView(
           child: Column(
@@ -22,14 +24,14 @@ class DashboardScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  AnalyticsTileWidget(
+                  DataTileWidget(
                     name: AppLocalization.of(context).attempts,
                     value: viewModel.attemptsCount,
                     onPressed: () {
                       viewModel.goToAttemptsListScreen();
                     },
                   ),
-                  AnalyticsTileWidget(
+                  DataTileWidget(
                     name: AppLocalization.of(context).examDate,
                     value: viewModel.nextExamDate,
                     onPressed: () {
