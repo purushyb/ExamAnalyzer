@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
-import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
+import 'package:exam_analyzer/ui/core/ui/base_view.dart';
 import 'package:exam_analyzer/ui/core/ui/sub_skill_break_down_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -43,10 +43,11 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold<AddAttemptViewmodel>(
-      appBar: AppBar(
-        title: Text(AppLocalization.of(context).addAttemptsScreenTitle),
-      ),
+    return BaseView<AddAttemptViewmodel>(
+      appBarBuilder:
+          (viewModel) => AppBar(
+            title: Text(AppLocalization.of(context).addAttemptsScreenTitle),
+          ),
       childBuilder:
           (viewModel) => Column(
             children: [

@@ -6,12 +6,12 @@ import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dar
 import 'package:exam_analyzer/ui/attempts/widgets/add_attempt_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_detail_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
+import 'package:exam_analyzer/ui/dashboard/widgets/dashboard_screen.dart';
 import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:exam_analyzer/ui/nextexamdate/widgets/next_exam_date_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../ui/dashboard/viewmodels/dashboard_viewmodel.dart';
-import '../ui/dashboard/widgets/dashboard_screen.dart';
 
 import 'routes.dart';
 
@@ -41,8 +41,12 @@ List<RouteBase> _commonRoutes = [
       final id = state.extra as int;
       return ChangeNotifierProvider(
         create:
-            (context) =>
-                AttemptDetailViewmodel(id, context.read(), context.read()),
+            (context) => AttemptDetailViewmodel(
+              id,
+              context.read(),
+              context.read(),
+              context.read(),
+            ),
         child: AttemptDetailScreen(),
       );
     },

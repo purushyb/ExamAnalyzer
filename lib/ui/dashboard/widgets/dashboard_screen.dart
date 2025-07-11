@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/analytics_line_chart_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/data_tile_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
+import 'package:exam_analyzer/ui/core/ui/base_view.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/skill_profile_data_table_widget.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/sub_skill_table_widget.dart';
 
@@ -13,10 +13,11 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold<DashboardViewModel>(
-      appBar: AppBar(
-        title: Text(AppLocalization.of(context).dashboardScreenTitle),
-      ),
+    return BaseView<DashboardViewModel>(
+      appBarBuilder:
+          (viewModel) => AppBar(
+            title: Text(AppLocalization.of(context).dashboardScreenTitle),
+          ),
       childBuilder: (viewModel) {
         return SingleChildScrollView(
           child: Column(

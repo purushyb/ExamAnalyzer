@@ -2,18 +2,18 @@ import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class PaddedScaffold<T extends BaseViewModel> extends StatelessWidget {
-  final AppBar appBar;
+class BaseView<T extends BaseViewModel> extends StatelessWidget {
+  final AppBar Function(T viewModel)? appBarBuilder;
   final Widget Function(T viewModel) childBuilder;
   final EdgeInsetsGeometry padding;
-  final Widget? fab;
+  final Widget? Function(T viewModel)? fabBuilder;
 
-  const PaddedScaffold({
+  const BaseView({
     super.key,
-    required this.appBar,
+    this.appBarBuilder,
     required this.childBuilder,
     this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
-    this.fab,
+    this.fabBuilder,
   });
 
   @override
@@ -38,12 +38,12 @@ class PaddedScaffold<T extends BaseViewModel> extends StatelessWidget {
         return Stack(
           children: [
             Scaffold(
-              appBar: appBar,
+              appBar: appBarBuilder?.call(viewModel),
               body: Padding(
                 padding: padding,
-                child: childBuilder(viewModel), // 👈 inject viewModel to child
+                child: childBuilder(viewModel), // ✅ ViewModel passed to child
               ),
-              floatingActionButton: fab,
+              floatingActionButton: fabBuilder?.call(viewModel),
             ),
             if (viewModel.isLoading) ...[
               const Opacity(

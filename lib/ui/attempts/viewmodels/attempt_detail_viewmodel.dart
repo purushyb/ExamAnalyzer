@@ -1,5 +1,6 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
+import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/data/utils/ux_simplification_utils.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
@@ -24,7 +25,13 @@ class AttemptDetailViewmodel extends BaseViewModel {
 
   IScoreReportRepository _repository;
   AppLocalization _localization;
-  AttemptDetailViewmodel(int attemptId, this._repository, this._localization) {
+  INavigationService _navigationService;
+  AttemptDetailViewmodel(
+    int attemptId,
+    this._repository,
+    this._localization,
+    this._navigationService,
+  ) {
     _currentReportId = attemptId;
     init();
   }
@@ -58,5 +65,13 @@ class AttemptDetailViewmodel extends BaseViewModel {
     } else {
       setError(result.error);
     }
+  }
+
+  Future deleteAttempt() async {
+    showLoading();
+    if (_currentReportId != null) {
+      await _repository.delete(_currentReportId!);
+    }
+    _navigationService.goBack();
   }
 }

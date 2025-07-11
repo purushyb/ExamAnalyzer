@@ -1,6 +1,5 @@
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:exam_analyzer/data/repositories/score_report_repository.dart';
-import 'package:exam_analyzer/data/services/logging_service/remote_logging_service.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_storage_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart';

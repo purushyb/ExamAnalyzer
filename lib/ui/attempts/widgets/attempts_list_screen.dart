@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_list_tile.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/padded_scaffold.dart';
+import 'package:exam_analyzer/ui/core/ui/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -10,10 +10,11 @@ class AttemptsListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PaddedScaffold<AttemptsListViewmodel>(
-      appBar: AppBar(
-        title: Text(AppLocalization.of(context).attemptsListScreenTitle),
-      ),
+    return BaseView<AttemptsListViewmodel>(
+      appBarBuilder:
+          (viewModel) => AppBar(
+            title: Text(AppLocalization.of(context).attemptsListScreenTitle),
+          ),
       childBuilder: (viewModel) {
         return ListView.builder(
           itemCount: viewModel.reports.length,
@@ -30,12 +31,13 @@ class AttemptsListScreen extends StatelessWidget {
           },
         );
       },
-      fab: FloatingActionButton(
-        onPressed: () {
-          context.read<AttemptsListViewmodel>().goToAddAttemptScreen();
-        },
-        child: Icon(Icons.add),
-      ),
+      fabBuilder:
+          (viewModel) => FloatingActionButton(
+            onPressed: () {
+              context.read<AttemptsListViewmodel>().goToAddAttemptScreen();
+            },
+            child: Icon(Icons.add),
+          ),
     );
   }
 }
