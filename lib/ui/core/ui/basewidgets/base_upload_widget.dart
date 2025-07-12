@@ -1,3 +1,4 @@
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -23,16 +24,17 @@ class BaseUploadWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: ContainerWithBorder(
-        child: ListTile(
-          leading: const Icon(Icons.upload_file),
-          title: Text(label),
-          onTap: () {
-            pickJsonFile(onSuccess: onFilePicked);
-          },
+    return BasePaddingWidget(
+      child: ListTile(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(16),
         ),
+        leading: const Icon(Icons.upload_file),
+        title: Text(label),
+        onTap: () {
+          pickJsonFile(onSuccess: onFilePicked);
+        },
       ),
     );
   }
