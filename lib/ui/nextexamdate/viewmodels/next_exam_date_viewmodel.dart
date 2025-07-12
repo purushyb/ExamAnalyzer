@@ -5,6 +5,7 @@ import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
 import 'package:intl/intl.dart';
 
 class NextExamDateViewmodel extends BaseViewModel {
+  DateTime get futureDateLimit => DateTime(DateTime.now().year + 1);
   DateTime? _nextExamDate;
   DateTime? get nextExamDate => _nextExamDate;
   String get nextExamDateRedableFormat =>

@@ -7,7 +7,7 @@ import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
-import 'package:exam_analyzer/ui/utils/data_convertion_utils.dart';
+import 'package:exam_analyzer/ui/utils/data_converstion_utils.dart';
 
 class AddAttemptViewmodel extends BaseViewModel {
   ScoreReport? _report;
@@ -49,7 +49,7 @@ class AddAttemptViewmodel extends BaseViewModel {
     }
 
     _report = ScoreReport.fromJson(jsonMap);
-    _mainSkills = DataConvertionUtils.mainSkillsToSubSkills(
+    _mainSkills = DataConverstionUtils.mainSkillsToSubSkills(
       _report!,
       _localization,
       showOverall: true,

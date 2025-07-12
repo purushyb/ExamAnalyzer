@@ -1,26 +1,26 @@
-import 'package:exam_analyzer/ui/core/ui/base_widget_padding.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
 import 'package:flutter/material.dart';
 
-class BaseWidgetToggleSwitch extends StatelessWidget {
-  const BaseWidgetToggleSwitch({
+class BaseToggleSwitchWidget extends StatelessWidget {
+  const BaseToggleSwitchWidget({
     super.key,
     required this.isToggled,
     required this.widget1,
     required this.widget2,
-    required this.toogleSwitch,
+    required this.onChanged,
   });
   final bool isToggled;
   final Widget widget1;
   final Widget widget2;
-  final Function(bool) toogleSwitch;
+  final Function(bool) onChanged;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        BaseWidgetPadding(
-          child: Switch(value: isToggled, onChanged: toogleSwitch),
+        BasePaddingWidget(
+          child: Switch(value: isToggled, onChanged: onChanged),
         ),
         isToggled ? widget1 : widget2,
       ],

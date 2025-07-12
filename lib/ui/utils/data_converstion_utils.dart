@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 
-class DataConvertionUtils {
+class DataConverstionUtils {
   static List<Subskill> mainSkillsToSubSkills(
     ScoreReport report,
     AppLocalization localization, {
@@ -19,7 +19,7 @@ class DataConvertionUtils {
       Subskill(
         subskill: 0,
         skills: 0,
-        name: localization.speaking,
+        name: localization.speakingTitle,
         description: "",
         score: report.speaking,
         content: "",
@@ -27,7 +27,7 @@ class DataConvertionUtils {
       Subskill(
         subskill: 0,
         skills: 0,
-        name: localization.reading,
+        name: localization.readingTitle,
         description: "",
         score: report.reading,
         content: "",
@@ -35,7 +35,7 @@ class DataConvertionUtils {
       Subskill(
         subskill: 0,
         skills: 0,
-        name: localization.writing,
+        name: localization.writingTitle,
         description: "",
         score: report.writing,
         content: "",
@@ -43,7 +43,7 @@ class DataConvertionUtils {
       Subskill(
         subskill: 0,
         skills: 0,
-        name: localization.listening,
+        name: localization.listeningTitle,
         description: "",
         score: report.listening,
         content: "",

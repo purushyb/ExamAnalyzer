@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
-import 'package:exam_analyzer/ui/core/ui/skill_with_progressbar_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/skill_with_progressbar_widget.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:flutter/material.dart';
 

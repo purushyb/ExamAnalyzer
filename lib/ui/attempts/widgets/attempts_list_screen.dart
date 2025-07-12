@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_list_tile.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/base_view.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BaseWidgetPadding extends StatelessWidget {
-  const BaseWidgetPadding({super.key, required this.child});
+class BasePaddingWidget extends StatelessWidget {
+  const BasePaddingWidget({super.key, required this.child});
   final Widget child;
 
   @override

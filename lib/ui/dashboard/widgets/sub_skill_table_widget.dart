@@ -1,4 +1,7 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
+import 'package:exam_analyzer/data/utils/ux_simplification_utils.dart';
+import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
 import 'package:flutter/material.dart';
 
 class SubskillTableWidget extends StatelessWidget {
@@ -15,9 +18,13 @@ class SubskillTableWidget extends StatelessWidget {
 
     // Header
     final columns = <DataColumn>[
-      const DataColumn(label: Text('Test ')),
+      DataColumn(label: Text(AppLocalization.of(context).dateTitle)),
       for (int i = 0; i < maxSubskills; i++)
-        DataColumn(label: Text('Subskill ${i + 1}')),
+        DataColumn(
+          label: Text(
+            AppLocalization.of(context).subSkillTitle(value: i.toString()),
+          ),
+        ),
     ];
 
     // Rows
@@ -27,7 +34,7 @@ class SubskillTableWidget extends StatelessWidget {
           final report = entry.value;
 
           final cells = <DataCell>[
-            DataCell(Text('Test ${index + 1}')),
+            DataCell(Text(reports[index].date.readableDate())),
             ...report.subskills.map(
               (s) => DataCell(Text('${s.score} - ${s.name}')),
             ),
@@ -41,14 +48,16 @@ class SubskillTableWidget extends StatelessWidget {
           return DataRow(cells: cells);
         }).toList();
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(16.0)),
-        border: Border.all(color: Theme.of(context).colorScheme.primary),
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(columnSpacing: 16, columns: columns, rows: rows),
+    return BasePaddingWidget(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
+          border: Border.all(color: Theme.of(context).colorScheme.primary),
+        ),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: DataTable(columnSpacing: 16, columns: columns, rows: rows),
+        ),
       ),
     );
   }

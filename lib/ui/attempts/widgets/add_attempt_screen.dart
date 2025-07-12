@@ -2,12 +2,12 @@ import 'package:exam_analyzer/data/enums/main_skills_enum.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/input_text_Field.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/base_big_button_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/base_date_picker_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/base_upload_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/base_widget_toggle_switch.dart';
-import 'package:exam_analyzer/ui/core/ui/base_view.dart';
-import 'package:exam_analyzer/ui/core/ui/sub_skill_break_down_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_big_button_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_date_picker_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_upload_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_toggle_switch_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/sub_skill_break_down_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
@@ -48,7 +48,7 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
                   currentDate: viewModel.date,
                   onDatePicked: viewModel.selectDate,
                 ),
-                BaseWidgetToggleSwitch(
+                BaseToggleSwitchWidget(
                   isToggled: viewModel.isManualSkillAddition,
                   widget1: ManualSkillAdditionWidget(
                     onChanged: viewModel.updateScore,
@@ -57,7 +57,7 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
                     label: AppLocalization.of(context).uploadSkillProfileMsg,
                     onFilePicked: viewModel.parseReport,
                   ),
-                  toogleSwitch: viewModel.toggleSkillAddition,
+                  onChanged: viewModel.toggleSkillAddition,
                 ),
 
                 viewModel.mainSkills.isNotEmpty
@@ -93,22 +93,22 @@ class ManualSkillAdditionWidget extends StatelessWidget {
         InputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.speaking),
-          label: AppLocalization.of(context).speaking,
+          label: AppLocalization.of(context).speakingTitle,
         ),
         InputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.reading),
-          label: AppLocalization.of(context).reading,
+          label: AppLocalization.of(context).readingTitle,
         ),
         InputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.writing),
-          label: AppLocalization.of(context).writing,
+          label: AppLocalization.of(context).writingTitle,
         ),
         InputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.listening),
-          label: AppLocalization.of(context).listening,
+          label: AppLocalization.of(context).listeningTitle,
         ),
       ],
     );

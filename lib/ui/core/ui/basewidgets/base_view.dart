@@ -12,7 +12,7 @@ class BaseView<T extends BaseViewModel> extends StatelessWidget {
     super.key,
     this.appBarBuilder,
     required this.childBuilder,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+    this.padding = const EdgeInsets.all(0),
     this.fabBuilder,
   });
 

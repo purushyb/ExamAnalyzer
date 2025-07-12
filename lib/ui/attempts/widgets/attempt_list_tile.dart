@@ -1,5 +1,7 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
-import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -44,8 +46,7 @@ class AttemptListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+    return BasePaddingWidget(
       child: ContainerWithBorder(
         child: ListTile(
           onTap: onPressed,
@@ -57,22 +58,22 @@ class AttemptListTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildScoreCircle(
-                  'Speaking',
+                  AppLocalization.of(context).speakingTitle,
                   report.speaking,
                   ChartUtils.getColorForChart(0),
                 ),
                 _buildScoreCircle(
-                  'Reading',
+                  AppLocalization.of(context).readingTitle,
                   report.reading,
                   ChartUtils.getColorForChart(1),
                 ),
                 _buildScoreCircle(
-                  'Writing',
+                  AppLocalization.of(context).writingTitle,
                   report.writing,
                   ChartUtils.getColorForChart(2),
                 ),
                 _buildScoreCircle(
-                  'Listening',
+                  AppLocalization.of(context).listeningTitle,
                   report.listening,
                   ChartUtils.getColorForChart(3),
                 ),

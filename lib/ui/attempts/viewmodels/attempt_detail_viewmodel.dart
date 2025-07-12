@@ -4,7 +4,7 @@ import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart
 import 'package:exam_analyzer/data/utils/ux_simplification_utils.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
-import 'package:exam_analyzer/ui/utils/data_convertion_utils.dart';
+import 'package:exam_analyzer/ui/utils/data_converstion_utils.dart';
 
 class AttemptDetailViewmodel extends BaseViewModel {
   late ScoreReport _attempt;
@@ -55,7 +55,7 @@ class AttemptDetailViewmodel extends BaseViewModel {
     if (result.isSuccess) {
       _attempt = result.data!;
       _overallScore = _attempt.gseScore.toString();
-      _mainSkills = DataConvertionUtils.mainSkillsToSubSkills(
+      _mainSkills = DataConverstionUtils.mainSkillsToSubSkills(
         _attempt,
         _localization,
       );

@@ -1,8 +1,8 @@
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/data_tile_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/base_view.dart';
-import 'package:exam_analyzer/ui/core/ui/sub_skill_break_down_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/base_data_tile_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/sub_skill_break_down_widget.dart';
 import 'package:flutter/material.dart';
 
 class AttemptDetailScreen extends StatelessWidget {
@@ -27,22 +27,20 @@ class AttemptDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DataTileWidget(
+                BaseDataTileWidget(
                   name: AppLocalization.of(context).overall(),
                   value: viewModel.overallScore,
                 ),
-                DataTileWidget(
+                BaseDataTileWidget(
                   name: AppLocalization.of(context).examDateTitle,
                   value: viewModel.readbleDateFormat,
                 ),
               ],
             ),
-            const SizedBox(height: 12),
             SubSkillBreakDownWidget(
-              title: AppLocalization.of(context).subSkillBreakDown,
+              title: AppLocalization.of(context).mainSkillBreakdownTitle,
               subskills: viewModel.mainSkills,
             ),
-            SizedBox(height: 16),
             SubSkillBreakDownWidget(
               title: AppLocalization.of(context).subSkillBreakDown,
               subskills: viewModel.subSkills,

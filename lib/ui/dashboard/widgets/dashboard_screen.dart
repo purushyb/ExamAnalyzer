@@ -1,7 +1,8 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/analytics_line_chart_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/data_tile_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/base_view.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_toggle_switch_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/analytics_line_chart_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/base_data_tile_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/skill_profile_data_table_widget.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/sub_skill_table_widget.dart';
 
@@ -22,33 +23,18 @@ class DashboardScreen extends StatelessWidget {
         return SingleChildScrollView(
           child: Column(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  DataTileWidget(
-                    name: AppLocalization.of(context).attempts,
-                    value: viewModel.attemptsCount,
-                    onPressed: () {
-                      viewModel.goToAttemptsListScreen();
-                    },
-                  ),
-                  DataTileWidget(
-                    name: AppLocalization.of(context).examDate,
-                    value: viewModel.nextExamDate,
-                    onPressed: () {
-                      viewModel.goToNextExamDateSceen();
-                    },
-                  ),
-                ],
+              AnalyticsTopWidget(
+                attemptsCount: viewModel.attemptsCount,
+                nextExamDate: viewModel.nextExamDate,
+                onAttemptsCountSelected: viewModel.goToAttemptsListScreen,
+                onExamDateSelected: viewModel.goToNextExamDateSceen,
               ),
-              SizedBox(height: 16),
-              SkillProfileAnalyticsWidget(
+              MainSkillsAnalyticsWidget(
                 chart: AnalyticsLineChart(
                   lineChartData: viewModel.lineChartData,
                 ),
                 table: SkillProfileDataTableWidget(reports: viewModel.report),
               ),
-              SizedBox(height: 16),
               SubskillTableWidget(reports: viewModel.report),
             ],
           ),
@@ -58,8 +44,42 @@ class DashboardScreen extends StatelessWidget {
   }
 }
 
-class SkillProfileAnalyticsWidget extends StatefulWidget {
-  const SkillProfileAnalyticsWidget({
+class AnalyticsTopWidget extends StatelessWidget {
+  const AnalyticsTopWidget({
+    super.key,
+    required this.attemptsCount,
+    this.nextExamDate,
+    required this.onAttemptsCountSelected,
+    required this.onExamDateSelected,
+  });
+
+  final String attemptsCount;
+  final String? nextExamDate;
+  final Function() onAttemptsCountSelected;
+  final Function() onExamDateSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        BaseDataTileWidget(
+          name: AppLocalization.of(context).attemptsTitle,
+          value: attemptsCount,
+          onPressed: onAttemptsCountSelected,
+        ),
+        BaseDataTileWidget(
+          name: AppLocalization.of(context).examDateTitle,
+          value: nextExamDate,
+          onPressed: onExamDateSelected,
+        ),
+      ],
+    );
+  }
+}
+
+class MainSkillsAnalyticsWidget extends StatefulWidget {
+  const MainSkillsAnalyticsWidget({
     super.key,
     required this.chart,
     required this.table,
@@ -69,29 +89,25 @@ class SkillProfileAnalyticsWidget extends StatefulWidget {
   final SkillProfileDataTableWidget table;
 
   @override
-  State<SkillProfileAnalyticsWidget> createState() =>
-      _SkillProfileAnalyticsWidgetState();
+  State<MainSkillsAnalyticsWidget> createState() =>
+      _MainSkillsAnalyticsWidgetState();
 }
 
-class _SkillProfileAnalyticsWidgetState
-    extends State<SkillProfileAnalyticsWidget> {
+class _MainSkillsAnalyticsWidgetState
+    extends State<MainSkillsAnalyticsWidget> {
   bool isToggled = true;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Switch(
-          value: isToggled,
-          onChanged: (value) {
-            setState(() {
-              isToggled = !isToggled;
-            });
-          },
-        ),
-        isToggled ? widget.chart : widget.table,
-      ],
+    return BaseToggleSwitchWidget(
+      isToggled: isToggled,
+      widget1: widget.chart,
+      widget2: widget.table,
+      onChanged: (value) {
+        setState(() {
+          isToggled = value;
+        });
+      },
     );
   }
 }

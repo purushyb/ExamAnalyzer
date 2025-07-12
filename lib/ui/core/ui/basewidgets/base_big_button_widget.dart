@@ -1,4 +1,4 @@
-import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
 import 'package:flutter/material.dart';
 
 class BaseBigButtonWidget extends StatelessWidget {

@@ -1,6 +1,7 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
-import 'package:exam_analyzer/ui/core/ui/base_view.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_big_button_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_date_picker_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
 import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -38,39 +39,17 @@ class _NextExamDateScreenState extends State<NextExamDateScreen> {
       childBuilder:
           (viewModel) => Column(
             children: [
-              ContainerWithBorder(
-                child: ListTile(
-                  title: Text(AppLocalization.of(context).nextExamDate),
-                  subtitle: Text(viewModel.nextExamDateRedableFormat),
-                  trailing: const Icon(Icons.calendar_today),
-                  onTap: () {
-                    pickDate(
-                      selectedDate: viewModel.nextExamDate,
-                      onSuccess: (date) {
-                        viewModel.selectDate(date);
-                      },
-                    );
-                  },
-                ),
+              BaseDatePickerWidget(
+                endDate: viewModel.futureDateLimit,
+                currentDate: viewModel.nextExamDate,
+                label: AppLocalization.of(context).nextExamDate,
+                onDatePicked: viewModel.selectDate,
               ),
-
-              if (viewModel.error != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Text(
-                    viewModel.error!,
-                    style: const TextStyle(color: Colors.red),
-                  ),
-                ),
-              const Spacer(),
-              ContainerWithBorder(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    viewModel.setNewExamDate();
-                  },
-                  child: Text(AppLocalization.of(context).setDate),
-                ),
+              BaseBigButtonWidget(
+                onPressed: () {
+                  viewModel.setNewExamDate();
+                },
+                label: AppLocalization.of(context).setDate,
               ),
             ],
           ),
