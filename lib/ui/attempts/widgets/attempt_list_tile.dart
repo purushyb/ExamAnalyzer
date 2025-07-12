@@ -49,7 +49,10 @@ class AttemptListTile extends StatelessWidget {
       child: ListTile(
         onTap: onPressed,
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.black, width: 1),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.primary,
+            width: 1,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
         leading: CircleAvatar(child: Text('$attemptNumber')),

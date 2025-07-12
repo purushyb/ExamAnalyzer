@@ -1,7 +1,6 @@
 import 'package:exam_analyzer/data/utils/ux_simplification_utils.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
 import 'package:flutter/material.dart';
 
 class BaseDatePickerWidget extends StatefulWidget {
@@ -51,7 +50,10 @@ class _BaseDatePickerWidgetState extends State<BaseDatePickerWidget> {
               : AppLocalization.of(context).noDateMsg,
         ),
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.black, width: 1),
+          side: BorderSide(
+            width: 1,
+            color: Theme.of(context).colorScheme.primary,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
         trailing: const Icon(Icons.calendar_today),

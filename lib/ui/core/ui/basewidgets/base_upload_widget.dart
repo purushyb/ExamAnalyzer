@@ -1,5 +1,4 @@
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +26,10 @@ class BaseUploadWidget extends StatelessWidget {
     return BasePaddingWidget(
       child: ListTile(
         shape: RoundedRectangleBorder(
-          side: BorderSide(color: Colors.black, width: 1),
+          side: BorderSide(
+            color: Theme.of(context).colorScheme.primary,
+            width: 1,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
         leading: const Icon(Icons.upload_file),
