@@ -43,22 +43,24 @@ class _BaseDatePickerWidgetState extends State<BaseDatePickerWidget> {
   @override
   Widget build(BuildContext context) {
     return BasePaddingWidget(
-      child: ContainerWithBorder(
-        child: ListTile(
-          title: Text(widget.label),
-          subtitle: Text(
-            widget.currentDate != null
-                ? widget.currentDate!.readableDate()
-                : AppLocalization.of(context).noDateMsg,
-          ),
-          trailing: const Icon(Icons.calendar_today),
-          onTap: () {
-            pickDate(
-              selectedDate: widget.currentDate,
-              onSuccess: widget.onDatePicked,
-            );
-          },
+      child: ListTile(
+        title: Text(widget.label),
+        subtitle: Text(
+          widget.currentDate != null
+              ? widget.currentDate!.readableDate()
+              : AppLocalization.of(context).noDateMsg,
         ),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(16),
+        ),
+        trailing: const Icon(Icons.calendar_today),
+        onTap: () {
+          pickDate(
+            selectedDate: widget.currentDate,
+            onSuccess: widget.onDatePicked,
+          );
+        },
       ),
     );
   }
