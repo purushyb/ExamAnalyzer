@@ -47,41 +47,43 @@ class AttemptListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePaddingWidget(
-      child: ContainerWithBorder(
-        child: ListTile(
-          onTap: onPressed,
-          leading: CircleAvatar(child: Text('$attemptNumber')),
-          title: Text(DateFormat.yMMMMd().format(report.date)),
-          subtitle: Padding(
-            padding: const EdgeInsets.only(top: 12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                _buildScoreCircle(
-                  AppLocalization.of(context).speakingTitle,
-                  report.speaking,
-                  ChartUtils.getColorForChart(0),
-                ),
-                _buildScoreCircle(
-                  AppLocalization.of(context).readingTitle,
-                  report.reading,
-                  ChartUtils.getColorForChart(1),
-                ),
-                _buildScoreCircle(
-                  AppLocalization.of(context).writingTitle,
-                  report.writing,
-                  ChartUtils.getColorForChart(2),
-                ),
-                _buildScoreCircle(
-                  AppLocalization.of(context).listeningTitle,
-                  report.listening,
-                  ChartUtils.getColorForChart(3),
-                ),
-              ],
-            ),
-          ),
-          contentPadding: const EdgeInsets.all(12),
+      child: ListTile(
+        onTap: onPressed,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black, width: 1),
+          borderRadius: BorderRadius.circular(16),
         ),
+        leading: CircleAvatar(child: Text('$attemptNumber')),
+        title: Text(DateFormat.yMMMMd().format(report.date)),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 12),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildScoreCircle(
+                AppLocalization.of(context).speakingTitle,
+                report.speaking,
+                ChartUtils.getColorForChart(0),
+              ),
+              _buildScoreCircle(
+                AppLocalization.of(context).readingTitle,
+                report.reading,
+                ChartUtils.getColorForChart(1),
+              ),
+              _buildScoreCircle(
+                AppLocalization.of(context).writingTitle,
+                report.writing,
+                ChartUtils.getColorForChart(2),
+              ),
+              _buildScoreCircle(
+                AppLocalization.of(context).listeningTitle,
+                report.listening,
+                ChartUtils.getColorForChart(3),
+              ),
+            ],
+          ),
+        ),
+        contentPadding: const EdgeInsets.all(12),
       ),
     );
   }
