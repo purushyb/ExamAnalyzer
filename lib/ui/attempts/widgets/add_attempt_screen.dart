@@ -1,10 +1,14 @@
+import 'package:exam_analyzer/data/enums/main_skills_enum.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
+import 'package:exam_analyzer/ui/attempts/widgets/input_text_Field.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/base_big_button_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/base_date_picker_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/base_upload_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/base_widget_toggle_switch.dart';
 import 'package:exam_analyzer/ui/core/ui/base_view.dart';
 import 'package:exam_analyzer/ui/core/ui/sub_skill_break_down_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:file_picker/file_picker.dart';
 
 class AddAttemptScreen extends StatefulWidget {
@@ -25,98 +29,88 @@ class _AddAttemptScreenState extends State<AddAttemptScreen> {
     }
   }
 
-  Future<void> pickDate({
-    DateTime? selectedDate,
-    required Function(DateTime) onSuccess,
-  }) async {
-    final now = DateTime.now();
-    final picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate ?? now,
-      firstDate: DateTime(2020),
-      lastDate: now,
-    );
-    if (picked != null) {
-      onSuccess(picked);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return BaseView<AddAttemptViewmodel>(
+      padding: EdgeInsets.all(0),
       appBarBuilder:
           (viewModel) => AppBar(
             title: Text(AppLocalization.of(context).addAttemptsScreenTitle),
           ),
       childBuilder:
-          (viewModel) => Column(
-            children: [
-              ContainerWithBorder(
-                child: ListTile(
-                  title: Text(AppLocalization.of(context).attemptDate),
-                  subtitle: Text(
-                    viewModel.date != null
-                        ? DateFormat.yMMMMd().format(viewModel.date!)
-                        : AppLocalization.of(context).noDateMsg,
-                  ),
-                  trailing: const Icon(Icons.calendar_today),
-                  onTap: () {
-                    pickDate(
-                      selectedDate: viewModel.date,
-                      onSuccess: (date) {
-                        viewModel.selectDate(date);
-                      },
-                    );
-                  },
+          (viewModel) => SingleChildScrollView(
+            child: Column(
+              children: [
+                BaseDatePickerWidget(
+                  endDate: viewModel.endDate,
+                  startDate: viewModel.startDate,
+                  label: AppLocalization.of(context).attemptDate,
+                  currentDate: viewModel.date,
+                  onDatePicked: viewModel.selectDate,
                 ),
-              ),
-              const SizedBox(height: 16),
-              ContainerWithBorder(
-                child: ListTile(
-                  leading: const Icon(Icons.upload_file),
-                  title: Text(
-                    AppLocalization.of(context).uploadSkillProfileMsg,
+                BaseWidgetToggleSwitch(
+                  isToggled: viewModel.isManualSkillAddition,
+                  widget1: ManualSkillAdditionWidget(
+                    onChanged: viewModel.updateScore,
                   ),
-                  onTap: () {
-                    pickJsonFile(
-                      onSuccess: (path) {
-                        viewModel.parseReport(path);
-                      },
-                    );
-                  },
+                  widget2: BaseUploadWidget(
+                    label: AppLocalization.of(context).uploadSkillProfileMsg,
+                    onFilePicked: viewModel.parseReport,
+                  ),
+                  toogleSwitch: viewModel.toggleSkillAddition,
                 ),
-              ),
 
-              viewModel.mainSkills.isNotEmpty
-                  ? Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: SubSkillBreakDownWidget(
+                viewModel.mainSkills.isNotEmpty
+                    ? SubSkillBreakDownWidget(
                       title: AppLocalization.of(context).subSkillBreakDown,
                       subskills: viewModel.mainSkills,
-                    ),
-                  )
-                  : SizedBox(),
-
-              if (viewModel.error != null)
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: Text(
-                    viewModel.error!,
-                    style: const TextStyle(color: Colors.red),
-                  ),
+                    )
+                    : SizedBox(),
+                BaseBigButtonWidget(
+                  onPressed: viewModel.addAttempt,
+                  label: AppLocalization.of(context).addAttempt,
                 ),
-              const Spacer(),
-              ContainerWithBorder(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    viewModel.addAttempt();
-                  },
-                  child: Text(AppLocalization.of(context).addAttempt),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
+    );
+  }
+}
+
+class ManualSkillAdditionWidget extends StatelessWidget {
+  const ManualSkillAdditionWidget({super.key, required this.onChanged});
+  final Function(String, MainSkillsEnum) onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        InputTextField(
+          onChanged:
+              (userInput) => onChanged(userInput, MainSkillsEnum.overall),
+          label: AppLocalization.of(context).overall(),
+        ),
+        InputTextField(
+          onChanged:
+              (userInput) => onChanged(userInput, MainSkillsEnum.speaking),
+          label: AppLocalization.of(context).speaking,
+        ),
+        InputTextField(
+          onChanged:
+              (userInput) => onChanged(userInput, MainSkillsEnum.reading),
+          label: AppLocalization.of(context).reading,
+        ),
+        InputTextField(
+          onChanged:
+              (userInput) => onChanged(userInput, MainSkillsEnum.writing),
+          label: AppLocalization.of(context).writing,
+        ),
+        InputTextField(
+          onChanged:
+              (userInput) => onChanged(userInput, MainSkillsEnum.listening),
+          label: AppLocalization.of(context).listening,
+        ),
+      ],
     );
   }
 }

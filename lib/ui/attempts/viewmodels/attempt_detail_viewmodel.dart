@@ -23,9 +23,9 @@ class AttemptDetailViewmodel extends BaseViewModel {
   List<Subskill> _mainSkills = [];
   List<Subskill> get mainSkills => _mainSkills;
 
-  IScoreReportRepository _repository;
-  AppLocalization _localization;
-  INavigationService _navigationService;
+  final IScoreReportRepository _repository;
+  final AppLocalization _localization;
+  final INavigationService _navigationService;
   AttemptDetailViewmodel(
     int attemptId,
     this._repository,
@@ -60,7 +60,7 @@ class AttemptDetailViewmodel extends BaseViewModel {
         _localization,
       );
       _subSkills = _attempt.subskills;
-      _readbleDateFormat = _attempt.date.readbaleDate();
+      _readbleDateFormat = _attempt.date.readableDate();
       notifyChanges(shouldNotify: shouldNotify);
     } else {
       setError(result.error);

@@ -36,7 +36,9 @@ class AppLocalization {
     'updateReportErrorMsg': "Failed to update report",
     'addReportErrorMsg': "Failed to add report",
     'addExamDateErrorMsg': "Failed to add exam date",
-    'examDateTitle': "ExamDateTitle"
+    'examDateTitle': "Exam Date",
+    'dateNotAssignedError': "Date should be selected",
+    'noSubskillsMsg': "No subskills added",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -55,7 +57,8 @@ class AppLocalization {
   String get writing => _get('writing');
   String get listening => _get('listening');
   String get skillBreakdown => _get('skillBreakdown');
-  String overall(String value) => _get('overall').replaceAll('{value}', value);
+  String overall({String value = ""}) =>
+      _get('overall').replaceAll('{value}', value);
   String get subSkillBreakDown => _get('subSkillBreakdown');
   String get attemptDate => _get('attemptDate');
   String get noDateMsg => _get('noDateMsg');
@@ -72,6 +75,8 @@ class AppLocalization {
   String get deleteReportErrorMsg => _get("deleteReportErrorMsg");
   String get updateReportErrorMsg => _get("updateReportErrorMsg");
   String get examDateTitle => _get("examDateTitle");
+  String get dateNotAssignedError => _get("dateNotAssignedError");
+  String get noSubskillsMsg => _get("noSubskillsMsg");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

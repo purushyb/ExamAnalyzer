@@ -97,7 +97,7 @@ class _LineChart extends StatelessWidget {
     showTitles: true,
     reservedSize: 40,
     minIncluded: true,
-    maxIncluded: false,
+    maxIncluded: true,
     interval: 2,
     getTitlesWidget: bottomTitleWidgets,
   );

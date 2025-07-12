@@ -28,7 +28,7 @@ class AttemptDetailScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 DataTileWidget(
-                  name: AppLocalization.of(context).overall(""),
+                  name: AppLocalization.of(context).overall(),
                   value: viewModel.overallScore,
                 ),
                 DataTileWidget(

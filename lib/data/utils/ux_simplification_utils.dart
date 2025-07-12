@@ -14,7 +14,7 @@ extension DateFormatting on String {
 
 extension DateFormattingExtension on DateTime {
   /// Parses ISO 8601 string to a readable format like "June 29, 2025"
-  String readbaleDate() {
+  String readableDate() {
     try {
       return DateFormat.yMMMMd().format(this);
     } catch (_) {

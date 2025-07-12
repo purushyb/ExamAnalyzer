@@ -11,7 +11,7 @@ class DataConvertionUtils {
       Subskill(
         subskill: 0,
         skills: 0,
-        name: localization.overall(""),
+        name: localization.overall(),
         description: "",
         score: report.gseScore,
         content: "",
