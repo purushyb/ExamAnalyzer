@@ -2,6 +2,8 @@ import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
 import 'package:exam_analyzer/data/repositories/i_tools_repository.dart';
 import 'package:exam_analyzer/data/repositories/score_report_repository.dart';
 import 'package:exam_analyzer/data/repositories/tools_repository.dart';
+import 'package:exam_analyzer/data/services/audio_service/pitch_detection_service.dart';
+import 'package:exam_analyzer/data/services/audio_service/i_audio_service.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_storage_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart';
@@ -26,6 +28,10 @@ List<SingleChildWidget> _commonServices = [
     create:
         (context) =>
             Navigationserviceimpl(router: context.read()) as INavigationService,
+  ),
+  Provider(
+    lazy: false,
+    create: (context) => PitchDetectionService(context.read()) as IAudioService,
   ),
 ];
 List<SingleChildWidget> _commonRepositories = [
@@ -73,8 +79,8 @@ List<SingleChildWidget> providersRemote(SharedPreferences prefReference) {
 /// This dependency list uses repositories that provide local data.
 List<SingleChildWidget> get providersLocal {
   return [
-    ..._commonServices,
     Provider(create: (context) => LocalLoggingService() as ILoggingService),
+    ..._commonServices,
     Provider(
       create: (context) => LocalMemoryStorageService() as IStorageService,
     ),

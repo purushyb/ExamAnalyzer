@@ -2,7 +2,7 @@ import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_big_button_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_date_picker_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
-import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
+import 'package:exam_analyzer/ui/next_exam_date/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:flutter/material.dart';
 
 class NextExamDateScreen extends StatefulWidget {
