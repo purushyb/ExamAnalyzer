@@ -32,7 +32,6 @@ class DashboardScreen extends StatelessWidget {
               ),
               ToolsWidget(
                 onClickedAddNotes: viewModel.goToAddNotes,
-                onClickDND: viewModel.toggleDND,
                 onClickVoiceTools: viewModel.goToVoiceTools,
               ),
               MainSkillsAnalyticsWidget(
@@ -59,13 +58,11 @@ class ToolsWidget extends StatelessWidget {
   const ToolsWidget({
     super.key,
     required this.onClickedAddNotes,
-    required this.onClickDND,
     required this.onClickVoiceTools,
   });
 
   final Function() onClickedAddNotes;
   final Function() onClickVoiceTools;
-  final Function() onClickDND;
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +73,6 @@ class ToolsWidget extends StatelessWidget {
           name: AppLocalization.of(context).checkPitchTitle,
           iconData: Icons.graphic_eq,
           onPressed: onClickVoiceTools,
-        ),
-        BaseToolsTileWidget(
-          name: AppLocalization.of(context).dndTitle,
-          iconData: Icons.do_not_disturb,
-          onPressed: onClickDND,
         ),
         BaseToolsTileWidget(
           name: AppLocalization.of(context).addNotesTitle,
