@@ -32,6 +32,12 @@ class Navigationserviceimpl extends INavigationService {
   }
 
   @override
+  bool goToAddNotes() {
+    _router.push(Routes.linkNotes);
+    return true;
+  }
+
+  @override
   bool goBack() {
     _router.pop();
     return true;

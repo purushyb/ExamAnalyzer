@@ -9,6 +9,8 @@ import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/dashboard_screen.dart';
 import 'package:exam_analyzer/ui/nextexamdate/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:exam_analyzer/ui/nextexamdate/widgets/next_exam_date_screen.dart';
+import 'package:exam_analyzer/ui/notes/viewmodels/link_notes_viewmodel.dart';
+import 'package:exam_analyzer/ui/notes/widgets/link_notes_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../ui/dashboard/viewmodels/dashboard_viewmodel.dart';
@@ -20,7 +22,12 @@ List<RouteBase> _commonRoutes = [
     path: Routes.dashboard,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => DashboardViewModel(context.read(), context.read()),
+        create:
+            (context) => DashboardViewModel(
+              context.read(),
+              context.read(),
+              context.read(),
+            ),
         child: DashboardScreen(),
       );
     },
@@ -76,6 +83,15 @@ List<RouteBase> _commonRoutes = [
               context.read(),
             ),
         child: NextExamDateScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: Routes.linkNotes,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create: (context) => LinkNotesViewmodel(context.read(), context.read()),
+        child: LinkNotesScreen(),
       );
     },
   ),

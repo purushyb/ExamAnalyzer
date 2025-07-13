@@ -3,5 +3,7 @@ abstract class INavigationService {
   bool goToAddAttemptsScreen();
   bool goToAttemptDetailsScreen({required int? attemptId});
   bool goToNextExamDateScreen();
+  bool goToAddNotes();
+
   bool goBack();
 }

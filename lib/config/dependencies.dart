@@ -1,13 +1,15 @@
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
+import 'package:exam_analyzer/data/repositories/i_tools_repository.dart';
 import 'package:exam_analyzer/data/repositories/score_report_repository.dart';
+import 'package:exam_analyzer/data/repositories/tools_repository.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_storage_service.dart';
 import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart';
-import 'package:exam_analyzer/data/services/storage/in_memory_user_Defaults_service.dart';
+import 'package:exam_analyzer/data/services/storage/in_memory_user_defaults_service.dart';
 import 'package:exam_analyzer/data/services/storage/local_memory_service.dart';
 import 'package:exam_analyzer/data/services/storage/local_user_default_service.dart';
 import 'package:exam_analyzer/data/services/storage/sql_lite_storage_Service.dart';
-import 'package:exam_analyzer/routing/navigationServiceImpl.dart';
+import 'package:exam_analyzer/routing/navigation_service_impl.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
@@ -37,6 +39,12 @@ List<SingleChildWidget> _commonRepositories = [
                   context.read(),
                 )
                 as IScoreReportRepository,
+  ),
+  Provider(
+    create:
+        (context) =>
+            ToolsRepository(context.read(), context.read(), context.read())
+                as IToolsRepository,
   ),
 ];
 List<SingleChildWidget> _commonViewmodels = [];

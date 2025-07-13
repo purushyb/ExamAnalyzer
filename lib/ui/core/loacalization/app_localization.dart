@@ -42,6 +42,15 @@ class AppLocalization {
     'gseScoreTitle': "GSE Score",
     'subSkillTitle': "Subskill {value}",
     'mainSkillBreakdownTitle': "Main skill breakdown",
+    'couldNotLaunch': "Cound not launch {value}",
+    'addNotesErrMsg': "Unable to add notes",
+    'addNotesTitle': "Link Notes",
+    'checkPitchTitle': "Check Pitch",
+    'dndTitle': "DND",
+    'addALinkTitle': "Add a link",
+    'submitLinkTitle': "Submit link",
+    'noNotesErrMsg': "Notes not added, click on link notes to add one",
+    'retry': "Retry"
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -87,6 +96,16 @@ class AppLocalization {
   String get dateNotAssignedError => _get("dateNotAssignedError");
   String get noSubskillsMsg => _get("noSubskillsMsg");
   String get mainSkillBreakdownTitle => _get("mainSkillBreakdownTitle");
+  String couldNotLaunch({String url = "url"}) =>
+      _get("couldNotLaunch").replaceAll("{value}", url);
+  String addNotesErrMsg = _get("addNotesErrMsg");
+  String addNotesTitle = _get("addNotesTitle");
+  String checkPitchTitle = _get("checkPitchTitle");
+  String dndTitle = _get("dndTitle");
+  String addALinkTitle = _get("addALinkTitle");
+  String submitLinkTitle = _get("submitLinkTitle");
+  String noNotesErrMsg = _get('noNotesErrMsg');
+  String retryTitle = _get('retry');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/data/repositories/i_score_report_repository.dart';
+import 'package:exam_analyzer/data/repositories/i_tools_repository.dart';
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
 import 'package:exam_analyzer/data/utils/result.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
@@ -26,8 +27,13 @@ class DashboardViewModel extends BaseViewModel {
   late final StreamSubscription<Result<DateTime?>> _nextExamDatesubscription;
 
   final IScoreReportRepository _repository;
+  final IToolsRepository _toolsRepository;
   final INavigationService _navigationService;
-  DashboardViewModel(this._repository, this._navigationService) {
+  DashboardViewModel(
+    this._repository,
+    this._navigationService,
+    this._toolsRepository,
+  ) {
     init();
   }
 
@@ -74,6 +80,21 @@ class DashboardViewModel extends BaseViewModel {
 
   void goToNextExamDateSceen() {
     _navigationService.goToNextExamDateScreen();
+  }
+
+  void goToAddNotes() {
+    _navigationService.goToAddNotes();
+  }
+
+  void goToVoiceTools() {}
+
+  void toggleDND() {}
+
+  Future openNotes() async {
+    final result = await _toolsRepository.openNotesLink();
+    if (result.isFailure) {
+      setError(result.error);
+    }
   }
 
   @override

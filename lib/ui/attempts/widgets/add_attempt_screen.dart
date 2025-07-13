@@ -1,9 +1,9 @@
 import 'package:exam_analyzer/data/enums/main_skills_enum.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
-import 'package:exam_analyzer/ui/attempts/widgets/input_text_Field.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_big_button_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_date_picker_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_input_text_field.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_upload_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_toggle_switch_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
@@ -85,27 +85,27 @@ class ManualSkillAdditionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        InputTextField(
+        BaseInputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.overall),
           label: AppLocalization.of(context).overall(),
         ),
-        InputTextField(
+        BaseInputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.speaking),
           label: AppLocalization.of(context).speakingTitle,
         ),
-        InputTextField(
+        BaseInputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.reading),
           label: AppLocalization.of(context).readingTitle,
         ),
-        InputTextField(
+        BaseInputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.writing),
           label: AppLocalization.of(context).writingTitle,
         ),
-        InputTextField(
+        BaseInputTextField(
           onChanged:
               (userInput) => onChanged(userInput, MainSkillsEnum.listening),
           label: AppLocalization.of(context).listeningTitle,

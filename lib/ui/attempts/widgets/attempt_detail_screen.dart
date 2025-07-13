@@ -1,6 +1,6 @@
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/reusables/base_data_tile_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_data_tile_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
 import 'package:exam_analyzer/ui/core/ui/reusables/sub_skill_break_down_widget.dart';
 import 'package:flutter/material.dart';

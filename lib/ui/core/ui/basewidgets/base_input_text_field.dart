@@ -1,20 +1,37 @@
 import 'package:flutter/material.dart';
 
-class InputTextField extends StatefulWidget {
-  const InputTextField({
+class BaseInputTextField extends StatefulWidget {
+  const BaseInputTextField({
     super.key,
     required this.onChanged,
     required this.label,
+    this.initialValue,
   });
   final void Function(String userInput) onChanged;
   final String label;
+  final String? initialValue;
 
   @override
-  State<InputTextField> createState() => _InputTextFieldState();
+  State<BaseInputTextField> createState() => _BaseInputTextFieldState();
 }
 
-class _InputTextFieldState extends State<InputTextField> {
-  final _controller = TextEditingController();
+class _BaseInputTextFieldState extends State<BaseInputTextField> {
+  TextEditingController? _controller;
+  @override
+  void initState() {
+    _controller = TextEditingController(text: widget.initialValue);
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant BaseInputTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.initialValue != oldWidget.initialValue &&
+        widget.initialValue != _controller?.text) {
+      _controller?.text = widget.initialValue ?? '';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(

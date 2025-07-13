@@ -1,11 +1,12 @@
+import 'package:exam_analyzer/ui/core/ui/models/base_error_model.dart';
 import 'package:flutter/foundation.dart';
 
 abstract class BaseViewModel extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  String? _error;
-  String? get error => _error;
+  BaseErrorModel? _error;
+  BaseErrorModel? get error => _error;
 
   void notifyChanges({bool shouldNotify = true}) {
     if (shouldNotify) notifyListeners();
@@ -21,9 +22,15 @@ abstract class BaseViewModel extends ChangeNotifier {
     notifyChanges(shouldNotify: shouldNotify);
   }
 
-  void setError(String? message, {bool shouldNotify = true}) {
-    _error = message;
-    notifyChanges(shouldNotify: shouldNotify);
+  void setError(
+    String? message, {
+    bool shouldNotify = true,
+    bool shouldRetry = false,
+  }) {
+    if (message != null) {
+      _error = BaseErrorModel(message: message, retry: shouldRetry);
+      notifyChanges(shouldNotify: shouldNotify);
+    }
   }
 
   void clearError({bool shouldNotify = true}) {

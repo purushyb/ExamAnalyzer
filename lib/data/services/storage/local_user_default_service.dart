@@ -4,21 +4,35 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LocalUserDefaultsService implements IUserDefaultsService {
   final SharedPreferences prefs;
 
+  final String _nextExamDateKey = "next_exam_date";
+  final String _notesLinkKey = "notes_link_key";
+
   LocalUserDefaultsService(this.prefs);
 
   @override
   Future<void> setNextExamDate(DateTime date) async {
-    await prefs.setString('next_exam_date', date.toIso8601String());
+    await prefs.setString(_nextExamDateKey, date.toIso8601String());
   }
 
   @override
   DateTime? getNextExamDate() {
-    final string = prefs.getString('next_exam_date');
-    return string != null ? DateTime.tryParse(string) : null;
+    final result = prefs.getString(_nextExamDateKey);
+    return result != null ? DateTime.tryParse(result) : null;
   }
 
   @override
   Future<void> clear() async {
     await prefs.clear();
+  }
+
+  @override
+  Future<String?> getNotesLink() async {
+    final result = prefs.getString(_notesLinkKey);
+    return result;
+  }
+
+  @override
+  Future<void> setNotesLink(String link) async {
+    await prefs.setString(_notesLinkKey, link);
   }
 }

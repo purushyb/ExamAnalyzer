@@ -1,27 +1,29 @@
 import 'package:exam_analyzer/ui/core/themes/dimes.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
 import 'package:flutter/material.dart';
 
-class BaseDataTileWidget extends StatelessWidget {
-  const BaseDataTileWidget({
+class BaseToolsTileWidget extends StatelessWidget {
+  const BaseToolsTileWidget({
     super.key,
-    required this.name,
-    this.value,
+    this.name,
     this.onPressed,
+    this.onLongPress,
+    required this.iconData,
   });
 
-  final String name;
-  final String? value;
-  final GestureTapCallback? onPressed;
+  final String? name;
+  final Function()? onPressed;
+  final Function()? onLongPress;
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
-    final dimens = Dimens.of(context);
-    return Padding(
-      padding: dimens.edgeInsetsScreenSymmetric,
+    return BasePaddingWidget(
       child: GestureDetector(
         onTap: onPressed,
+        onLongPress: onLongPress,
         child: Container(
-          padding: dimens.elementPadding,
+          padding: Dimens.of(context).elementPadding,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(16.0)),
             border: Border.all(color: Theme.of(context).colorScheme.primary),
@@ -29,10 +31,10 @@ class BaseDataTileWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(name, style: Theme.of(context).textTheme.bodyMedium),
-              value != null
-                  ? Text(value!, style: Theme.of(context).textTheme.titleLarge)
-                  : Icon(Icons.edit),
+              Icon(iconData, size: 32),
+              name != null
+                  ? Text(name!, style: Theme.of(context).textTheme.bodyMedium)
+                  : SizedBox(),
             ],
           ),
         ),
