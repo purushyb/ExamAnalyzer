@@ -19,6 +19,11 @@ abstract final class Dimens {
   /// Vertical padding for screen edges
   double get paddingScreenVertical;
 
+  /// aspect ratio for widgets
+  double get aspectRatio;
+
+  double get smallWidgetAspectRatio;
+
   /// Horizontal symmetric padding for screen edges
   EdgeInsets get edgeInsetsScreenHorizontal =>
       EdgeInsets.symmetric(horizontal: paddingScreenHorizontal);
@@ -39,12 +44,22 @@ abstract final class Dimens {
   static const Dimens mobile = _DimensMobile();
 
   /// Get dimensions definition based on screen size
-  factory Dimens.of(BuildContext context) => switch (MediaQuery.sizeOf(
-    context,
-  ).width) {
-    > 600 && < 840 => desktop,
-    _ => mobile,
-  };
+  factory Dimens.of(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    final orientation = MediaQuery.orientationOf(context);
+
+    if (size.width > 600 && size.width < 840) {
+      return desktop;
+    }
+
+    // Landscape mobile: apply wider horizontal padding
+    if (orientation == Orientation.landscape) {
+      return const _DimensMobileLandscape();
+    }
+
+    // Portrait mobile (default)
+    return mobile;
+  }
 }
 
 /// Mobile dimensions
@@ -56,6 +71,29 @@ final class _DimensMobile extends Dimens {
   final double paddingScreenVertical = Dimens.paddingVertical;
 
   const _DimensMobile();
+
+  @override
+  double get aspectRatio => 0.5;
+
+  @override
+  double get smallWidgetAspectRatio => 1.23;
+}
+
+/// Mobile dimensions
+final class _DimensMobileLandscape extends Dimens {
+  @override
+  final double paddingScreenHorizontal = Dimens.paddingHorizontal;
+
+  @override
+  final double paddingScreenVertical = Dimens.paddingVertical;
+
+  const _DimensMobileLandscape();
+
+  @override
+  double get aspectRatio => 3.5;
+
+  @override
+  double get smallWidgetAspectRatio => 3.5;
 }
 
 /// Desktop/Web dimensions
@@ -67,4 +105,10 @@ final class _DimensDesktop extends Dimens {
   final double paddingScreenVertical = 64.0;
 
   const _DimensDesktop();
+
+  @override
+  double get aspectRatio => 3.5;
+
+  @override
+  double get smallWidgetAspectRatio => 3.5;
 }

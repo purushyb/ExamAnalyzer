@@ -14,15 +14,12 @@ class PitchDetectionService implements IAudioService {
   );
   final StreamController<double> _pitchController =
       StreamController<double>.broadcast();
-  final StreamController<Float32List> _audioDataController =
-      StreamController<Float32List>();
 
   @override
   Stream<double> get pitchStream => _pitchController.stream;
 
   final ILoggingService _logger;
   PitchDetectionService(this._logger) {
-
     _logger.info("constructor called");
     init();
   }
@@ -38,39 +35,33 @@ class PitchDetectionService implements IAudioService {
 
   @override
   Future<void> start() async {
-    _audioDataController.stream.listen(_processAudioData);
     await _audioCapture.start(
-      _onAudio,
+      _processAudioData,
       _onError,
       sampleRate: 44100,
       bufferSize: 2048,
     );
   }
 
+  void _onError(Object e) {
+    _logger.error(msg: "Audio error: ", e: e);
+  }
+
   Future<void> _processAudioData(Float32List data) async {
-    final buffer = Float32List.view(data.buffer);
-    final floatData = buffer.map((e) => e.toDouble()).toList();
+    final floatData = data.map((e) => e.toDouble()).toList();
     final result = await _pitchDetector.getPitchFromFloatBuffer(
-      Float64List.fromList(floatData),
+      Float32List.fromList(floatData),
     );
 
     if (result.pitched && result.pitch > 50 && result.pitch < 1000) {
       _pitchController.add(result.pitch);
+    } else {
+      _logger.error(msg: "Not sending data");
     }
-  }
-
-  void _onError(Object e) {
-    print("Audio error: $e");
   }
 
   @override
   Future<void> stop() async {
     await _audioCapture.stop();
-    await _pitchController.close();
-    await _audioDataController.close();
-  }
-
-  void _onAudio(Float32List audioData) {
-    _audioDataController.add(audioData);
   }
 }
