@@ -1,20 +1,27 @@
 import 'dart:async';
 
 import 'package:exam_analyzer/data/services/audio_service/i_audio_service.dart';
-import 'package:flutter/material.dart';
+import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
+import 'package:fl_chart/fl_chart.dart';
 
-class PitchViewModel extends ChangeNotifier {
+class PitchScreenViewModel extends BaseViewModel {
   final IAudioService _service;
 
   final List<double> _pitches = [];
-  List<double> get pitches => _pitches;
+  List<FlSpot> get pitches =>
+      _pitches
+          .asMap()
+          .entries
+          .map((entry) => FlSpot(entry.key.toDouble(), entry.value))
+          .toList();
 
   late final StreamSubscription _subscription;
-  PitchViewModel(this._service) {
-    _init();
+  PitchScreenViewModel(this._service) {
+    init();
   }
 
-  void _init() {
+  @override
+  Future<void> init() async {
     _subscription = _service.pitchStream.listen((pitch) {
       _pitches.add(pitch);
       if (_pitches.length > 20) {

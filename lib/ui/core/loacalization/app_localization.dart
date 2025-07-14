@@ -50,7 +50,8 @@ class AppLocalization {
     'addALinkTitle': "Add a link",
     'submitLinkTitle': "Submit link",
     'noNotesErrMsg': "Notes not added, click on link notes to add one",
-    'retry': "Retry"
+    'retry': "Retry",
+    'realTimePitchTitle': "Real-time Pitch"
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -106,6 +107,7 @@ class AppLocalization {
   String submitLinkTitle = _get("submitLinkTitle");
   String noNotesErrMsg = _get('noNotesErrMsg');
   String retryTitle = _get('retry');
+  String realTimePitchTitle = _get('realTimePitchTitle');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

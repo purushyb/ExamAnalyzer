@@ -6,7 +6,7 @@ import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dar
 import 'package:exam_analyzer/ui/attempts/widgets/add_attempt_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempt_detail_screen.dart';
 import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
-import 'package:exam_analyzer/ui/audio/viewmodels/pitch_viewmodel.dart';
+import 'package:exam_analyzer/ui/audio/viewmodels/pitch_screen_viewmodel.dart';
 import 'package:exam_analyzer/ui/audio/widgets/pitch_graph_widget.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/dashboard_screen.dart';
 import 'package:exam_analyzer/ui/next_exam_date/viewmodels/next_exam_date_viewmodel.dart';
@@ -101,7 +101,7 @@ List<RouteBase> _commonRoutes = [
     path: Routes.pitchDetection,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => PitchViewModel(context.read()),
+        create: (context) => PitchScreenViewModel(context.read()),
         child: PitchScreen(),
       );
     },
