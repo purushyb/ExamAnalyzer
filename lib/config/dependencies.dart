@@ -10,7 +10,7 @@ import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart'
 import 'package:exam_analyzer/data/services/storage/in_memory_user_defaults_service.dart';
 import 'package:exam_analyzer/data/services/storage/local_memory_service.dart';
 import 'package:exam_analyzer/data/services/storage/local_user_default_service.dart';
-import 'package:exam_analyzer/data/services/storage/sql_lite_storage_Service.dart';
+import 'package:exam_analyzer/data/services/storage/sql_lite_storage_service.dart';
 import 'package:exam_analyzer/routing/navigation_service_impl.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:provider/provider.dart';

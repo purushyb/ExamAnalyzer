@@ -33,7 +33,7 @@ class BaseToolsTileWidget extends StatelessWidget {
             children: [
               Icon(iconData, size: 32),
               name != null
-                  ? Text(name!, style: Theme.of(context).textTheme.bodyMedium)
+                  ? Text(name!, style: Theme.of(context).textTheme.bodySmall)
                   : SizedBox(),
             ],
           ),

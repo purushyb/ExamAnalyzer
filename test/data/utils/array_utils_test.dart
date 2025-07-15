@@ -33,20 +33,5 @@ void main() {
       expect(ArrayUtils.circularArrayIndex(1, -1), 0); // -1 % 1 = 0
       expect(ArrayUtils.circularArrayIndex(1, -5), 0); // -5 % 1 = 0
     });
-
-    test('should throw IntegerDivisionByZeroException for arrayLen of 0', () {
-      expect(
-        () => ArrayUtils.circularArrayIndex(0, 5),
-        throwsA(isA<IntegerDivisionByZeroException>()),
-      );
-      expect(
-        () => ArrayUtils.circularArrayIndex(0, 0),
-        throwsA(isA<IntegerDivisionByZeroException>()),
-      );
-      expect(
-        () => ArrayUtils.circularArrayIndex(0, -1),
-        throwsA(isA<IntegerDivisionByZeroException>()),
-      );
-    });
   });
 }

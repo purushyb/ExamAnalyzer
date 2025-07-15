@@ -51,7 +51,7 @@ class AppLocalization {
     'submitLinkTitle': "Submit link",
     'noNotesErrMsg': "Notes not added, click on link notes to add one",
     'retry': "Retry",
-    'realTimePitchTitle': "Real-time Pitch"
+    'realTimePitchTitle': "Real-time Pitch",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
