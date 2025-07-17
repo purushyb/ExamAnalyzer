@@ -19,7 +19,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       routerConfig: context.read<GoRouter>(),
       localizationsDelegates: [
         GlobalWidgetsLocalizations.delegate,

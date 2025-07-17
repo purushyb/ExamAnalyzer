@@ -3,11 +3,11 @@ import 'package:exam_analyzer/data/services/logging_service/i_logging_service.da
 class RemoteLoggingService extends ILoggingService {
   @override
   void error({String? msg, Object? e, StackTrace? trace}) {
-    // TODO: implement error
+    // Not needed
   }
 
   @override
   void info(String msg) {
-    // TODO: implement info
+    // Not needed
   }
 }

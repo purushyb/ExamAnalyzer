@@ -38,6 +38,12 @@ class Navigationserviceimpl extends INavigationService {
   }
 
   @override
+  bool goToPitchDetectionScreen() {
+    _router.push(Routes.pitchDetection);
+    return true;
+  }
+
+  @override
   bool goBack() {
     _router.pop();
     return true;

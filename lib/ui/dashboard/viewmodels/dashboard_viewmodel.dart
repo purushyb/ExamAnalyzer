@@ -86,7 +86,9 @@ class DashboardViewModel extends BaseViewModel {
     _navigationService.goToAddNotes();
   }
 
-  void goToVoiceTools() {}
+  void goToVoiceTools() {
+    _navigationService.goToPitchDetectionScreen();
+  }
 
   void toggleDND() {}
 

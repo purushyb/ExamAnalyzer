@@ -5,4 +5,5 @@ abstract final class Routes {
   static const attemptDetails = '/attemptDetails';
   static const nextExamDate = '/nextExamDate';
   static const linkNotes = '/linkNotes';
+  static const pitchDetection = '/pitchDetection';
 }

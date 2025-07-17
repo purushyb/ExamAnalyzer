@@ -1,4 +1,4 @@
-import 'package:exam_analyzer/ui/core/themes/dimes.dart';
+import 'package:exam_analyzer/ui/core/themes/dimens.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
 import 'package:flutter/material.dart';
 

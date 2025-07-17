@@ -1,4 +1,5 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
+import 'package:exam_analyzer/ui/core/themes/dimens.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -145,7 +146,7 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
           border: Border.all(color: Theme.of(context).colorScheme.primary),
         ),
         child: AspectRatio(
-          aspectRatio: 1.23,
+          aspectRatio: Dimens.of(context).smallWidgetAspectRatio,
           child: Stack(
             children: <Widget>[
               Column(
