@@ -52,6 +52,7 @@ class AppLocalization {
     'noNotesErrMsg': "Notes not added, click on link notes to add one",
     'retry': "Retry",
     'realTimePitchTitle': "Real-time Pitch",
+    'microphonePermissionError': "Microphone permission not granted",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -108,6 +109,7 @@ class AppLocalization {
   String noNotesErrMsg = _get('noNotesErrMsg');
   String retryTitle = _get('retry');
   String realTimePitchTitle = _get('realTimePitchTitle');
+  String microphonePermissionError = _get('microphonePermissionError');
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

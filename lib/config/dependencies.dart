@@ -31,7 +31,10 @@ List<SingleChildWidget> _commonServices = [
   ),
   Provider(
     lazy: false,
-    create: (context) => PitchDetectionService(context.read()) as IAudioService,
+    create:
+        (context) =>
+            PitchDetectionService(context.read(), context.read())
+                as IAudioService,
   ),
 ];
 List<SingleChildWidget> _commonRepositories = [

@@ -35,7 +35,10 @@ class PitchScreenViewModel extends BaseViewModel {
       },
     );
 
-    await _service.start();
+    final result = await _service.start();
+    if (result.isFailure) {
+      setError(result.error);
+    }
   }
 
   @override
