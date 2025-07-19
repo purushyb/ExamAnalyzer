@@ -23,6 +23,7 @@ class DashboardScreen extends StatelessWidget {
       childBuilder: (viewModel) {
         return SingleChildScrollView(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AnalyticsTopWidget(
                 attemptsCount: viewModel.attemptsCount,
@@ -66,8 +67,7 @@ class ToolsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Wrap(
       children: [
         BaseToolsTileWidget(
           name: AppLocalization.of(context).checkPitchTitle,
@@ -100,8 +100,7 @@ class AnalyticsTopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Wrap(
       children: [
         BaseDataTileWidget(
           name: AppLocalization.of(context).attemptsTitle,

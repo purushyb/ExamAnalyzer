@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 abstract final class Dimens {
@@ -14,10 +16,10 @@ abstract final class Dimens {
   static const paddingVertical = 8.0;
 
   /// Horizontal padding for screen edges
-  double get paddingScreenHorizontal;
+  double get paddingScreenHorizontal => Dimens.paddingHorizontal;
 
   /// Vertical padding for screen edges
-  double get paddingScreenVertical;
+  double get paddingScreenVertical => Dimens.paddingVertical;
 
   /// aspect ratio for widgets
   double get aspectRatio;
@@ -48,7 +50,8 @@ abstract final class Dimens {
     final size = MediaQuery.sizeOf(context);
     final orientation = MediaQuery.orientationOf(context);
 
-    if (size.width > 600 && size.width < 840) {
+    if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
+      print("using desktop");
       return desktop;
     }
 
@@ -98,17 +101,11 @@ final class _DimensMobileLandscape extends Dimens {
 
 /// Desktop/Web dimensions
 final class _DimensDesktop extends Dimens {
-  @override
-  final double paddingScreenHorizontal = 100.0;
-
-  @override
-  final double paddingScreenVertical = 64.0;
-
   const _DimensDesktop();
 
   @override
   double get aspectRatio => 3.5;
 
   @override
-  double get smallWidgetAspectRatio => 3.5;
+  double get smallWidgetAspectRatio => 1.6;
 }

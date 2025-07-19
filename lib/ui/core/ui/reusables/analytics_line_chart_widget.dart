@@ -141,6 +141,7 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
   Widget build(BuildContext context) {
     return BasePaddingWidget(
       child: Container(
+        constraints: BoxConstraints(maxWidth: 800),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(16.0)),
           border: Border.all(color: Theme.of(context).colorScheme.primary),
