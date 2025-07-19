@@ -12,6 +12,7 @@ class AppLocalization {
     'addAttemptsScreenTitle': "Add Attempt",
     'attemptDetailScreenTitle': "Attempt Detail",
     'nextExamDateScreenTitle': "Next Exam Date",
+    'realTimePitchScreenTitle': "Real-time Pitch",
     'examDateTitle': "Exam Date",
     'attempts': "Attempts",
     'scoreTrend': 'Score Trend',
@@ -51,7 +52,6 @@ class AppLocalization {
     'submitLinkTitle': "Submit link",
     'noNotesErrMsg': "Notes not added, click on link notes to add one",
     'retry': "Retry",
-    'realTimePitchTitle': "Real-time Pitch",
     'microphonePermissionError': "Microphone permission not granted",
   };
 
@@ -59,8 +59,12 @@ class AppLocalization {
   static String _get(String label) =>
       _strings[label] ?? '[${label.toUpperCase()}]';
 
-  // Dashboardview
   String get dashboardScreenTitle => _get('dashboardScreenTitle');
+  String get attemptsListScreenTitle => _get('attemptsListScreenTitle');
+  String get addAttemptsScreenTitle => _get('addAttemptsScreenTitle');
+  String get attemptDetailScreenTitle => _get('attemptDetailScreenTitle');
+  String get nextExamDateScreenTitle => _get('nextExamDateScreenTitle');
+  String realTimePitchScreenTitle = _get('realTimePitchScreenTitle');
   String get scoreTrendTitle => _get('scoreTrend');
   String get attemptsTitle => _get('attempts');
   String get examDateTitle => _get('examDateTitle');
@@ -72,11 +76,6 @@ class AppLocalization {
   String get gseScoreTitle => _get('gseScoreTitle');
   String subSkillTitle({String value = ""}) =>
       _get('subSkillTitle').replaceAll('{value}', value);
-
-  String get attemptsListScreenTitle => _get('attemptsListScreenTitle');
-  String get addAttemptsScreenTitle => _get('addAttemptsScreenTitle');
-  String get attemptDetailScreenTitle => _get('attemptDetailScreenTitle');
-  String get nextExamDateScreenTitle => _get('nextExamDateScreenTitle');
   String get skillBreakdown => _get('skillBreakdown');
   String overall({String value = ""}) =>
       _get('overall').replaceAll('{value}', value);
@@ -108,7 +107,6 @@ class AppLocalization {
   String submitLinkTitle = _get("submitLinkTitle");
   String noNotesErrMsg = _get('noNotesErrMsg');
   String retryTitle = _get('retry');
-  String realTimePitchTitle = _get('realTimePitchTitle');
   String microphonePermissionError = _get('microphonePermissionError');
 }
 
