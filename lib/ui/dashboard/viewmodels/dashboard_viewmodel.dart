@@ -48,15 +48,21 @@ class DashboardViewModel extends BaseViewModel {
 
   Future _fetchAttempts() async {
     _subscription = _repository.scoreReportsStream.listen((result) {
-      if (result.isSuccess) {
-        _reports = result.data!;
-        _attemtCount = _reports.length.toString();
-        _fetchSkillProfileData();
-        notifyChanges();
-      } else {
-        setError(result.error);
-      }
+      showAttemptsData(result);
     });
+    final result = await _repository.getAll();
+    showAttemptsData(result);
+  }
+
+  void showAttemptsData(Result<List<ScoreReport>> result) {
+    if (result.isSuccess) {
+      _reports = result.data!;
+      _attemtCount = _reports.length.toString();
+      _fetchSkillProfileData();
+      notifyChanges();
+    } else {
+      setError(result.error);
+    }
   }
 
   Future _fetchNextExamDate() async {
