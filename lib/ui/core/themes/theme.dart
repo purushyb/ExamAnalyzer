@@ -44,6 +44,15 @@ abstract final class AppTheme {
     colorScheme: AppColors.lightColorScheme,
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.lightColorScheme.surface,
+      selectedItemColor: AppColors.lightColorScheme.primary,
+      unselectedItemColor: AppColors.grey3,
+      selectedIconTheme: IconThemeData(
+        color: AppColors.lightColorScheme.primary,
+      ),
+      unselectedIconTheme: IconThemeData(color: AppColors.grey3),
+    ),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -51,5 +60,14 @@ abstract final class AppTheme {
     colorScheme: AppColors.darkColorScheme,
     textTheme: _textTheme,
     inputDecorationTheme: _inputDecorationTheme,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.darkColorScheme.surface,
+      selectedItemColor: AppColors.darkColorScheme.primary,
+      unselectedItemColor: AppColors.grey3,
+      selectedIconTheme: IconThemeData(
+        color: AppColors.darkColorScheme.primary,
+      ),
+      unselectedIconTheme: IconThemeData(color: AppColors.grey3),
+    ),
   );
 }

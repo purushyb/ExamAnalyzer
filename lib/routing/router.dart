@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:exam_analyzer/routing/widgets/root_scaffold.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dart';
@@ -13,6 +14,8 @@ import 'package:exam_analyzer/ui/next_exam_date/viewmodels/next_exam_date_viewmo
 import 'package:exam_analyzer/ui/next_exam_date/widgets/next_exam_date_screen.dart';
 import 'package:exam_analyzer/ui/notes/viewmodels/link_notes_viewmodel.dart';
 import 'package:exam_analyzer/ui/notes/widgets/link_notes_screen.dart';
+import 'package:exam_analyzer/ui/settings/viewmodels/settings_viewmodel.dart';
+import 'package:exam_analyzer/ui/settings/widgets/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../ui/dashboard/viewmodels/dashboard_viewmodel.dart';
@@ -106,6 +109,15 @@ List<RouteBase> _commonRoutes = [
       );
     },
   ),
+  GoRoute(
+    path: Routes.settings,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create: (context) => SettingsViewmodel(context.read(), context.read()),
+        child: SettingsScreen(),
+      );
+    },
+  ),
 ];
 List<RouteBase> _desktopOnlyRoutes = [];
 List<RouteBase> _mobileOnlyRoutes = [];
@@ -123,5 +135,12 @@ List<RouteBase> _getRoutes() {
 GoRouter router() => GoRouter(
   initialLocation: Routes.dashboard,
   debugLogDiagnostics: true,
-  routes: _getRoutes(),
+  routes: [
+    ShellRoute(
+      builder: (context, state, child) {
+        return RootScaffold(state: state, child: child);
+      },
+      routes: _getRoutes(),
+    ),
+  ],
 );

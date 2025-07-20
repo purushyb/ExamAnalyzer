@@ -82,14 +82,6 @@ class DashboardViewModel extends BaseViewModel {
     _navigationService.goToNextExamDateScreen();
   }
 
-  void goToAddNotes() {
-    _navigationService.goToAddNotes();
-  }
-
-  void goToVoiceTools() {
-    _navigationService.goToPitchDetectionScreen();
-  }
-
   void toggleDND() {}
 
   Future openNotes() async {

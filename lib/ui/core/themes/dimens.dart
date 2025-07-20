@@ -47,11 +47,9 @@ abstract final class Dimens {
 
   /// Get dimensions definition based on screen size
   factory Dimens.of(BuildContext context) {
-    final size = MediaQuery.sizeOf(context);
     final orientation = MediaQuery.orientationOf(context);
 
     if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
-      print("using desktop");
       return desktop;
     }
 

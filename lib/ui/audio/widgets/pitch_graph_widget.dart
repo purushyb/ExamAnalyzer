@@ -14,7 +14,7 @@ class PitchScreen extends StatelessWidget {
     return BaseView<PitchScreenViewModel>(
       appBarBuilder:
           (viewModel) => AppBar(
-            title: Text(AppLocalization.of(context).realTimePitchTitle),
+            title: Text(AppLocalization.of(context).realTimePitchScreenTitle),
           ),
       childBuilder:
           (viewModel) => BasePaddingWidget(

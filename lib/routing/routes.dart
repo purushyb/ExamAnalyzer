@@ -6,4 +6,5 @@ abstract final class Routes {
   static const nextExamDate = '/nextExamDate';
   static const linkNotes = '/linkNotes';
   static const pitchDetection = '/pitchDetection';
+  static const settings = "/settings";
 }

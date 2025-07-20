@@ -12,6 +12,8 @@ class AppLocalization {
     'addAttemptsScreenTitle': "Add Attempt",
     'attemptDetailScreenTitle': "Attempt Detail",
     'nextExamDateScreenTitle': "Next Exam Date",
+    'realTimePitchScreenTitle': "Real-time Pitch",
+    'settingsScreenTitle': "Settings",
     'examDateTitle': "Exam Date",
     'attempts': "Attempts",
     'scoreTrend': 'Score Trend',
@@ -49,18 +51,27 @@ class AppLocalization {
     'dndTitle': "DND",
     'addALinkTitle': "Add a link",
     'submitLinkTitle': "Submit link",
-    'noNotesErrMsg': "Notes not added, click on link notes to add one",
+    'noNotesErrMsg': "Notes not linked, link it in settings",
     'retry': "Retry",
-    'realTimePitchTitle': "Real-time Pitch",
     'microphonePermissionError': "Microphone permission not granted",
+    'themeTitle': "Theme",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
   static String _get(String label) =>
       _strings[label] ?? '[${label.toUpperCase()}]';
 
-  // Dashboardview
+  // TODO: have to find a better way to do this
+  // Should only be used for getting Appbar title
+  static String get(String label) =>
+      _strings[label] ?? '[${label.toUpperCase()}]';
+
   String get dashboardScreenTitle => _get('dashboardScreenTitle');
+  String get attemptsListScreenTitle => _get('attemptsListScreenTitle');
+  String get addAttemptsScreenTitle => _get('addAttemptsScreenTitle');
+  String get attemptDetailScreenTitle => _get('attemptDetailScreenTitle');
+  String get nextExamDateScreenTitle => _get('nextExamDateScreenTitle');
+  String realTimePitchScreenTitle = _get('realTimePitchScreenTitle');
   String get scoreTrendTitle => _get('scoreTrend');
   String get attemptsTitle => _get('attempts');
   String get examDateTitle => _get('examDateTitle');
@@ -72,11 +83,6 @@ class AppLocalization {
   String get gseScoreTitle => _get('gseScoreTitle');
   String subSkillTitle({String value = ""}) =>
       _get('subSkillTitle').replaceAll('{value}', value);
-
-  String get attemptsListScreenTitle => _get('attemptsListScreenTitle');
-  String get addAttemptsScreenTitle => _get('addAttemptsScreenTitle');
-  String get attemptDetailScreenTitle => _get('attemptDetailScreenTitle');
-  String get nextExamDateScreenTitle => _get('nextExamDateScreenTitle');
   String get skillBreakdown => _get('skillBreakdown');
   String overall({String value = ""}) =>
       _get('overall').replaceAll('{value}', value);
@@ -108,8 +114,9 @@ class AppLocalization {
   String submitLinkTitle = _get("submitLinkTitle");
   String noNotesErrMsg = _get('noNotesErrMsg');
   String retryTitle = _get('retry');
-  String realTimePitchTitle = _get('realTimePitchTitle');
   String microphonePermissionError = _get('microphonePermissionError');
+  String settingsScreenTitle = _get('settingsScreenTitle');
+  String themeTitle = _get("themeTitle");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {
