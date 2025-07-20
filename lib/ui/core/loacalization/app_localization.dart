@@ -59,6 +59,11 @@ class AppLocalization {
   static String _get(String label) =>
       _strings[label] ?? '[${label.toUpperCase()}]';
 
+  // TODO: have to find a better way to do this
+  // Should only be used for getting Appbar title
+  static String get(String label) =>
+      _strings[label] ?? '[${label.toUpperCase()}]';
+
   String get dashboardScreenTitle => _get('dashboardScreenTitle');
   String get attemptsListScreenTitle => _get('attemptsListScreenTitle');
   String get addAttemptsScreenTitle => _get('addAttemptsScreenTitle');

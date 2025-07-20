@@ -1,7 +1,8 @@
 import 'package:exam_analyzer/routing/routes.dart';
 import 'package:flutter/material.dart';
 
-enum RouteItem {
+// order is important
+enum BaseRouteItem {
   dashboard(
     route: Routes.dashboard,
     icon: Icons.dashboard,
@@ -12,45 +13,55 @@ enum RouteItem {
     icon: Icons.list_alt,
     titleKey: "attemptsListScreenTitle",
   ),
+  pitchDetection(
+    route: Routes.pitchDetection,
+    icon: Icons.graphic_eq,
+    titleKey: "realTimePitchScreenTitle",
+  ),
   addAttempt(
     route: Routes.addAttempt,
-    icon: Icons.event,
+    icon: Icons.add,
     titleKey: "addAttemptsScreenTitle",
+    isEligibleForBottomNav: false,
   ),
   attemptDetails(
     route: Routes.attemptDetails,
-    icon: Icons.event,
+    icon: Icons.details,
     titleKey: "attemptDetailScreenTitle",
+    isEligibleForBottomNav: false,
   ),
   nextExamDate(
     route: Routes.nextExamDate,
     icon: Icons.event,
     titleKey: "nextExamDateScreenTitle",
+    isEligibleForBottomNav: false,
   ),
-  linkNotes(route: Routes.linkNotes, icon: Icons.event, titleKey: ""),
-  pitchDetection(
-    route: Routes.pitchDetection,
-    icon: Icons.graphic_eq,
-    titleKey: "realTimePitchTitle",
+  linkNotes(
+    route: Routes.linkNotes,
+    icon: Icons.event,
+    titleKey: "",
+    isEligibleForBottomNav: false,
   );
 
   final String route;
   final IconData icon;
   final String titleKey;
+  final bool isEligibleForBottomNav;
 
-  const RouteItem({
+  const BaseRouteItem({
     required this.route,
     required this.icon,
     required this.titleKey,
+    this.isEligibleForBottomNav = true,
   });
 
-  static RouteItem fromRoute(String route) {
-    return RouteItem.values.firstWhere(
+  static BaseRouteItem fromRoute(String route) {
+    return BaseRouteItem.values.firstWhere(
       (item) => item.route == route,
-      orElse: () => RouteItem.dashboard,
+      orElse: () => BaseRouteItem.dashboard,
     );
   }
 
   static int indexFromRoute(String route) =>
-      RouteItem.values.indexOf(fromRoute(route));
+      BaseRouteItem.values.indexOf(fromRoute(route));
 }

@@ -1,7 +1,6 @@
 import 'dart:io';
 
-import 'package:exam_analyzer/routing/models/route_item.dart';
-import 'package:exam_analyzer/routing/widgets/shell_Scaffold.dart';
+import 'package:exam_analyzer/routing/widgets/root_scaffold.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempts_list_viewmodel.dart';
@@ -15,7 +14,6 @@ import 'package:exam_analyzer/ui/next_exam_date/viewmodels/next_exam_date_viewmo
 import 'package:exam_analyzer/ui/next_exam_date/widgets/next_exam_date_screen.dart';
 import 'package:exam_analyzer/ui/notes/viewmodels/link_notes_viewmodel.dart';
 import 'package:exam_analyzer/ui/notes/widgets/link_notes_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../ui/dashboard/viewmodels/dashboard_viewmodel.dart';
@@ -129,7 +127,7 @@ GoRouter router() => GoRouter(
   routes: [
     ShellRoute(
       builder: (context, state, child) {
-        return ShellScaffold(state: state, child: child);
+        return RootScaffold(state: state, child: child);
       },
       routes: _getRoutes(),
     ),
