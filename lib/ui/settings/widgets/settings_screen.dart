@@ -25,7 +25,7 @@ class SettingsScreen extends StatelessWidget {
               ),
               BaseListTileToggle(
                 title: AppLocalization.of(context).themeTitle,
-                iconData: Icons.light,
+                iconData: Icons.light_mode,
                 isToggled: viewModel.isDarkTheme,
                 onChanged: (value) => viewModel.toggleTheme(value),
               ),
