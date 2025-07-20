@@ -34,7 +34,7 @@ class RootBottomNavBar extends StatelessWidget {
       onTap: (index) {
         final selectedItem = BaseRouteItem.values[index];
         if (ModalRoute.of(context)?.settings.name != selectedItem.route) {
-          context.push(selectedItem.route);
+          context.go(selectedItem.route);
         }
       },
       items:
