@@ -54,7 +54,7 @@ class AppLocalization {
     'noNotesErrMsg': "Notes not linked, link it in settings",
     'retry': "Retry",
     'microphonePermissionError': "Microphone permission not granted",
-    'themeTitle': "Theme"
+    'themeTitle': "Theme",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
