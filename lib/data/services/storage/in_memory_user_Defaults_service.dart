@@ -3,6 +3,7 @@ import 'package:exam_analyzer/data/services/storage/i_user_default_service.dart'
 class InMemoryUserDefaultsService implements IUserDefaultsService {
   DateTime? _nextExamDate;
   String? _notesLink;
+  bool _isThemeDark = false;
 
   @override
   Future<void> setNextExamDate(DateTime date) async {
@@ -27,5 +28,15 @@ class InMemoryUserDefaultsService implements IUserDefaultsService {
   @override
   Future<void> setNotesLink(String link) async {
     _notesLink = link;
+  }
+
+  @override
+  Future<bool?> getThemeType() async {
+    return _isThemeDark;
+  }
+
+  @override
+  Future<void> setThemeType(bool type) async {
+    _isThemeDark = type;
   }
 }

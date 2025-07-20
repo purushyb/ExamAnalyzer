@@ -6,6 +6,7 @@ class LocalUserDefaultsService implements IUserDefaultsService {
 
   final String _nextExamDateKey = "next_exam_date";
   final String _notesLinkKey = "notes_link_key";
+  final String _darkThemeKey = "dark_theme_key";
 
   LocalUserDefaultsService(this.prefs);
 
@@ -34,5 +35,16 @@ class LocalUserDefaultsService implements IUserDefaultsService {
   @override
   Future<void> setNotesLink(String link) async {
     await prefs.setString(_notesLinkKey, link);
+  }
+
+  @override
+  Future<bool?> getThemeType() async {
+    final result = prefs.getBool(_darkThemeKey);
+    return result;
+  }
+
+  @override
+  Future<void> setThemeType(bool type) async {
+    await prefs.setBool(_darkThemeKey, type);
   }
 }

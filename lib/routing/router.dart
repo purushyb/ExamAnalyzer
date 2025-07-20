@@ -14,6 +14,8 @@ import 'package:exam_analyzer/ui/next_exam_date/viewmodels/next_exam_date_viewmo
 import 'package:exam_analyzer/ui/next_exam_date/widgets/next_exam_date_screen.dart';
 import 'package:exam_analyzer/ui/notes/viewmodels/link_notes_viewmodel.dart';
 import 'package:exam_analyzer/ui/notes/widgets/link_notes_screen.dart';
+import 'package:exam_analyzer/ui/settings/viewmodels/settings_viewmodel.dart';
+import 'package:exam_analyzer/ui/settings/widgets/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../ui/dashboard/viewmodels/dashboard_viewmodel.dart';
@@ -104,6 +106,15 @@ List<RouteBase> _commonRoutes = [
       return ChangeNotifierProvider(
         create: (context) => PitchScreenViewModel(context.read()),
         child: PitchScreen(),
+      );
+    },
+  ),
+  GoRoute(
+    path: Routes.settings,
+    builder: (context, state) {
+      return ChangeNotifierProvider(
+        create: (context) => SettingsViewmodel(context.read(), context.read()),
+        child: SettingsScreen(),
       );
     },
   ),

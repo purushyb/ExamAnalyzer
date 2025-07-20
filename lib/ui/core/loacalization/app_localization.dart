@@ -13,6 +13,7 @@ class AppLocalization {
     'attemptDetailScreenTitle': "Attempt Detail",
     'nextExamDateScreenTitle': "Next Exam Date",
     'realTimePitchScreenTitle': "Real-time Pitch",
+    'settingsScreenTitle': "Settings",
     'examDateTitle': "Exam Date",
     'attempts': "Attempts",
     'scoreTrend': 'Score Trend',
@@ -50,9 +51,10 @@ class AppLocalization {
     'dndTitle': "DND",
     'addALinkTitle': "Add a link",
     'submitLinkTitle': "Submit link",
-    'noNotesErrMsg': "Notes not added, click on link notes to add one",
+    'noNotesErrMsg': "Notes not linked, link it in settings",
     'retry': "Retry",
     'microphonePermissionError': "Microphone permission not granted",
+    'themeTitle': "Theme"
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -113,6 +115,8 @@ class AppLocalization {
   String noNotesErrMsg = _get('noNotesErrMsg');
   String retryTitle = _get('retry');
   String microphonePermissionError = _get('microphonePermissionError');
+  String settingsScreenTitle = _get('settingsScreenTitle');
+  String themeTitle = _get("themeTitle");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

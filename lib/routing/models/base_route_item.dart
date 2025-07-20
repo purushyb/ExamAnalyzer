@@ -18,6 +18,12 @@ enum BaseRouteItem {
     icon: Icons.graphic_eq,
     titleKey: "realTimePitchScreenTitle",
   ),
+  settings(
+    route: Routes.settings,
+    icon: Icons.settings,
+    titleKey: "settingsScreenTitle",
+    isEligibleForBottomNav: true,
+  ),
   addAttempt(
     route: Routes.addAttempt,
     icon: Icons.add,

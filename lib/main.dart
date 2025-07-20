@@ -1,3 +1,4 @@
+import 'package:exam_analyzer/ui/core/themes/i_theme_repository.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +20,7 @@ class MainApp extends StatelessWidget {
     return MaterialApp.router(
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: Provider.of<IThemeRepository>(context).themeMode,
       routerConfig: context.read<GoRouter>(),
       localizationsDelegates: [
         GlobalWidgetsLocalizations.delegate,
