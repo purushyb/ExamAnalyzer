@@ -1,6 +1,5 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_toggle_switch_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/basewidgets/base_tools_tile_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/reusables/analytics_line_chart_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_data_tile_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
@@ -31,10 +30,6 @@ class DashboardScreen extends StatelessWidget {
                 onAttemptsCountSelected: viewModel.goToAttemptsListScreen,
                 onExamDateSelected: viewModel.goToNextExamDateSceen,
               ),
-              ToolsWidget(
-                onClickedAddNotes: viewModel.goToAddNotes,
-                onClickVoiceTools: viewModel.goToVoiceTools,
-              ),
               MainSkillsAnalyticsWidget(
                 chart: AnalyticsLineChart(
                   lineChartData: viewModel.lineChartData,
@@ -51,35 +46,6 @@ class DashboardScreen extends StatelessWidget {
             onPressed: viewModel.openNotes,
             child: Icon(Icons.edit_document),
           ),
-    );
-  }
-}
-
-class ToolsWidget extends StatelessWidget {
-  const ToolsWidget({
-    super.key,
-    required this.onClickedAddNotes,
-    required this.onClickVoiceTools,
-  });
-
-  final Function() onClickedAddNotes;
-  final Function() onClickVoiceTools;
-
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        BaseToolsTileWidget(
-          name: AppLocalization.of(context).checkPitchTitle,
-          iconData: Icons.graphic_eq,
-          onPressed: onClickVoiceTools,
-        ),
-        BaseToolsTileWidget(
-          name: AppLocalization.of(context).addNotesTitle,
-          iconData: Icons.note_outlined,
-          onPressed: onClickedAddNotes,
-        ),
-      ],
     );
   }
 }
