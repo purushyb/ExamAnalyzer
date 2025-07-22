@@ -7,8 +7,8 @@ import 'package:exam_analyzer/data/utils/result.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
 
 class AttemptsListViewmodel extends BaseViewModel {
-  List<ScoreReport> _reports = [];
-  List<ScoreReport> get reports => _reports;
+  List<ScoreReport> _attempts = [];
+  List<ScoreReport> get attempts => _attempts;
 
   final IScoreReportRepository _repository;
   final INavigationService _navigationService;
@@ -33,7 +33,7 @@ class AttemptsListViewmodel extends BaseViewModel {
 
   void checkAndPopulateReportsDate(Result<List<ScoreReport>> result) {
     if (result.isSuccess) {
-      _reports = result.data!;
+      _attempts = result.data!;
       notifyChanges();
     } else {
       setError(result.error);

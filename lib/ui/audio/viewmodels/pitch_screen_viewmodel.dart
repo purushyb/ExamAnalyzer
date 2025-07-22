@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:exam_analyzer/data/services/audio_service/i_audio_service.dart';
+import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/viewmodel.dart/base_viewmodel.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -10,7 +11,8 @@ class PitchScreenViewModel extends BaseViewModel {
   static const int _maxBufferSize = 20;
   StreamSubscription<double>? _subscription;
 
-  PitchScreenViewModel(this._service) {
+  final AppLocalization _appLocalization;
+  PitchScreenViewModel(this._service, this._appLocalization) {
     init();
   }
 
@@ -31,7 +33,7 @@ class PitchScreenViewModel extends BaseViewModel {
         notifyListeners();
       },
       onError: (e) {
-        setError("Audio stream error");
+        setError(_appLocalization.audioStreamError);
       },
     );
 

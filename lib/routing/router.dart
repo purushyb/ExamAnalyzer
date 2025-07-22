@@ -104,7 +104,8 @@ List<RouteBase> _commonRoutes = [
     path: Routes.pitchDetection,
     builder: (context, state) {
       return ChangeNotifierProvider(
-        create: (context) => PitchScreenViewModel(context.read()),
+        create:
+            (context) => PitchScreenViewModel(context.read(), context.read()),
         child: PitchScreen(),
       );
     },

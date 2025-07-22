@@ -11,17 +11,17 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
 
 class DashboardViewModel extends BaseViewModel {
-  List<ScoreReport> _reports = [];
-  List<ScoreReport> get report => _reports;
+  List<ScoreReport> _attempts = [];
+  List<ScoreReport> get attempts => _attempts;
 
-  String _attemtCount = "";
-  String get attemptsCount => _attemtCount;
+  String _attemptsCount = "";
+  String get attemptsCount => _attemptsCount;
 
   String? _nextExamDate;
   String? get nextExamDate => _nextExamDate;
 
-  List<List<FlSpot>> _lineChartData = [];
-  List<List<FlSpot>> get lineChartData => _lineChartData;
+  List<List<FlSpot>> _mainSkillsLineChartData = [];
+  List<List<FlSpot>> get mainSkillsLineChartData => _mainSkillsLineChartData;
 
   late final StreamSubscription<Result<List<ScoreReport>>> _subscription;
   late final StreamSubscription<Result<DateTime?>> _nextExamDatesubscription;
@@ -56,8 +56,8 @@ class DashboardViewModel extends BaseViewModel {
 
   void showAttemptsData(Result<List<ScoreReport>> result) {
     if (result.isSuccess) {
-      _reports = result.data!;
-      _attemtCount = _reports.length.toString();
+      _attempts = result.data!;
+      _attemptsCount = _attempts.length.toString();
       _fetchSkillProfileData();
       notifyChanges();
     } else {
@@ -77,7 +77,7 @@ class DashboardViewModel extends BaseViewModel {
   }
 
   Future _fetchSkillProfileData() async {
-    _lineChartData = ChartUtils.convertToFlSpotSeries(_reports);
+    _mainSkillsLineChartData = ChartUtils.convertToFlSpotSeries(_attempts);
   }
 
   void goToAttemptsListScreen() {
@@ -87,8 +87,6 @@ class DashboardViewModel extends BaseViewModel {
   void goToNextExamDateSceen() {
     _navigationService.goToNextExamDateScreen();
   }
-
-  void toggleDND() {}
 
   Future openNotes() async {
     final result = await _toolsRepository.openNotesLink();

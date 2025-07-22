@@ -22,30 +22,32 @@ class AttemptDetailScreen extends StatelessWidget {
             ],
           ),
       childBuilder: (viewModel) {
-        return Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                BaseDataTileWidget(
-                  name: AppLocalization.of(context).overall(),
-                  value: viewModel.overallScore,
-                ),
-                BaseDataTileWidget(
-                  name: AppLocalization.of(context).examDateTitle,
-                  value: viewModel.readbleDateFormat,
-                ),
-              ],
-            ),
-            SubSkillBreakDownWidget(
-              title: AppLocalization.of(context).mainSkillBreakdownTitle,
-              subskills: viewModel.mainSkills,
-            ),
-            SubSkillBreakDownWidget(
-              title: AppLocalization.of(context).subSkillBreakDown,
-              subskills: viewModel.subSkills,
-            ),
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BaseDataTileWidget(
+                    name: AppLocalization.of(context).overall(),
+                    value: viewModel.overallScore,
+                  ),
+                  BaseDataTileWidget(
+                    name: AppLocalization.of(context).examDateTitle,
+                    value: viewModel.readbleDateFormat,
+                  ),
+                ],
+              ),
+              SubSkillBreakDownWidget(
+                title: AppLocalization.of(context).mainSkillBreakdownTitle,
+                subskills: viewModel.mainSkills,
+              ),
+              SubSkillBreakDownWidget(
+                title: AppLocalization.of(context).subSkillBreakDown,
+                subskills: viewModel.subSkills,
+              ),
+            ],
+          ),
         );
       },
     );

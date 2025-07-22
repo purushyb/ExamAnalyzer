@@ -1,6 +1,7 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/themes/dimens.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -140,12 +141,8 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
   @override
   Widget build(BuildContext context) {
     return BasePaddingWidget(
-      child: Container(
+      child: ContainerWithBorder(
         constraints: BoxConstraints(maxWidth: 800),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(16.0)),
-          border: Border.all(color: Theme.of(context).colorScheme.primary),
-        ),
         child: AspectRatio(
           aspectRatio: Dimens.of(context).smallWidgetAspectRatio,
           child: Stack(
@@ -153,21 +150,20 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Row(children: [widget.child ?? SizedBox()]),
-                  const SizedBox(height: 37),
-                  Text(
-                    AppLocalization.of(context).scoreTrendTitle,
-                    style: Theme.of(context).textTheme.titleLarge,
-                    textAlign: TextAlign.center,
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      AppLocalization.of(context).scoreTrendTitle,
+                      style: Theme.of(context).textTheme.titleLarge,
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  const SizedBox(height: 37),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 16, left: 6),
+                      padding: const EdgeInsets.only(right: 16),
                       child: _LineChart(dataPoints: widget.lineChartData),
                     ),
                   ),
-                  const SizedBox(height: 10),
                 ],
               ),
             ],

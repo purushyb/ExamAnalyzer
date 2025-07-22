@@ -17,14 +17,14 @@ class AttemptsListScreen extends StatelessWidget {
           ),
       childBuilder: (viewModel) {
         return ListView.builder(
-          itemCount: viewModel.reports.length,
+          itemCount: viewModel.attempts.length,
           itemBuilder: (context, index) {
             return AttemptListTile(
-              report: viewModel.reports[index],
+              report: viewModel.attempts[index],
               attemptNumber: index + 1,
               onPressed: () {
                 viewModel.goToAttemptDetailsScreen(
-                  attemptId: viewModel.reports[index].id,
+                  attemptId: viewModel.attempts[index].id,
                 );
               },
             );

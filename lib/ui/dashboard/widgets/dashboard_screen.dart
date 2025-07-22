@@ -32,11 +32,11 @@ class DashboardScreen extends StatelessWidget {
               ),
               MainSkillsAnalyticsWidget(
                 chart: AnalyticsLineChart(
-                  lineChartData: viewModel.lineChartData,
+                  lineChartData: viewModel.mainSkillsLineChartData,
                 ),
-                table: SkillProfileDataTableWidget(reports: viewModel.report),
+                table: SkillProfileDataTableWidget(reports: viewModel.attempts),
               ),
-              SubskillTableWidget(reports: viewModel.report),
+              SubskillTableWidget(reports: viewModel.attempts),
             ],
           ),
         );
