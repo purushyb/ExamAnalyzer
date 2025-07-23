@@ -35,9 +35,7 @@ class SubskillTableWidget extends StatelessWidget {
 
           final cells = <DataCell>[
             DataCell(Text(reports[index].date.readableDate())),
-            ...report.subskills.map(
-              (s) => DataCell(Text('${s.score} - ${s.name}')),
-            ),
+            ...report.subskills.map((s) => DataCell(Text('${s.score} '))),
           ];
 
           // Fill remaining columns if subskills are less than max

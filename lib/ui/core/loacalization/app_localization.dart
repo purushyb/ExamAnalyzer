@@ -55,7 +55,7 @@ class AppLocalization {
     'retry': "Retry",
     'microphonePermissionError': "Microphone permission not granted",
     'themeTitle': "Theme",
-    'audioStreamError': "Audio stream error"
+    'audioStreamError': "Audio stream error",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"

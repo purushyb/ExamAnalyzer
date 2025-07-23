@@ -20,7 +20,7 @@ class AttemptsListScreen extends StatelessWidget {
           itemCount: viewModel.attempts.length,
           itemBuilder: (context, index) {
             return AttemptListTile(
-              report: viewModel.attempts[index],
+              attempt: viewModel.attempts[index],
               attemptNumber: index + 1,
               onPressed: () {
                 viewModel.goToAttemptDetailsScreen(

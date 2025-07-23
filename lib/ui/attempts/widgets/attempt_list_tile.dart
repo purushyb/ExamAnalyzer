@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class AttemptListTile extends StatelessWidget {
-  final ScoreReport report;
+  final ScoreReport attempt;
   final int attemptNumber;
   final GestureTapCallback onPressed;
 
   const AttemptListTile({
     super.key,
-    required this.report,
+    required this.attempt,
     required this.attemptNumber,
     required this.onPressed,
   });
@@ -55,8 +55,8 @@ class AttemptListTile extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(16),
         ),
-        leading: CircleAvatar(child: Text('$attemptNumber')),
-        title: Text(DateFormat.yMMMMd().format(report.date)),
+        leading: CircleAvatar(child: Text('${attempt.gseScore}')),
+        title: Text(DateFormat.yMMMMd().format(attempt.date)),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 12),
           child: Row(
@@ -64,22 +64,22 @@ class AttemptListTile extends StatelessWidget {
             children: [
               _buildScoreCircle(
                 AppLocalization.of(context).speakingTitle,
-                report.speaking,
+                attempt.speaking,
                 ChartUtils.getColorForChart(0),
               ),
               _buildScoreCircle(
                 AppLocalization.of(context).readingTitle,
-                report.reading,
+                attempt.reading,
                 ChartUtils.getColorForChart(1),
               ),
               _buildScoreCircle(
                 AppLocalization.of(context).writingTitle,
-                report.writing,
+                attempt.writing,
                 ChartUtils.getColorForChart(2),
               ),
               _buildScoreCircle(
                 AppLocalization.of(context).listeningTitle,
-                report.listening,
+                attempt.listening,
                 ChartUtils.getColorForChart(3),
               ),
             ],
