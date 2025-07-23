@@ -32,3 +32,7 @@ git clone https://github.com/purushyb/exam-analyzer.git
 cd exam-analyzer
 flutter pub get
 flutter run
+````
+---
+## Contributions
+- Check [Contributions.md](.github/CONTRIBUTING.md)

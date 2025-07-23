@@ -1,8 +1,23 @@
 # Contributing to Exam Analyzer
 
-Thanks for your interest in contributing! 🙌
+First off, thanks for taking the time to contribute! 🎉  
+Your contributions make this project better, and we appreciate every pull request, bug report, and idea.
 
-## 🚀 Getting Started
+---
+
+## 📌 Table of Contents
+
+1. [Getting Started](#getting-started)
+2. [Running the App](#running-the-app)
+3. [Project Structure](#project-structure)
+4. [Commit Guidelines](#commit-guidelines)
+5. [Pull Requests](#pull-requests)
+6. [Code of Conduct](#code-of-conduct)
+7. [License](#license)
+
+---
+
+## Getting Started
 
 1. Fork the repository
 2. Clone your fork:  
@@ -13,8 +28,15 @@ Thanks for your interest in contributing! 🙌
    ```bash
    flutter pub get
    ```
+   
+---
 
-## 🧪 Running the App
+## Running the App
+
+Install dependencies:
+```bash
+flutter pub get
+```
 
 To run:
 ```bash
@@ -28,7 +50,7 @@ flutter test
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 - `lib/data`: Services, repositories
 - `lib/ui`: Screens, widgets
@@ -37,29 +59,29 @@ flutter test
 
 ---
 
-## 📌 Commit Guidelines
+## Commit Guidelines
 
 Use conventional commits:
 ```
-feat: add new pitch graph
-fix: audio stream not working
+feature: add new pitch graph
+bugfix: audio stream not working
 refactor: cleanup pitch detection service
 docs: update README
 ```
 
 ---
 
-## ✅ Pull Requests
+## Pull Requests
 
 Please ensure:
 
 - Your code builds
 - You've added relevant tests
-- Lint passes (`flutter analyze`)
-- PR uses the [PR template](.github/pull_request_template.md)
+- Lint passes (`flutter analyze`, `dart format .`)
+- PR uses the [PR template](.github/ISSUE_TEMPLATE/feature_request.yaml), [BUG template](.github/ISSUE_TEMPLATE/bug_report.yaml)
 
 ---
 
-## 🙏 Code of Conduct
+## Code of Conduct
 
 Be respectful and constructive. We welcome contributions from everyone. ❤️
