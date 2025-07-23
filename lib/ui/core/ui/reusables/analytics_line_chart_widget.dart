@@ -138,36 +138,80 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
     super.initState();
   }
 
+  Widget _buildLegendItem({required Color color, required String text}) {
+    return Padding(
+      padding: const EdgeInsetsGeometry.symmetric(horizontal: 4, vertical: 8),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 12,
+            height: 12,
+            alignment: Alignment.bottomRight,
+            decoration: BoxDecoration(shape: BoxShape.circle, color: color),
+          ),
+          const SizedBox(width: 4),
+          Text(text),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BasePaddingWidget(
       child: ContainerWithBorder(
         constraints: BoxConstraints(maxWidth: 800),
-        child: AspectRatio(
-          aspectRatio: Dimens.of(context).smallWidgetAspectRatio,
-          child: Stack(
-            children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      AppLocalization.of(context).scoreTrendTitle,
-                      style: Theme.of(context).textTheme.titleLarge,
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: _LineChart(dataPoints: widget.lineChartData),
-                    ),
-                  ),
-                ],
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                AppLocalization.of(context).scoreTrendTitle,
+                style: Theme.of(context).textTheme.titleLarge,
+                textAlign: TextAlign.center,
               ),
-            ],
-          ),
+            ),
+            AspectRatio(
+              aspectRatio: Dimens.of(context).smallWidgetAspectRatio,
+              child: Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16),
+                  child: _LineChart(dataPoints: widget.lineChartData),
+                ),
+              ),
+            ),
+            Wrap(
+              direction: Axis.horizontal,
+              alignment: WrapAlignment.spaceEvenly,
+              children: [
+                _buildLegendItem(
+                  color: ChartUtils.getColorWithName(
+                    AppLocalization.of(context).speakingTitle,
+                  ),
+                  text: AppLocalization.of(context).speakingTitle,
+                ),
+                _buildLegendItem(
+                  color: ChartUtils.getColorWithName(
+                    AppLocalization.of(context).readingTitle,
+                  ),
+                  text: AppLocalization.of(context).readingTitle,
+                ),
+                _buildLegendItem(
+                  color: ChartUtils.getColorWithName(
+                    AppLocalization.of(context).writingTitle,
+                  ),
+                  text: AppLocalization.of(context).writingTitle,
+                ),
+                _buildLegendItem(
+                  color: ChartUtils.getColorWithName(
+                    AppLocalization.of(context).listeningTitle,
+                  ),
+                  text: AppLocalization.of(context).listeningTitle,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

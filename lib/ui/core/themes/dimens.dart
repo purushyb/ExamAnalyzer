@@ -77,7 +77,7 @@ final class _DimensMobile extends Dimens {
   double get aspectRatio => 0.5;
 
   @override
-  double get smallWidgetAspectRatio => 1.23;
+  double get smallWidgetAspectRatio => 16 / 9;
 }
 
 /// Mobile dimensions
@@ -94,7 +94,7 @@ final class _DimensMobileLandscape extends Dimens {
   double get aspectRatio => 3.5;
 
   @override
-  double get smallWidgetAspectRatio => 3.5;
+  double get smallWidgetAspectRatio => 16 / 9;
 }
 
 /// Desktop/Web dimensions
