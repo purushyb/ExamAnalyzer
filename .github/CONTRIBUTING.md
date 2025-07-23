@@ -82,6 +82,27 @@ Please ensure:
 
 ---
 
+## Reporting Bugs
+
+If you find a bug, please open a new issue using our **[Bug Report Template](./ISSUE_TEMPLATE/bug_report.yaml)**.
+
+Make sure you include:
+- A clear, descriptive title.
+- Steps to reproduce the bug.
+- What you expected to happen.
+- What actually happened.
+
+---
+
+## Requesting Features
+
+Have a great idea? We'd love to hear about it! Please open a new issue using our **[Feature Request Template](./ISSUE_TEMPLATE/feature_request.yaml)**.
+
+Your feature request should include:
+- A clear description of the feature.
+- Why this feature would be useful.
+- Any alternative solutions or workarounds you've considered.
+
 ## Code of Conduct
 
 Be respectful and constructive. We welcome contributions from everyone. ❤️
