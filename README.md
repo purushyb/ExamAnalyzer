@@ -10,7 +10,7 @@
 - ➕ **Add Attempt**: Input PTE scores across Speaking, Writing, Reading, and Listening  
 - 📁 **View Details**: Deep dive into individual attempts with subskill breakdown  
 - 📅 **Next Exam**: Track and update your scheduled exam date  
-- 🎙️ **Pitch Detection** (optional): Real-time pronunciation feedback  
+- 🎙️ **Pitch Detection**: Real-time pronunciation feedback  
 - 💡 **Offline-first**: All data stored locally using SQLite  
 
 ---
@@ -34,5 +34,15 @@ flutter pub get
 flutter run
 ````
 ---
-## Contributions
+
+## 🤝 Contributions
+- We welcome feedback, feature requests, and security disclosures.
 - Check [Contributions.md](.github/CONTRIBUTING.md)
+
+## 📬 Contact Us
+
+### 📨 Email
+
+Feel free to reach out via email at:
+
+**your-email@example.com**

@@ -63,10 +63,10 @@ flutter test
 
 Use conventional commits:
 ```
-feature: add new pitch graph
-bugfix: audio stream not working
-refactor: cleanup pitch detection service
-docs: update README
+- feature: add new pitch graph
+- bugfix: audio stream not working
+- refactor: cleanup pitch detection service
+- docs: update README
 ```
 
 ---
