@@ -174,11 +174,9 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
             ),
             AspectRatio(
               aspectRatio: Dimens.of(context).smallWidgetAspectRatio,
-              child: Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: _LineChart(dataPoints: widget.lineChartData),
-                ),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: _LineChart(dataPoints: widget.lineChartData),
               ),
             ),
             Wrap(

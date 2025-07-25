@@ -2,15 +2,42 @@
 
 **Exam Analyzer** is a Flutter-based utility that helps users track, analyze, and reflect on their PTE (Pearson Test of English) exam performance. Built with a clean MVVM architecture, it offers visual insights, scoring history, and progress tracking in a privacy-first local environment.
 
+# ⛶ Screenshots
+<p float="left">
+  <img src="assets/light-theme/dashboard.png" width="200" />
+  <img src="assets/light-theme/attempts.png" width="200" />
+  <img src="assets/light-theme/attempt-details.png" width="200" />
+  <img src="assets/light-theme/realTimePitchDetector.png" width="200" />
+  <img src="assets/light-theme/settings.png" width="200" />
+</p>
+<p float="left">
+  <img src="assets/dark-theme/dashboard.png" width="200" />
+  <img src="assets/dark-theme/attempts.png" width="200" />
+  <img src="assets/dark-theme/attempt-details.png" width="200" />
+  <img src="assets/dark-theme/realTimePitchDetector.png" width="200" />
+  <img src="assets/dark-theme/settings.png" width="200" />
+</p>
+
 ---
+
+## 🖥️ Platform Support
+
+| Platform   | Supported |
+|------------|-----------|
+| Android    | ✅        |
+| iOS        | ✅        |
+| macOS      | ⬜ Planned|
+| Windows    | ⬜ Planned |
+| Linux      | ⬜ Planned |
+| Web        | ⬜ Planned |
 
 ## 🚀 Features
 
 - 📊 **Dashboard**: Visual overview of past attempts and upcoming exam date  
-- ➕ **Add Attempt**: Input PTE scores across Speaking, Writing, Reading, and Listening  
+- ➕ **Attempts**: Add, delete and keep track of user exam attempts  
 - 📁 **View Details**: Deep dive into individual attempts with subskill breakdown  
 - 📅 **Next Exam**: Track and update your scheduled exam date  
-- 🎙️ **Pitch Detection**: Real-time pronunciation feedback  
+- 🎙️ **audio**: Real-time pronunciation feedback, detect pitch of the user
 - 💡 **Offline-first**: All data stored locally using SQLite  
 
 ---
