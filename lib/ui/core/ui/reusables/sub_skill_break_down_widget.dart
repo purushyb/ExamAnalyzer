@@ -1,6 +1,6 @@
 import 'package:exam_analyzer/data/models/score_report.dart';
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
-import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_container_with_border.dart';
 import 'package:exam_analyzer/ui/core/ui/reusables/skill_with_progressbar_widget.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class SubSkillBreakDownWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: ContainerWithBorder(
+      child: BaseContainerWithBorder(
         padding: EdgeInsets.all(16),
         width: double.infinity,
         child:

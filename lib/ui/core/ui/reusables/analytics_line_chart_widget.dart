@@ -1,7 +1,7 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/themes/dimens.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_padding_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/reusables/container_with_border.dart';
+import 'package:exam_analyzer/ui/core/ui/basewidgets/base_container_with_border.dart';
 import 'package:exam_analyzer/ui/utils/charts_utils.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -160,7 +160,7 @@ class AnalyticsLineChartState extends State<AnalyticsLineChart> {
   @override
   Widget build(BuildContext context) {
     return BasePaddingWidget(
-      child: ContainerWithBorder(
+      child: BaseContainerWithBorder(
         constraints: BoxConstraints(maxWidth: 800),
         child: Column(
           children: [

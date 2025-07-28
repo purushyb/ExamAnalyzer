@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ContainerWithBorder extends StatelessWidget {
-  const ContainerWithBorder({
+class BaseContainerWithBorder extends StatelessWidget {
+  const BaseContainerWithBorder({
     super.key,
     required this.child,
     this.padding,
