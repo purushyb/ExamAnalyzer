@@ -7,4 +7,5 @@ abstract final class Routes {
   static const linkNotes = '/linkNotes';
   static const pitchDetection = '/pitchDetection';
   static const settings = "/settings";
+  static const fullScreenPage = "/fullScreenPage";
 }

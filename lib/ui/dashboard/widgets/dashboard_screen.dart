@@ -1,6 +1,6 @@
 import 'package:exam_analyzer/ui/core/loacalization/app_localization.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_toggle_switch_widget.dart';
-import 'package:exam_analyzer/ui/core/ui/reusables/analytics_line_chart_widget.dart';
+import 'package:exam_analyzer/ui/core/ui/feature_modules/module_main_skills_line_chart/module_main_skills_line_chart_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_data_tile_widget.dart';
 import 'package:exam_analyzer/ui/core/ui/basewidgets/base_view.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/skill_profile_data_table_widget.dart';
@@ -31,9 +31,7 @@ class DashboardScreen extends StatelessWidget {
                 onExamDateSelected: viewModel.goToNextExamDateSceen,
               ),
               MainSkillsAnalyticsWidget(
-                chart: AnalyticsLineChart(
-                  lineChartData: viewModel.mainSkillsLineChartData,
-                ),
+                chart: ModuleMainSkillsLineChartWidget(),
                 table: SkillProfileDataTableWidget(reports: viewModel.attempts),
               ),
               SubskillTableWidget(reports: viewModel.attempts),
@@ -90,7 +88,7 @@ class MainSkillsAnalyticsWidget extends StatefulWidget {
     required this.table,
   });
 
-  final AnalyticsLineChart chart;
+  final ModuleMainSkillsLineChartWidget chart;
   final SkillProfileDataTableWidget table;
 
   @override

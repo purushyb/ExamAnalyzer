@@ -1,3 +1,5 @@
+import 'package:exam_analyzer/routing/models/full_screen_page_data.dart';
+
 abstract class INavigationService {
   bool goToAttemptsListScreen();
   bool goToAddAttemptsScreen();
@@ -5,6 +7,7 @@ abstract class INavigationService {
   bool goToNextExamDateScreen();
   bool goToPitchDetectionScreen();
   bool goToAddNotes();
+  bool goToFullScreenPage({required FullScreenPageData data});
 
   bool goBack();
 }

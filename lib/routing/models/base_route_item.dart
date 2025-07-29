@@ -47,6 +47,13 @@ enum BaseRouteItem {
     icon: Icons.event,
     titleKey: "",
     isEligibleForBottomNav: false,
+  ),
+
+  fullScreenPage(
+    route: Routes.fullScreenPage,
+    icon: Icons.fullscreen,
+    titleKey: "",
+    isEligibleForBottomNav: false,
   );
 
   final String route;
