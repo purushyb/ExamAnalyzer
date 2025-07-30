@@ -61,6 +61,12 @@ abstract final class Dimens {
     // Portrait mobile (default)
     return mobile;
   }
+
+  // only be used to screen where orientation is locked
+  // to landscape
+  factory Dimens.mobileLandscape(){
+    return const _DimensMobileLandscape(); 
+  }
 }
 
 /// Mobile dimensions
@@ -91,10 +97,10 @@ final class _DimensMobileLandscape extends Dimens {
   const _DimensMobileLandscape();
 
   @override
-  double get aspectRatio => 3.5;
+  double get aspectRatio => 3.2;
 
   @override
-  double get smallWidgetAspectRatio => 16 / 9;
+  double get smallWidgetAspectRatio => 3.2;
 }
 
 /// Desktop/Web dimensions

@@ -191,7 +191,9 @@ class ModuleMainSkillsLineChartWidgetState
                                     () => viewModel.showInFullScreen(
                                       FullScreenPageData(
                                         child: ModuleMainSkillsLineChartWidget(
-                                          aspectRatio: 16 / 5,
+                                          aspectRatio:
+                                              Dimens.mobileLandscape()
+                                                  .aspectRatio,
                                           hideLegend: true,
                                           hidefullScreenToggle: true,
                                         ),
