@@ -64,8 +64,8 @@ abstract final class Dimens {
 
   // only be used to screen where orientation is locked
   // to landscape
-  factory Dimens.mobileLandscape(){
-    return const _DimensMobileLandscape(); 
+  factory Dimens.mobileLandscape() {
+    return const _DimensMobileLandscape();
   }
 }
 

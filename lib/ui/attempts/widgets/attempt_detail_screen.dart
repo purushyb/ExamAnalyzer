@@ -8,6 +8,32 @@ import 'package:flutter/material.dart';
 class AttemptDetailScreen extends StatelessWidget {
   const AttemptDetailScreen({super.key});
 
+  void showDeleteConfirmation(
+    BuildContext context, {
+    required Function() onDeletePressed,
+    required Function() onCancelPressed,
+  }) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder:
+          (context) => AlertDialog(
+            title: Text(AppLocalization.of(context).deleteAttemptTitle),
+            content: Text(AppLocalization.of(context).deleteAttemptMsg),
+            actions: [
+              TextButton(
+                onPressed: onDeletePressed,
+                child: Text(AppLocalization.of(context).okTitle),
+              ),
+              TextButton(
+                onPressed: onCancelPressed,
+                child: Text(AppLocalization.of(context).cancelTitle),
+              ),
+            ],
+          ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseView<AttemptDetailViewmodel>(
@@ -16,7 +42,15 @@ class AttemptDetailScreen extends StatelessWidget {
             title: Text(AppLocalization.of(context).attemptDetailScreenTitle),
             actions: [
               IconButton(
-                onPressed: () => viewModel.deleteAttempt(),
+                onPressed:
+                    () => showDeleteConfirmation(
+                      context,
+                      onDeletePressed: () {
+                        Navigator.of(context).pop();
+                        viewModel.deleteAttempt();
+                      },
+                      onCancelPressed: () => Navigator.of(context).pop(),
+                    ),
                 icon: Icon(Icons.delete),
               ),
             ],
