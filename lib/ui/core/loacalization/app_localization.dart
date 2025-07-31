@@ -56,6 +56,10 @@ class AppLocalization {
     'microphonePermissionError': "Microphone permission not granted",
     'themeTitle': "Theme",
     'audioStreamError': "Audio stream error",
+    'deletAttemtTitle': "Are you sure?",
+    'deleteAttemptMsg': "Do you want to delete this attempt.",
+    'OkTitle': "Ok",
+    'CancelTitle': "Cancel",
   };
 
   // If string for "label" does not exist, will show "[LABEL]"
@@ -119,6 +123,10 @@ class AppLocalization {
   String settingsScreenTitle = _get('settingsScreenTitle');
   String themeTitle = _get("themeTitle");
   String audioStreamError = _get("audioStreamError");
+  String deleteAttemptTitle = _get("deletAttemtTitle");
+  String deleteAttemptMsg = _get("deleteAttemptMsg");
+  String okTitle = _get("OkTitle");
+  String cancelTitle = _get("CancelTitle");
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalization> {

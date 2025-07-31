@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:exam_analyzer/routing/models/full_screen_page_data.dart';
 import 'package:exam_analyzer/routing/widgets/root_scaffold.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/add_attempt_viewmodel.dart';
 import 'package:exam_analyzer/ui/attempts/viewmodels/attempt_detail_viewmodel.dart';
@@ -10,6 +11,7 @@ import 'package:exam_analyzer/ui/attempts/widgets/attempts_list_screen.dart';
 import 'package:exam_analyzer/ui/audio/viewmodels/pitch_screen_viewmodel.dart';
 import 'package:exam_analyzer/ui/audio/widgets/pitch_graph_widget.dart';
 import 'package:exam_analyzer/ui/dashboard/widgets/dashboard_screen.dart';
+import 'package:exam_analyzer/ui/full_screen/widgets/generic_full_screen.dart';
 import 'package:exam_analyzer/ui/next_exam_date/viewmodels/next_exam_date_viewmodel.dart';
 import 'package:exam_analyzer/ui/next_exam_date/widgets/next_exam_date_screen.dart';
 import 'package:exam_analyzer/ui/notes/viewmodels/link_notes_viewmodel.dart';
@@ -117,6 +119,13 @@ List<RouteBase> _commonRoutes = [
         create: (context) => SettingsViewmodel(context.read(), context.read()),
         child: SettingsScreen(),
       );
+    },
+  ),
+  GoRoute(
+    path: Routes.fullScreenPage,
+    builder: (context, state) {
+      final data = state.extra as FullScreenPageData;
+      return GenericFullScreen(child: data.child);
     },
   ),
 ];

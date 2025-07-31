@@ -1,4 +1,5 @@
 import 'package:exam_analyzer/data/services/navigation/i_navigation_service.dart';
+import 'package:exam_analyzer/routing/models/full_screen_page_data.dart';
 import 'package:exam_analyzer/routing/routes.dart';
 import 'package:go_router/go_router.dart';
 
@@ -40,6 +41,12 @@ class Navigationserviceimpl extends INavigationService {
   @override
   bool goToPitchDetectionScreen() {
     _router.push(Routes.pitchDetection);
+    return true;
+  }
+
+  @override
+  bool goToFullScreenPage({required FullScreenPageData data}) {
+    _router.push(Routes.fullScreenPage, extra: data);
     return true;
   }
 
