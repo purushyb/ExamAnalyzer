@@ -18,7 +18,7 @@ If you find a security vulnerability in this project, **please do not open a Git
 Instead, follow these steps:
 
 1. **Email us privately** at:  
-   📬 `exam.analyzer.security@protonmail.com`  
+   📬 `contactus@karnaforge.dev`  
 2. Include as much detail as possible:
    - A clear description of the issue
    - Steps to reproduce

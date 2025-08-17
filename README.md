@@ -1,4 +1,8 @@
-# 📘 Exam Analyzer
+<img src="assets/exam-analyzer-logo.png" width="160"
+     style="border-radius:50%; border:20px solid white;" />
+
+# 📘 PTE Analyzer 
+(code name: Exam Analyzer)
 
 **Exam Analyzer** is a Flutter-based utility that helps users track, analyze, and reflect on their PTE (Pearson Test of English) exam performance. Built with a clean MVVM architecture, it offers visual insights, scoring history, and progress tracking in a privacy-first local environment.
 
@@ -72,4 +76,4 @@ flutter run
 
 Feel free to reach out via email at:
 
-**your-email@example.com**
+**contactus@karnaforge.dev**
