@@ -20,7 +20,7 @@
   <img src="assets/dark-theme/attempt-details.png" width="200" />
   <img src="assets/dark-theme/realTimePitchDetector.png" width="200" />
   <img src="assets/dark-theme/settings.png" width="200" />
-</p>
+</p>  
 
 ---
 
@@ -69,11 +69,8 @@ flutter run
 ## 🤝 Contributions
 - We welcome feedback, feature requests, and security disclosures.
 - Check [Contributions.md](.github/CONTRIBUTING.md)
+- Join our [Discord Community](https://discord.gg/5aWvp7aM) to chat, ask questions, or contribute ideas.
 
 ## 📬 Contact Us
 
-### 📨 Email
-
-Feel free to reach out via email at:
-
-**contactus@karnaforge.dev**
+Feel free to reach out us in the [Discord Community](https://discord.gg/5aWvp7aM)
