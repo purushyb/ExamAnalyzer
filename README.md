@@ -4,6 +4,8 @@
 # 📘 PTE Analyzer 
 (code name: Exam Analyzer)
 
+[![Thanks](https://img.shields.io/badge/Thanks-Open%20Source%20Libraries-blue.svg)](#-acknowledgements)
+
 **Exam Analyzer** is a Flutter-based utility that helps users track, analyze, and reflect on their PTE (Pearson Test of English) exam performance. Built with a clean MVVM architecture, it offers visual insights, scoring history, and progress tracking in a privacy-first local environment.
 
 # ⛶ Screenshots
@@ -74,3 +76,19 @@ flutter run
 ## 📬 Contact Us
 
 Feel free to reach out us in the [Discord Community](https://discord.gg/5aWvp7aM)
+
+## 🙏 Acknowledgements
+
+We’d like to thank the amazing open-source projects that made **Karna Forge** possible:
+
+- The **Flutter Architecture Guide – MVVM Pattern**, for providing guidance on scalable and maintainable app architecture: [Flutter Docs – App Architecture Guide](https://docs.flutter.dev/app-architecture/guide). :contentReference[oaicite:2]{index=2}
+
+- [flutter](https://flutter.dev) – Cross-platform UI toolkit
+- [provider](https://pub.dev/packages/provider) – State management
+- [freezed](https://pub.dev/packages/freezed) – Immutable models & unions
+- [sqflite](https://pub.dev/packages/sqflite) – SQLite database
+- [url_launcher](https://pub.dev/packages/url_launcher) – Launching external apps/links
+- [permission_handler](https://pub.dev/packages/permission_handler) – Runtime permissions
+- [fl_chart](https://pub.dev/packages/fl_chart) – Charts and graphs
+- [flutter_audio_capture](https://pub.dev/packages/flutter_audio_capture) – Real-time audio input
+

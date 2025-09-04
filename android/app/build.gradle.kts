@@ -1,3 +1,5 @@
+import java.util.Properties
+import java.io.FileInputStream
 plugins {
     id("com.android.application")
     id("kotlin-android")
@@ -5,10 +7,14 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+val localProps = Properties().apply {
+    load(rootProject.file("local.properties").inputStream())
+}
+
 android {
     namespace = "com.example.exam_analyzer"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = localProps["flutter.ndkVersion"]?.toString() ?: "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -24,10 +30,10 @@ android {
         applicationId = "com.example.exam_analyzer"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
-        minSdk = flutter.minSdkVersion
-        targetSdk = flutter.targetSdkVersion
-        versionCode = flutter.versionCode
-        versionName = flutter.versionName
+        minSdk = localProps["flutter.minSdkVersion"]?.toString()?.toInt() ?: 21
+        targetSdk = localProps["flutter.targetSdkVersion"]?.toString()?.toInt() ?: 35
+        versionCode = localProps["flutter.versionCode"]?.toString()?.toInt() ?: 1
+        versionName = localProps["flutter.versionName"]?.toString() ?: "1.0.0"
     }
 
     buildTypes {
